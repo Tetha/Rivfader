@@ -2,7 +2,7 @@ package edu.rivfader.test.relalg.rowselector;
 
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.rowselector.BinaryOperation;
-import edu.rivfader.relalg.rowselector.RowSelector;
+import edu.rivfader.relalg.rowselector.IRowSelector;
 import edu.rivfader.relalg.rowselector.BooleanValueCombination;
 
 import org.junit.Test;
@@ -22,8 +22,8 @@ import org.powermock.modules.junit4.PowerMockRunner;
 @PrepareForTest({Row.class,BooleanValueCombination.class})
 public class BinaryOperationTest {
     @Test public void testValueCombination() {
-        RowSelector left = createMock(RowSelector.class);
-        RowSelector right = createMock(RowSelector.class);
+        IRowSelector left = createMock(IRowSelector.class);
+        IRowSelector right = createMock(IRowSelector.class);
         BooleanValueCombination combination =
             createMock(BooleanValueCombination.class);
         boolean leftResult = true;

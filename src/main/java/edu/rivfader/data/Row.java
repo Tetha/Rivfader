@@ -113,10 +113,10 @@ public class Row {
         List<String> columns = new LinkedList<String>();
         addAllTo(left.columns(), columns);
         addAllTo(right.columns(), columns);
-        Row r = new Row(columns);
-        copyData(left, r);
-        copyData(right, r);
-        return r;
+        Row result = new Row(columns);
+        copyData(left, result);
+        copyData(right, result);
+        return result;
     }
 
     /**
@@ -124,10 +124,10 @@ public class Row {
      * @param i some iterable
      * @param l some list
      */
-    private static void addAllTo(final Iterable<String> i,
-                                 final List<String> l) {
-        for (String e : i) {
-            l.add(e);
+    private static void addAllTo(final Iterable<String> source,
+                                 final List<String> destination) {
+        for (String element : source) {
+            destination.add(element);
         }
     }
 
@@ -137,8 +137,8 @@ public class Row {
      * @param destination where to copy the data to.
      */
     private static void copyData(final Row source, final Row destination) {
-        for (String c : source.columns()) {
-            destination.setData(c, source.getData(c));
+        for (String column : source.columns()) {
+            destination.setData(column, source.getData(column));
         }
     }
 }

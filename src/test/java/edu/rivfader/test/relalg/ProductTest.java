@@ -1,7 +1,7 @@
 package edu.rivfader.test.relalg;
 
 import edu.rivfader.data.Row;
-import edu.rivfader.relalg.RelAlgExpr;
+import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Product;
 
 import org.junit.Test;
@@ -51,10 +51,10 @@ public class ProductTest {
         rightSecond.setData("chicken", "chickens");
         rightResult.add(rightSecond);
 
-        RelAlgExpr left = createMock(RelAlgExpr.class);
+        IRelAlgExpr left = createMock(IRelAlgExpr.class);
         expect(left.evaluate()).andReturn(leftResult.iterator());
         expect(left.evaluate()).andReturn(leftResult.iterator()).times(0,1);
-        RelAlgExpr right = createMock(RelAlgExpr.class);
+        IRelAlgExpr right = createMock(IRelAlgExpr.class);
         expect(right.evaluate()).andReturn(rightResult.iterator());
         expect(right.evaluate()).andReturn(rightResult.iterator()).times(0,1);
 
@@ -104,8 +104,8 @@ public class ProductTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void removeIsUnsupported() {
-        RelAlgExpr left = createMock(RelAlgExpr.class);
-        RelAlgExpr right = createMock(RelAlgExpr.class);
+        IRelAlgExpr left = createMock(IRelAlgExpr.class);
+        IRelAlgExpr right = createMock(IRelAlgExpr.class);
         RowIterator leftIterator = createMock(RowIterator.class);
         RowIterator rightIterator = createMock(RowIterator.class);
         Row leftResult = createMock(Row.class);

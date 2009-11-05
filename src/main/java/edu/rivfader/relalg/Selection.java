@@ -1,7 +1,7 @@
 package edu.rivfader.relalg;
 
 import edu.rivfader.data.Row;
-import edu.rivfader.relalg.rowselector.RowSelector;
+import edu.rivfader.relalg.rowselector.IRowSelector;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -10,23 +10,23 @@ import java.util.NoSuchElementException;
  * This implements the selection of a row set.
  * @author harald
  */
-public class Selection implements RelAlgExpr {
+public class Selection implements IRelAlgExpr {
     /**
      * contains the predicate to filter with.
      */
-    private RowSelector predicate;
+    private IRowSelector predicate;
     /**
      * contains the subexpression to filter.
      */
-    private RelAlgExpr subExpression;
+    private IRelAlgExpr subExpression;
 
     /**
      * constructs a new selection.
      * @param pPredicate the predicaet to filter on
      * @param pSubExpression the subExpression to filter
      */
-    public Selection(final RowSelector pPredicate,
-                     final RelAlgExpr pSubExpression) {
+    public Selection(final IRowSelector pPredicate,
+                     final IRelAlgExpr pSubExpression) {
         predicate = pPredicate;
         subExpression = pSubExpression;
     }
@@ -36,11 +36,15 @@ public class Selection implements RelAlgExpr {
         return new SelectionIterator(predicate, subExpression.evaluate());
     }
 
+    /**
+     * This Iterator filters a lazily implemented RowSet.
+     * @author harald.
+     */
     private static class SelectionIterator implements Iterator<Row> {
         /**
          * contains the predicate to filter on.
          */
-        private RowSelector predicate;
+        private IRowSelector predicate;
         /**
          * Contains the iterator to filter.
          */
@@ -48,10 +52,10 @@ public class Selection implements RelAlgExpr {
         /**
          * contains the next row.
          */
-        private Row next;
+        private Row nextElement;
 
         /**
-         * contains if next is really the next element
+         * contains if next is really the next element.
          */
         private boolean nextIsValid;
 
@@ -60,7 +64,7 @@ public class Selection implements RelAlgExpr {
          * @param pPredicate the predicate to filter on
          * @param pSource the iterator to filter
          */
-        public SelectionIterator(final RowSelector pPredicate,
+        public SelectionIterator(final IRowSelector pPredicate,
                                  final Iterator<Row> pSource) {
             predicate = pPredicate;
             source = pSource;
@@ -70,9 +74,9 @@ public class Selection implements RelAlgExpr {
         public boolean hasNext() {
             if (!nextIsValid) {
                 while (source.hasNext()) {
-                    next = source.next();
+                    nextElement = source.next();
                     nextIsValid = true;
-                    if (predicate.acceptsRow(next)) {
+                    if (predicate.acceptsRow(nextElement)) {
                         break;
                     }
                 }
@@ -84,7 +88,7 @@ public class Selection implements RelAlgExpr {
         public Row next() {
             if (hasNext()) {
                 nextIsValid = false;
-                return next;
+                return nextElement;
             } else {
                 throw new NoSuchElementException();
             }

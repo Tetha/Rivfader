@@ -6,7 +6,7 @@ import edu.rivfader.data.Row;
  * This implements a comparision of values.
  * @author harald
  */
-public class Comparision implements RowSelector {
+public class Comparision implements IRowSelector {
     /**
      * Contains the comparision mode.
      */
@@ -15,12 +15,12 @@ public class Comparision implements RowSelector {
     /**
      * contains the first operand to compare.
      */
-    private ValueProvider firstOperand;
+    private IValueProvider firstOperand;
 
     /**
      * contains the second operand to compare.
      */
-    private ValueProvider secondOperand;
+    private IValueProvider secondOperand;
 
     /**
      * Constructs a new comparision node.
@@ -28,8 +28,8 @@ public class Comparision implements RowSelector {
      * @param pSecondOperand the second operand to compare
      * @param pInternalComparision the way of comparing values
      */
-    public Comparision(final ValueProvider pFirstOperand,
-                       final ValueProvider pSecondOperand,
+    public Comparision(final IValueProvider pFirstOperand,
+                       final IValueProvider pSecondOperand,
                        final ValueComparer pInternalComparision) {
         internalComparision = pInternalComparision;
         firstOperand = pFirstOperand;

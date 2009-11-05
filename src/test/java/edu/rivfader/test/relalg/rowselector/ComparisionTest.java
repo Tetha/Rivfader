@@ -3,7 +3,7 @@ package edu.rivfader.test.relalg.rowselector;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.rowselector.Comparision;
 import edu.rivfader.relalg.rowselector.ValueComparer;
-import edu.rivfader.relalg.rowselector.ValueProvider;
+import edu.rivfader.relalg.rowselector.IValueProvider;
 
 import org.junit.Test;
 import org.junit.Before;
@@ -20,7 +20,7 @@ import static org.powermock.api.easymock.PowerMock.replayAll;
 import static org.powermock.api.easymock.PowerMock.verifyAll;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({Row.class,ValueProvider.class})
+@PrepareForTest({Row.class,IValueProvider.class})
 public class ComparisionTest {
     private ValueComparer internal;
     private Row parameterRow;
@@ -41,7 +41,7 @@ public class ComparisionTest {
                 .andReturn(expectedResult);
     }
 
-    private void expectGetValue(ValueProvider mock, String resultValue) {
+    private void expectGetValue(IValueProvider mock, String resultValue) {
         expect(mock.getValue(parameterRow)).andReturn(resultValue);
     }
 
@@ -55,14 +55,14 @@ public class ComparisionTest {
         String firstValue = "a";
         String secondValue = "b";
 
-        ValueProvider firstValueProvider = createMock(ValueProvider.class);
-        ValueProvider secondValueProvider = createMock(ValueProvider.class);
-        expectGetValue(firstValueProvider, firstValue);
-        expectGetValue(secondValueProvider, secondValue);
+        IValueProvider firstIValueProvider = createMock(IValueProvider.class);
+        IValueProvider secondIValueProvider = createMock(IValueProvider.class);
+        expectGetValue(firstIValueProvider, firstValue);
+        expectGetValue(secondIValueProvider, secondValue);
         expectGoodValuePair(firstValue, secondValue, true);
         replayAll();
-        Comparision subject = new Comparision(firstValueProvider,
-                                              secondValueProvider,
+        Comparision subject = new Comparision(firstIValueProvider,
+                                              secondIValueProvider,
                                               internal);
         assertTrue(subject.acceptsRow(parameterRow));
     }

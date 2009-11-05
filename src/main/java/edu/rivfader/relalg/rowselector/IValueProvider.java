@@ -10,7 +10,7 @@ import edu.rivfader.data.Row;
  *  - column values (such that the means are 'ask row for column')
  * @author harald
  */
-public interface ValueProvider {
+public interface IValueProvider {
     /**
      * Method called to get the data.
      * @param data the row to get data from

@@ -16,7 +16,7 @@ import static org.easymock.EasyMock.expect;
 
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.Projection;
-import edu.rivfader.relalg.RelAlgExpr;
+import edu.rivfader.relalg.IRelAlgExpr;
 
 import java.util.Set;
 import java.util.Map;
@@ -30,7 +30,7 @@ public class ProjectionTest {
     private Projection subject;
     private StringStringMap renamedFields;
     private StringSet selectedFields;
-    private RelAlgExpr subExpression;
+    private IRelAlgExpr subExpression;
 
     private interface StringStringMap extends Map<String,String> {};
     private interface StringSet extends Set<String> {};
@@ -38,7 +38,7 @@ public class ProjectionTest {
     @Before public void createSubject() {
         renamedFields = createMock(StringStringMap.class);
         selectedFields = createMock(StringSet.class);
-        subExpression = createMock(RelAlgExpr.class);
+        subExpression = createMock(IRelAlgExpr.class);
 
     }
 

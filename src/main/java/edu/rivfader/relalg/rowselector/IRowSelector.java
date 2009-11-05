@@ -5,7 +5,7 @@ import edu.rivfader.data.Row;
  * A rowselector implements the filtering of rows.
  * @author harald
  */
-public interface RowSelector {
+public interface IRowSelector {
     /**
      * this function either selects the row or discards the row.
      * @param data the row to examine

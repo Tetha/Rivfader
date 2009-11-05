@@ -10,22 +10,22 @@ import java.util.NoSuchElementException;
  * expressions.
  * @author harald
  */
-public class Product implements RelAlgExpr {
+public class Product implements IRelAlgExpr {
     /**
      * contains the lhs.
      */
-    private RelAlgExpr left;
+    private IRelAlgExpr left;
     /**
      * contains the rhs.
      */
-    private RelAlgExpr right;
+    private IRelAlgExpr right;
 
     /**
      * Constructs a new product node.
      * @param pLeft the left subexpression
      * @param pRight the right subexpression
      */
-    public Product(final RelAlgExpr pLeft, final RelAlgExpr pRight) {
+    public Product(final IRelAlgExpr pLeft, final IRelAlgExpr pRight) {
         left = pLeft;
         right = pRight;
     }
@@ -42,12 +42,12 @@ public class Product implements RelAlgExpr {
         /**
          * contains the left subexpression.
          */
-        private RelAlgExpr left;
+        private IRelAlgExpr left;
 
         /**
          * Contains the right subexpression.
          */
-        private RelAlgExpr right;
+        private IRelAlgExpr right;
 
         /**
          * contains an iterator over the rows in the left subexpression.
@@ -69,8 +69,8 @@ public class Product implements RelAlgExpr {
          * @param pLeft the left subexpression
          * @param pRight the right subexpression
          */
-        public ProductResult(final RelAlgExpr pLeft,
-                             final RelAlgExpr pRight) {
+        public ProductResult(final IRelAlgExpr pLeft,
+                             final IRelAlgExpr pRight) {
             left = pLeft;
             right = pRight;
             this.leftIterator = left.evaluate();

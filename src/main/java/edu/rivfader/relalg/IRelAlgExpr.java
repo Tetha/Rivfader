@@ -6,7 +6,7 @@ import java.util.Iterator;
  * This is the common interface for all relational algebra tree members.
  * @author harald
  */
-public interface RelAlgExpr {
+public interface IRelAlgExpr {
     /**
      * This returns the (lazily evaluated) result set of rows.
      * @return an iterator over the row set

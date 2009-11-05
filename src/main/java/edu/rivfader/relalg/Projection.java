@@ -17,7 +17,7 @@ import edu.rivfader.data.Row;
  * (as in: they are followed by an AS bar).
  * @author harald
  */
-public class Projection implements RelAlgExpr {
+public class Projection implements IRelAlgExpr {
     /**
      * contains the fields which are also renamed.
      */
@@ -26,7 +26,7 @@ public class Projection implements RelAlgExpr {
     /**
      * ontains the projected subExpression.
      */
-    private RelAlgExpr subExpression;
+    private IRelAlgExpr subExpression;
 
     /**
      * constructs a new projection.
@@ -34,7 +34,7 @@ public class Projection implements RelAlgExpr {
      * @param pSelectedFields fields to just pass through
      * @param pRenamedFields fields to rename
      */
-    public Projection(final RelAlgExpr pSubExpression,
+    public Projection(final IRelAlgExpr pSubExpression,
                       final Set<String> pSelectedFields,
                       final Map<String, String> pRenamedFields) {
         renamedFields = pRenamedFields;
@@ -49,6 +49,10 @@ public class Projection implements RelAlgExpr {
         return new ProjectionIterator(subExpression.evaluate());
     }
 
+    /**
+     * This iterator projects the column names in the row set.
+     * @author harald.
+     */
     private class ProjectionIterator implements Iterator<Row> {
         /**
          * contains the lazy row set to project.
@@ -70,20 +74,21 @@ public class Projection implements RelAlgExpr {
 
         @Override
         public Row next() {
-            Row n = source.next();
-            List<String> rcn = new LinkedList<String>();
-            for (String c : n.columns()) {
-                if (renamedFields.containsKey(c)) {
-                    rcn.add(renamedFields.get(c));
+            Row input = source.next();
+            List<String> resultColumns = new LinkedList<String>();
+            for (String column : input.columns()) {
+                if (renamedFields.containsKey(column)) {
+                    resultColumns.add(renamedFields.get(column));
                 }
             }
-            Row r = new Row(rcn);
-            for (String c : n.columns()) {
-                if (renamedFields.containsKey(c)) {
-                    r.setData(renamedFields.get(c), n.getData(c));
+            Row result = new Row(resultColumns);
+            for (String column : input.columns()) {
+                if (renamedFields.containsKey(column)) {
+                    result.setData(renamedFields.get(column),
+                            input.getData(column));
                 }
             }
-            return r;
+            return result;
         }
 
         @Override

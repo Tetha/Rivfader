@@ -1,9 +1,9 @@
 package edu.rivfader.test.relalg;
 
 import edu.rivfader.data.Row;
-import edu.rivfader.relalg.RelAlgExpr;
+import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Selection;
-import edu.rivfader.relalg.rowselector.RowSelector;
+import edu.rivfader.relalg.rowselector.IRowSelector;
 
 import org.junit.runner.RunWith;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class SelectionTest {
         Row second = createMock(Row.class);
         Row third = createMock(Row.class);
 
-        RowSelector predicate = createMock(RowSelector.class);
+        IRowSelector predicate = createMock(IRowSelector.class);
         expect(predicate.acceptsRow(first)).andReturn(true);
         expect(predicate.acceptsRow(second)).andReturn(false);
         expect(predicate.acceptsRow(third)).andReturn(true);
@@ -42,7 +42,7 @@ public class SelectionTest {
         previousRows.add(first);
         previousRows.add(second);
         previousRows.add(third);
-        RelAlgExpr subExpression = createMock(RelAlgExpr.class);
+        IRelAlgExpr subExpression = createMock(IRelAlgExpr.class);
         expect(subExpression.evaluate())
             .andReturn(previousRows.iterator())
             .anyTimes();
@@ -72,9 +72,9 @@ public class SelectionTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void removeIsNotSupported() {
-        RelAlgExpr subExpression = createMock(RelAlgExpr.class);
+        IRelAlgExpr subExpression = createMock(IRelAlgExpr.class);
         expect(subExpression.evaluate()).andReturn(null);
-        RowSelector predicate = createMock(RowSelector.class);
+        IRowSelector predicate = createMock(IRowSelector.class);
         replayAll();
         Selection subject = new Selection(predicate, subExpression);
         try {

@@ -3,16 +3,16 @@ package edu.rivfader.relalg.rowselector;
 import edu.rivfader.data.Row;
 
 /**
- * This class is a binary operation on RowSelectors.
+ * This class is a binary operation on IRowSelectors.
  *
  * Examples of such operations are and and or.
  * @author harald
  */
-public class BinaryOperation implements RowSelector {
+public class BinaryOperation implements IRowSelector {
     /**
      * contains the left hand side of the operation.
      */
-    private RowSelector left;
+    private IRowSelector left;
     /**
      * contains the operation to combine both values.
      */
@@ -20,7 +20,7 @@ public class BinaryOperation implements RowSelector {
     /**
      * contains the right hand side of the operation.
      */
-    private RowSelector right;
+    private IRowSelector right;
 
     /**
      * this constructs a new BinaryOperation.
@@ -28,9 +28,9 @@ public class BinaryOperation implements RowSelector {
      * @param pCombination the function to combine the values
      * @param pRight the right hand side of the operation
      */
-    public BinaryOperation(final RowSelector pLeft,
+    public BinaryOperation(final IRowSelector pLeft,
                            final BooleanValueCombination pCombination,
-                           final RowSelector pRight) {
+                           final IRowSelector pRight) {
         left = pLeft;
         right = pRight;
         combination = pCombination;

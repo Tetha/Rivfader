@@ -6,7 +6,7 @@ import edu.rivfader.data.Row;
  * This class implements the use of literals in a Comparision.
  * @author harald
  */
-public class Literal implements ValueProvider {
+public class Literal implements IValueProvider {
     /**
      * contains the literal value.
      */

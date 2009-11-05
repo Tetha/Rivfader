@@ -6,7 +6,7 @@ import edu.rivfader.data.Row;
  * This class implements the use of column values in comparisions.
  * @author harald
  */
-public class Column implements ValueProvider {
+public class Column implements IValueProvider {
     /**
      * contains the column name to get.
      */
