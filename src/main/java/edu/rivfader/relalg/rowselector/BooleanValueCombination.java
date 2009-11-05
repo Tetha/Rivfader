@@ -2,6 +2,7 @@ package edu.rivfader.relalg.rowselector;
 
 /**
  * This class contains the ways to combine boolean expressions.
+ * @author harald
  */
 public enum BooleanValueCombination {
     /**

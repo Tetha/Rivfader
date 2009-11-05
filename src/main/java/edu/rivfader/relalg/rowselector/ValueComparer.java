@@ -2,6 +2,7 @@ package edu.rivfader.relalg.rowselector;
 
 /**
  * This class implements the comparision of two values.
+ * @author harald
  */
 public enum ValueComparer {
     /**

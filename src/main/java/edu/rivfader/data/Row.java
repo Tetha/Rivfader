@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 
 /**
  * This implements a row from the database.
+ * @author harald
  */
 public class Row {
     /**
@@ -74,7 +75,7 @@ public class Row {
 
     @Override
     public boolean equals(final Object other) {
-        if (other == null || !(other instanceof Row)) {
+        if (!(other instanceof Row)) {
             return false;
         }
         Row castedOther = (Row) other;

@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 /**
  * This class implements the cartesian product of two relational algebra
  * expressions.
+ * @author harald
  */
 public class Product implements RelAlgExpr {
     /**

@@ -6,6 +6,7 @@ import edu.rivfader.data.Row;
  * This class is a binary operation on RowSelectors.
  *
  * Examples of such operations are and and or.
+ * @author harald
  */
 public class BinaryOperation implements RowSelector {
     /**

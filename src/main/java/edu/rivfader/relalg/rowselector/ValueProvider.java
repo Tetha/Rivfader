@@ -8,6 +8,7 @@ import edu.rivfader.data.Row;
  * Such means include, but are not limited to:
  *  - literal values (such that the means are 'do nothing')
  *  - column values (such that the means are 'ask row for column')
+ * @author harald
  */
 public interface ValueProvider {
     /**

@@ -6,6 +6,10 @@ import edu.rivfader.relalg.rowselector.RowSelector;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * This implements the selection of a row set.
+ * @author harald
+ */
 public class Selection implements RelAlgExpr {
     /**
      * contains the predicate to filter with.
@@ -47,6 +51,11 @@ public class Selection implements RelAlgExpr {
         private Row next;
 
         /**
+         * contains if next is really the next element
+         */
+        private boolean nextIsValid;
+
+        /**
          * Constructs a new SelectionIterator.
          * @param pPredicate the predicate to filter on
          * @param pSource the iterator to filter
@@ -59,25 +68,23 @@ public class Selection implements RelAlgExpr {
 
         @Override
         public boolean hasNext() {
-            if (next == null) {
+            if (!nextIsValid) {
                 while (source.hasNext()) {
                     next = source.next();
+                    nextIsValid = true;
                     if (predicate.acceptsRow(next)) {
                         break;
                     }
                 }
             }
-            return next != null;
+            return nextIsValid;
         }
 
         @Override
         public Row next() {
             if (hasNext()) {
-                try {
-                    return next;
-                } finally {
-                    next = null;
-                }
+                nextIsValid = false;
+                return next;
             } else {
                 throw new NoSuchElementException();
             }

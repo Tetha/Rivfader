@@ -2,6 +2,10 @@ package edu.rivfader.relalg.rowselector;
 
 import edu.rivfader.data.Row;
 
+/**
+ * This implements a comparision of values.
+ * @author harald
+ */
 public class Comparision implements RowSelector {
     /**
      * Contains the comparision mode.

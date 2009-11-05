@@ -15,6 +15,7 @@ import edu.rivfader.data.Row;
  * they just appear after the SELECT without an AS after them),
  * and there is a mapping for all fields which are mapped
  * (as in: they are followed by an AS bar).
+ * @author harald
  */
 public class Projection implements RelAlgExpr {
     /**

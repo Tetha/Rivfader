@@ -3,6 +3,7 @@ import edu.rivfader.data.Row;
 
 /**
  * A rowselector implements the filtering of rows.
+ * @author harald
  */
 public interface RowSelector {
     /**
