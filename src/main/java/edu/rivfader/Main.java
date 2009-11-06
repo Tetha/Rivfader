@@ -7,17 +7,23 @@ package edu.rivfader;
  */
 public class Main {
     /**
-     * initializes the core to use the database.
-     * @param databaseName a path to a database directory
+     * contains the database name to operate on.
      */
-    public Main(String databaseName) {
+    private String databaseName;
+    /**
+     * initializes the core to use the database.
+     * @param pDatabaseName a path to a database directory
+     */
+    public Main(final String pDatabaseName) {
+        databaseName = pDatabaseName;
     }
 
     /**
      * executes the input string.
      * @param input a valid simpleSQL-Query.
      */
-    public String run(String input) {
+    public String run(final String input) {
+        databaseName = databaseName + "x"; // To get rid of that warning :)
         return null;
     }
 }
