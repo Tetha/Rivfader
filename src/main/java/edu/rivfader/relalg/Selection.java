@@ -1,5 +1,6 @@
 package edu.rivfader.relalg;
 
+import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.rowselector.IRowSelector;
 
@@ -32,8 +33,9 @@ public class Selection implements IRelAlgExpr {
     }
 
     @Override
-    public Iterator<Row> evaluate() {
-        return new SelectionIterator(predicate, subExpression.evaluate());
+    public Iterator<Row> evaluate(final Database context) {
+        return new SelectionIterator(predicate,
+                                     subExpression.evaluate(context));
     }
 
     /**

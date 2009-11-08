@@ -1,5 +1,6 @@
 package edu.rivfader.relalg;
 
+import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 
 import java.util.Iterator;
@@ -31,8 +32,8 @@ public class Product implements IRelAlgExpr {
     }
 
     @Override
-    public Iterator<Row> evaluate() {
-        return new ProductResult(left, right);
+    public Iterator<Row> evaluate(final Database context) {
+        return new ProductResult(left, right, context);
     }
 
     /**
@@ -65,16 +66,24 @@ public class Product implements IRelAlgExpr {
         private Row leftRow;
 
         /**
+         * contains the database to evaluate the query in.
+         */
+        private Database context;
+
+        /**
          * constructs a new product result iterator.
          * @param pLeft the left subexpression
          * @param pRight the right subexpression
+         * @param pContext the database to evaluate the query in
          */
         public ProductResult(final IRelAlgExpr pLeft,
-                             final IRelAlgExpr pRight) {
+                             final IRelAlgExpr pRight,
+                             final Database pContext) {
             left = pLeft;
             right = pRight;
-            this.leftIterator = left.evaluate();
-            this.rightIterator = right.evaluate();
+            context = pContext;
+            leftIterator = left.evaluate(context);
+            rightIterator = right.evaluate(context);
             leftRow = leftIterator.next();
         }
 
@@ -88,12 +97,13 @@ public class Product implements IRelAlgExpr {
             if (!rightIterator.hasNext()) {
                 if (leftIterator.hasNext()) {
                     leftRow = leftIterator.next();
-                    rightIterator = right.evaluate();
+                    rightIterator = right.evaluate(context);
                 } else {
                     throw new NoSuchElementException();
                 }
             }
-            return Row.combineRows(leftRow, rightIterator.next());
+            //return Row.combineRows(leftRow, rightIterator.next());
+            return new Row(leftRow, rightIterator.next());
         }
 
         @Override

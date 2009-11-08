@@ -1,5 +1,6 @@
 package edu.rivfader.test.relalg;
 
+import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Selection;
@@ -25,10 +26,11 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(Row.class)
+@PrepareForTest({Row.class,Database.class})
 public class SelectionTest {
     @Test
     public void onlyGoodRowsPass() {
+        Database database = createMock(Database.class);
         Row first = createMock(Row.class);
         Row second = createMock(Row.class);
         Row third = createMock(Row.class);
@@ -43,13 +45,13 @@ public class SelectionTest {
         previousRows.add(second);
         previousRows.add(third);
         IRelAlgExpr subExpression = createMock(IRelAlgExpr.class);
-        expect(subExpression.evaluate())
+        expect(subExpression.evaluate(database))
             .andReturn(previousRows.iterator())
             .anyTimes();
 
         replayAll();
         Selection subject = new Selection(predicate, subExpression);
-        Iterator<Row> selectedRows = subject.evaluate();
+        Iterator<Row> selectedRows = subject.evaluate(database);
         List<Row> gotRows = new LinkedList<Row>();
         while(selectedRows.hasNext()) {
             gotRows.add(selectedRows.next());
@@ -72,13 +74,14 @@ public class SelectionTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void removeIsNotSupported() {
+        Database database = createMock(Database.class);
         IRelAlgExpr subExpression = createMock(IRelAlgExpr.class);
-        expect(subExpression.evaluate()).andReturn(null);
+        expect(subExpression.evaluate(database)).andReturn(null);
         IRowSelector predicate = createMock(IRowSelector.class);
         replayAll();
         Selection subject = new Selection(predicate, subExpression);
         try {
-            subject.evaluate().remove();
+            subject.evaluate(database).remove();
         } finally {
             verifyAll();
         }

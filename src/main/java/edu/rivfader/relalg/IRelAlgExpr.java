@@ -1,5 +1,6 @@
 package edu.rivfader.relalg;
 
+import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import java.util.Iterator;
 /**
@@ -9,7 +10,8 @@ import java.util.Iterator;
 public interface IRelAlgExpr {
     /**
      * This returns the (lazily evaluated) result set of rows.
+     * @param context the database to evaluate the query in
      * @return an iterator over the row set
      */
-    Iterator<Row> evaluate();
+   Iterator<Row> evaluate(Database context);
 }

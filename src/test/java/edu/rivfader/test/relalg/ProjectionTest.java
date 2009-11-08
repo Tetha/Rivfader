@@ -1,5 +1,10 @@
 package edu.rivfader.test.relalg;
 
+import edu.rivfader.data.Database;
+import edu.rivfader.data.Row;
+import edu.rivfader.relalg.Projection;
+import edu.rivfader.relalg.IRelAlgExpr;
+
 import org.junit.runner.RunWith;
 import org.junit.Test;
 import org.junit.Before;
@@ -14,10 +19,6 @@ import static org.powermock.api.easymock.PowerMock.replayAll;
 import static org.powermock.api.easymock.PowerMock.verifyAll;
 import static org.easymock.EasyMock.expect;
 
-import edu.rivfader.data.Row;
-import edu.rivfader.relalg.Projection;
-import edu.rivfader.relalg.IRelAlgExpr;
-
 import java.util.Set;
 import java.util.Map;
 import java.util.List;
@@ -25,7 +26,7 @@ import java.util.LinkedList;
 import java.util.Iterator;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(Row.class)
+@PrepareForTest({Row.class, Database.class})
 public class ProjectionTest {
     private Projection subject;
     private StringStringMap renamedFields;
@@ -43,6 +44,7 @@ public class ProjectionTest {
     }
 
     @Test public void evaluateRenamedRowsAreMoved() {
+        Database database = createMock(Database.class);
         List<String> columns = new LinkedList<String>();
         columns.add("cow");
         columns.add("chicken");
@@ -58,11 +60,12 @@ public class ProjectionTest {
         expect(renamedFields.containsKey("chicken")).andReturn(true).anyTimes();
         expect(renamedFields.get("chicken")).andReturn("sheep").anyTimes();
 
-        expect(subExpression.evaluate()).andReturn(previousRows.iterator());
+        expect(subExpression.evaluate(database))
+            .andReturn(previousRows.iterator());
         replayAll();
         subject = new Projection(subExpression, selectedFields, renamedFields);
         List<Row> gotRows = new LinkedList<Row>();
-        Iterator<Row> resultRows = subject.evaluate();
+        Iterator<Row> resultRows = subject.evaluate(database);
         while(resultRows.hasNext()) {
             gotRows.add(resultRows.next());
         }
@@ -76,16 +79,17 @@ public class ProjectionTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void projectionEvaluationDoesNotRemove() {
+        Database database = createMock(Database.class);
         expect(selectedFields.iterator())
             .andReturn(new LinkedList<String>().iterator());
-        expect(subExpression.evaluate())
+        expect(subExpression.evaluate(database))
             .andReturn(new LinkedList<Row>().iterator());
 
         replayAll();
         try {
             subject = new Projection(subExpression, selectedFields,
                     renamedFields);
-            subject.evaluate().remove();
+            subject.evaluate(database).remove();
         } finally {
             verifyAll();
         }

@@ -1,12 +1,13 @@
 package edu.rivfader.relalg;
 
+import edu.rivfader.data.Database;
+import edu.rivfader.data.Row;
+
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.Map;
 import java.util.Iterator;
-
-import edu.rivfader.data.Row;
 
 /**
  * This class implements the projection in relational algebra.
@@ -45,8 +46,8 @@ public class Projection implements IRelAlgExpr {
     }
 
     @Override
-    public Iterator<Row> evaluate() {
-        return new ProjectionIterator(subExpression.evaluate());
+    public Iterator<Row> evaluate(final Database context) {
+        return new ProjectionIterator(subExpression.evaluate(context));
     }
 
     /**

@@ -1,5 +1,6 @@
 package edu.rivfader.test.relalg;
 
+import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Product;
@@ -25,12 +26,13 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(Row.class)
+@PrepareForTest({Row.class,Database.class})
 public class ProductTest {
     private interface RowIterator extends Iterator<Row> {};
 
     @Test
     public void evaluateWorks() {
+        Database database = createMock(Database.class);
         List<Row> leftResult = new LinkedList<Row>();
         List<String> leftColumnNames = new LinkedList<String>();
         leftColumnNames.add("cow");
@@ -52,15 +54,20 @@ public class ProductTest {
         rightResult.add(rightSecond);
 
         IRelAlgExpr left = createMock(IRelAlgExpr.class);
-        expect(left.evaluate()).andReturn(leftResult.iterator());
-        expect(left.evaluate()).andReturn(leftResult.iterator()).times(0,1);
+        expect(left.evaluate(database)).andReturn(leftResult.iterator());
+        expect(left.evaluate(database))
+            .andReturn(leftResult.iterator())
+            .times(0,1);
+
         IRelAlgExpr right = createMock(IRelAlgExpr.class);
-        expect(right.evaluate()).andReturn(rightResult.iterator());
-        expect(right.evaluate()).andReturn(rightResult.iterator()).times(0,1);
+        expect(right.evaluate(database)).andReturn(rightResult.iterator());
+        expect(right.evaluate(database))
+            .andReturn(rightResult.iterator())
+            .times(0,1);
 
         replayAll();
         Product subject = new Product(left, right);
-        Iterator<Row> resultRows = subject.evaluate();
+        Iterator<Row> resultRows = subject.evaluate(database);
 
         List<Row> gotRows = new LinkedList<Row>();
         while(resultRows.hasNext()) {
@@ -104,18 +111,19 @@ public class ProductTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void removeIsUnsupported() {
+        Database database = createMock(Database.class);
         IRelAlgExpr left = createMock(IRelAlgExpr.class);
         IRelAlgExpr right = createMock(IRelAlgExpr.class);
         RowIterator leftIterator = createMock(RowIterator.class);
         RowIterator rightIterator = createMock(RowIterator.class);
         Row leftResult = createMock(Row.class);
 
-        expect(left.evaluate()).andReturn(leftIterator);
-        expect(right.evaluate()).andReturn(rightIterator);
+        expect(left.evaluate(database)).andReturn(leftIterator);
+        expect(right.evaluate(database)).andReturn(rightIterator);
         expect(leftIterator.next()).andReturn(leftResult);
 
         replayAll();
-        new Product(left, right).evaluate().remove();
+        new Product(left, right).evaluate(database).remove();
         verifyAll();
     }
 }

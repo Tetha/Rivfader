@@ -31,6 +31,21 @@ public class Row {
     }
 
     /**
+     * Constructs a row which contains all columns and data from both parameter
+     * rows.
+     * @param left the first row to combine
+     * @param right the second row to combine
+     */
+    public Row(final Row left, final Row right) {
+        this(new LinkedList<String>());
+        columnNames.addAll(left.columnNames);
+        columnNames.addAll(right.columnNames);
+
+        columnValues.putAll(left.columnValues);
+        columnValues.putAll(right.columnValues);
+    }
+
+    /**
      * returns true if the column exists in this row.
      * @param columnName the wanted column.
      * @return true if the row has such a column.
@@ -100,45 +115,5 @@ public class Row {
         }
         result.append(")");
         return result.toString();
-    }
-
-    /**
-     * Constructs a row which contains all columns and data from both parameter
-     * rows.
-     * @param left the first row to combine
-     * @param right the second row to combine
-     * @return the combination row.
-     */
-    public static Row combineRows(final Row left, final Row right) {
-        List<String> columns = new LinkedList<String>();
-        addAllTo(left.columns(), columns);
-        addAllTo(right.columns(), columns);
-        Row result = new Row(columns);
-        copyData(left, result);
-        copyData(right, result);
-        return result;
-    }
-
-    /**
-     * adds all elements from the iterable to the list.
-     * @param i some iterable
-     * @param l some list
-     */
-    private static void addAllTo(final Iterable<String> source,
-                                 final List<String> destination) {
-        for (String element : source) {
-            destination.add(element);
-        }
-    }
-
-    /**
-     * copies all data from a row to another.
-     * @param source where to copy the data from
-     * @param destination where to copy the data to.
-     */
-    private static void copyData(final Row source, final Row destination) {
-        for (String column : source.columns()) {
-            destination.setData(column, source.getData(column));
-        }
     }
 }
