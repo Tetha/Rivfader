@@ -67,7 +67,7 @@ public class Database {
      * returns the list of column names of a table.
      * @param tableName the name of the table
      */
-    public List<String> getColumnNames(String tableName) {
+    public List<String> getColumnNames(final String tableName) {
         return null;
     }
 }
