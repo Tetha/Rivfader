@@ -45,7 +45,7 @@ public class Row {
     /**
      * constructs a new row from row names.
      */
-    public Row(String... pColumnNames) {
+    public Row(final String... pColumnNames) {
         this(new LinkedList<String>());
         for(String s : pColumnNames) {
             columnNames.add(s);
