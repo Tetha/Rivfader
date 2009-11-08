@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
+import java.util.Iterator;
 
 /**
  * This implements a row from the database.
@@ -28,6 +29,17 @@ public class Row {
     public Row(final List<String> pColumnNames) {
         columnNames = pColumnNames;
         columnValues = new HashMap<String, String>();
+    }
+
+    /**
+     * Constructs a new Row from an iterator.
+     * @param pColumnNames an iterator which yields all column names.
+     */
+    public Row(final Iterator<String> pColumnNames) {
+        this(new LinkedList<String>());
+        while(pColumnNames.hasNext()) {
+            columnNames.add(pColumnNames.next());
+        }
     }
 
     /**

@@ -28,9 +28,6 @@ public class PrintQuery implements ICommand {
 
     private String buildColumns(final Row source) {
         Iterator<String> names = source.columns().iterator();
-        if(!names.hasNext()) {
-            return "";
-        }
         StringBuilder columnRow = new StringBuilder();
         columnRow.append(names.next());
         while(names.hasNext()) {
@@ -43,9 +40,6 @@ public class PrintQuery implements ICommand {
 
     private String buildValueRow(final Row source) {
         Iterator<String> names = source.columns().iterator();
-        if(!names.hasNext()) {
-            return "";
-        }
         StringBuilder valueRow = new StringBuilder();
         valueRow.append(source.getData(names.next()));
         while(names.hasNext()) {
@@ -58,9 +52,10 @@ public class PrintQuery implements ICommand {
 
     @Override
     public void execute(final Database context, final Writer output)
-            throws IOException {
+        throws IOException {
         Iterator<Row> rows = query.evaluate(context);
         if(!rows.hasNext()) {
+            output.write("Empty result set.\n");
             return;
         }
         Row current = rows.next();

@@ -64,6 +64,16 @@ public class RowTest {
         assertTrue(iteratedNames.containsAll(columnNames));
     }
 
+    @Test public void creationByIterator() {
+        List<String> columnNames = buildList(new String[] {"cow", "chicken"});
+
+        Row subject = new Row(columnNames.iterator());
+        Set<String> iteratedNames = new HashSet<String>();
+        for(String e : subject.columns()) iteratedNames.add(e);
+        assertTrue(columnNames.containsAll(iteratedNames));
+        assertTrue(iteratedNames.containsAll(columnNames));
+    }
+
     @Test public void equalityPositive() {
         List<String> columnNames = buildList(new String[] {"cow"});
         List<String> identicalColumnNames = buildList(new String[] {"cow"});

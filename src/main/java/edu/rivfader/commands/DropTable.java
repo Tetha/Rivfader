@@ -25,7 +25,7 @@ public class DropTable implements ICommand {
 
     @Override
     public void execute(final Database context, final Writer output)
-            throws IOException {
+        throws IOException {
         context.dropTable(tableToDrop);
     }
 }

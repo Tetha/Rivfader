@@ -50,4 +50,23 @@ public class PrintQueryTest {
         subject.execute(database, writer);
         verifyAll();
     }
+
+    @Test
+    public void checkEmptySetPrinted() throws IOException {
+        Database database = createMock(Database.class);
+        IRelAlgExpr query = createMock(IRelAlgExpr.class);
+        List<String> columns = new LinkedList<String>();
+        columns.add("cow");
+        columns.add("chicken");
+
+        Writer writer  = createMock(Writer.class);
+
+        List<Row> resultRows = new LinkedList<Row>();
+        expect(query.evaluate(database)).andReturn(resultRows.iterator());
+        writer.write("Empty result set.\n");
+        replayAll();
+        PrintQuery subject = new PrintQuery(query);
+        subject.execute(database, writer);
+        verifyAll();
+    }
 }
