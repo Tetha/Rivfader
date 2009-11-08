@@ -54,4 +54,20 @@ public class Database {
      */
     public void closeTable(final String tableName) {
     }
+
+    /**
+     * appends a row to a table.
+     * @param tableName the table to append to
+     * @param row the row to append
+     */
+    public void appendRow(final String tableName, final Row row) {
+    }
+
+    /**
+     * returns the list of column names of a table.
+     * @param tableName the name of the table
+     */
+    public List<String> getColumnNames(String tableName) {
+        return null;
+    }
 }

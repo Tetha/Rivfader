@@ -19,6 +19,7 @@ public class Row {
 
     /**
      * contains the valid column names for this row.
+     * TODO: make this a set for less fragility.
      */
     private List<String> columnNames;
 
