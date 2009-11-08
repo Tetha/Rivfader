@@ -2,6 +2,7 @@ package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
 
+import java.io.Writer;
 import java.io.IOException;
 
 /**
@@ -22,6 +23,7 @@ public interface ICommand {
     /**
      * this is called to execute the toplevel command.
      * @param context the database to evaluate the command in
+     * @param output a place to write output to
      */
-    void execute(Database context) throws IOException;
+    void execute(Database context, Writer outupt) throws IOException;
 }

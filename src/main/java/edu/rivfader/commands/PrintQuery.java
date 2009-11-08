@@ -14,11 +14,6 @@ import java.util.Iterator;
  */
 public class PrintQuery implements ICommand {
     /**
-     * contains where to write the rowset.
-     */
-    private Writer output;
-
-    /**
      * contains the query to execute.
      */
     private IRelAlgExpr query;
@@ -29,14 +24,6 @@ public class PrintQuery implements ICommand {
      */
     public PrintQuery(final IRelAlgExpr pQuery) {
         query = pQuery;
-    }
-
-    /**
-     * sets the output stream.
-     * @param pOutput the output to set.
-     */
-    public void setOutput(final Writer pOutput) {
-        output = pOutput;
     }
 
     private String buildColumns(final Row source) {
@@ -70,7 +57,8 @@ public class PrintQuery implements ICommand {
     }
 
     @Override
-    public void execute(final Database context) throws IOException {
+    public void execute(final Database context, final Writer output)
+            throws IOException {
         Iterator<Row> rows = query.evaluate(context);
         if(!rows.hasNext()) {
             return;

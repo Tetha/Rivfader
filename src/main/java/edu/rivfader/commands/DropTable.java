@@ -2,6 +2,9 @@ package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
 
+import java.io.Writer;
+import java.io.IOException;
+
 /**
  * This is the implementation of the drop table query.
  * @author harald.
@@ -21,7 +24,8 @@ public class DropTable implements ICommand {
     }
 
     @Override
-    public void execute(final Database context) {
+    public void execute(final Database context, final Writer output)
+            throws IOException {
         context.dropTable(tableToDrop);
     }
 }

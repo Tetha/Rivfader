@@ -12,17 +12,22 @@ import static org.powermock.api.easymock.PowerMock.createMock;
 import static org.powermock.api.easymock.PowerMock.verifyAll;
 import static org.powermock.api.easymock.PowerMock.replayAll;
 
+import java.io.Writer;
+import java.io.IOException;
+
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Database.class)
 public class DropTableTest {
     @Test
-    public void checkExecute() {
+    public void checkExecute() throws IOException {
+        Writer writer = createMock(Writer.class);
         String tablename = "table";
+        Writer output = createMock(Writer.class);
         Database database = createMock(Database.class);
         database.dropTable("table");
         replayAll();
         DropTable subject = new DropTable(tablename);
-        subject.execute(database);
+        subject.execute(database, writer);
         verifyAll();
     }
 }

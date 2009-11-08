@@ -47,8 +47,7 @@ public class PrintQueryTest {
         writer.write("cows chickens\n");
         replayAll();
         PrintQuery subject = new PrintQuery(query);
-        subject.setOutput(writer);
-        subject.execute(database);
+        subject.execute(database, writer);
         verifyAll();
     }
 }
