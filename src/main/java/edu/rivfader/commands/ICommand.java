@@ -2,6 +2,8 @@ package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
 
+import java.io.IOException;
+
 /**
  * This is the interface for all toplevel commands.
  *
@@ -21,5 +23,5 @@ public interface ICommand {
      * this is called to execute the toplevel command.
      * @param context the database to evaluate the command in
      */
-    void execute(Database context);
+    void execute(Database context) throws IOException;
 }
