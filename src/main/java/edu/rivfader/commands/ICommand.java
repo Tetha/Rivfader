@@ -25,5 +25,5 @@ public interface ICommand {
      * @param context the database to evaluate the command in
      * @param output a place to write output to
      */
-    void execute(Database context, Writer outupt) throws IOException;
+    void execute(Database context, Writer output) throws IOException;
 }

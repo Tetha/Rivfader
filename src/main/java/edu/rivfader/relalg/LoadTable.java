@@ -17,7 +17,6 @@ public class LoadTable implements IRelAlgExpr {
 
     /**
      * Constructs a new wrapper which loads rows from pTablename in pDatabase.
-     * @param pDatabase the database to load the tables from
      * @param pTablename the table to load the rows from
      */
     public LoadTable(final String pTablename) {

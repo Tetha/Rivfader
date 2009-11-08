@@ -43,6 +43,16 @@ public class Row {
     }
 
     /**
+     * constructs a new row from row names.
+     */
+    public Row(String... pColumnNames) {
+        this(new LinkedList<String>());
+        for(String s : pColumnNames) {
+            columnNames.add(s);
+        }
+    }
+
+    /**
      * Constructs a row which contains all columns and data from both parameter
      * rows.
      * @param left the first row to combine

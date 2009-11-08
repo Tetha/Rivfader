@@ -28,8 +28,7 @@ public class RowTest {
         return r;
     }
     @Test public void dataIsStored() {
-        List<String> columnNames = buildList(new String[] {"cow"});
-        Row subject = new Row(columnNames);
+        Row subject = new Row("cow");
 
         subject.setData("cow", "milk");
         assertEquals("milk", subject.getData("cow"));
@@ -37,49 +36,47 @@ public class RowTest {
 
     @Test(expected = NoSuchElementException.class)
     public void wrongColumnNamesRaise() {
-        List<String> columnNames = buildList(new String[] {});
-
-        Row subject = new Row(columnNames);
+        Row subject = new Row();
 
         subject.setData("cow", "milk");
     }
 
     @Test(expected = NoSuchElementException.class)
     public void getRaises() {
-        List<String> columnNames = buildList(new String[] {});
-
-        Row subject = new Row(columnNames);
+        Row subject = new Row();
 
         subject.getData("cow");
     }
 
+    private void assertIterableYields(Iterable<String> source,
+                                      String... expectedValues) {
+        Set<String> iteratedElements = new HashSet<String>();
+        for(String e : source) iteratedElements.add(e);
+
+        assertEquals(expectedValues.length, iteratedElements.size());
+        for(String expected : expectedValues) {
+            assertTrue(iteratedElements.contains(expected));
+        }
+    }
     @Test public void allColumnsIterated() {
-        List<String> columnNames = buildList(new String[] {"cow", "chicken"});
-
-        Row subject = new Row(columnNames);
-
-        Set<String> iteratedNames = new HashSet<String>();
-        for(String s : subject.columns()) iteratedNames.add(s);
-        assertTrue(columnNames.containsAll(iteratedNames));
-        assertTrue(iteratedNames.containsAll(columnNames));
+        Row subject = new Row("cow", "chicken");
+        assertIterableYields(subject.columns(), "cow", "chicken");
     }
 
     @Test public void creationByIterator() {
         List<String> columnNames = buildList(new String[] {"cow", "chicken"});
-
         Row subject = new Row(columnNames.iterator());
-        Set<String> iteratedNames = new HashSet<String>();
-        for(String e : subject.columns()) iteratedNames.add(e);
-        assertTrue(columnNames.containsAll(iteratedNames));
-        assertTrue(iteratedNames.containsAll(columnNames));
+        assertIterableYields(subject.columns(), "cow", "chicken");
+    }
+
+    @Test public void creationByVarargs() {
+        Row subject = new Row("cow", "chicken");
+        assertIterableYields(subject.columns(), "cow", "chicken");
     }
 
     @Test public void equalityPositive() {
-        List<String> columnNames = buildList(new String[] {"cow"});
-        List<String> identicalColumnNames = buildList(new String[] {"cow"});
-
-        Row subject = new Row(columnNames);
-        Row identicalSubject = new Row(identicalColumnNames);
+        Row subject = new Row("cow");
+        Row identicalSubject = new Row("cow");
 
         subject.setData("cow", "milk");
         identicalSubject.setData("cow", "milk");
@@ -90,22 +87,16 @@ public class RowTest {
 
     @Test
     public void equalityNegativeColumnNames() {
-        List<String> columnNames = buildList(new String[] {"cow"});
-        List<String> differentColumnNames = buildList(new String[] {});
-
-        Row first = new Row(columnNames);
-        Row second = new Row(differentColumnNames);
+        Row first = new Row("cow");
+        Row second = new Row();
 
         assertFalse(first.equals(second));
     }
 
     @Test
     public void equalityNegativeValues() {
-        List<String> columnNames = buildList(new String[] {"cow"});
-        List<String> sameColumnNames = buildList(new String[] {"cow"});
-
-        Row first = new Row(columnNames);
-        Row second = new Row(sameColumnNames);
+        Row first = new Row("cow");
+        Row second = new Row("cow");
 
         first.setData("cow", "milk");
 
@@ -114,9 +105,7 @@ public class RowTest {
 
     @Test
     public void testToString() {
-        List<String> columnNames = buildList(new String[] {"cow"});
-
-        Row subject = new Row(columnNames);
+        Row subject = new Row("cow");
 
         subject.setData("cow", "milk");
 
@@ -125,18 +114,14 @@ public class RowTest {
 
     @Test
     public void doesNotequalsNull() {
-        List<String> columnNames = buildList(new String[] {"cow"});
-
-        Row subject = new Row(columnNames);
+        Row subject = new Row("cow");
 
         assertFalse(subject.equals(null));
     }
 
     @Test
     public void doesNotEqualNonsense() {
-        List<String> columnNames = buildList(new String[] {"cow"});
-
-        Row subject = new Row(columnNames);
+        Row subject = new Row("cow");
         assertFalse(subject.equals("moo"));
     }
 }
