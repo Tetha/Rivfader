@@ -6,12 +6,16 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Iterator;
-
+import java.io.Serializable;
 /**
  * This implements a row from the database.
  * @author harald
  */
-public class Row {
+public class Row implements Serializable {
+    /**
+     * serial version UID, needed for serialization.
+     */
+    public static final long serialVersionUID = 1L;
     /**
      * contains the values of the column.
      */
@@ -19,7 +23,6 @@ public class Row {
 
     /**
      * contains the valid column names for this row.
-     * TODO: make this a set for less fragility.
      */
     private List<String> columnNames;
 

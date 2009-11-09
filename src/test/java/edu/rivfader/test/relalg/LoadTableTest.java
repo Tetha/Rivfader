@@ -19,13 +19,14 @@ import static org.powermock.api.easymock.PowerMock.verifyAll;
 
 import java.util.Iterator;
 
+import java.io.IOException;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Database.class)
 public class LoadTableTest {
     private interface RowIterator extends Iterator<Row> {};
 
     @Test
-    public void checkEquals() {
+    public void checkLoading() throws IOException {
         String tablename=  "table";
         Database database = createMock(Database.class);
         Iterator<Row> iteratorMock = createMock(RowIterator.class);

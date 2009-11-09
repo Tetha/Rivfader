@@ -4,6 +4,7 @@ import edu.rivfader.data.Row;
 import edu.rivfader.data.Database;
 
 import java.util.Iterator;
+import java.io.IOException;
 
 /**
  * Wrapper to load tables.
@@ -25,6 +26,10 @@ public class LoadTable implements IRelAlgExpr {
 
     @Override
     public Iterator<Row> evaluate(final Database context) {
-        return context.loadTable(tablename);
+        try {
+            return context.loadTable(tablename);
+        } catch (IOException e) {
+            throw new RuntimeException("loading the table did not work", e);
+        }
     }
 }

@@ -1,0 +1,675 @@
+options {
+  JAVA_UNICODE_ESCAPE = true;
+  STATIC=false;
+  DEBUG_PARSER=false;
+}
+
+PARSER_BEGIN(SimpleSQLParser)
+
+package edu.rivfader;
+
+import java.io.*;
+
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.HashMap;
+
+import edu.rivfader.relalg.rowselector.*;
+import edu.rivfader.relalg.*;
+import edu.rivfader.commands.*;
+
+public class SimpleSQLParser
+{
+    private boolean debugALL = false;
+
+    public SimpleSQLParser() {
+        disable_tracing();
+    }
+
+    public String escapeNewline(String str) {
+        int i, ind;
+        i = str.indexOf("\n");
+        while (i != -1) {
+          if (i>1 && str.charAt(i-1) == '\r') {
+            str = str.substring(0,i-1) + " " + str.substring(i+1);
+          } else {
+            str = str.substring(0,i) + " " + str.substring(i+1);
+          }
+          i = str.indexOf("\n",i+1);
+        }
+        return str;
+    }
+
+
+    public void setDebugALL(boolean debug) {
+          debugALL = debug;
+          if(debug) {
+              enable_tracing();
+          } else {
+              disable_tracing();
+          }
+    }
+
+    public boolean IsDebugAll() {
+          return debugALL;
+    }
+
+
+}//SimpleSQLParser
+
+PARSER_END(SimpleSQLParser)
+
+/* WHITE SPACE */
+
+SPECIAL_TOKEN :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+| "\f"
+}
+
+/* COMMENTS */
+
+MORE :
+{
+  "//" : IN_SINGLE_LINE_COMMENT
+|
+  <"/**" ~["/"]> { input_stream.backup(1); } : IN_FORMAL_COMMENT
+|
+  "/*" : IN_MULTI_LINE_COMMENT
+}
+
+<IN_SINGLE_LINE_COMMENT>
+SPECIAL_TOKEN :
+{
+  <SINGLE_LINE_COMMENT: "\n" | "\r" | "\r\n" > : DEFAULT
+}
+
+<IN_FORMAL_COMMENT>
+SPECIAL_TOKEN :
+{
+  <FORMAL_COMMENT: "*/" > : DEFAULT
+}
+
+<IN_MULTI_LINE_COMMENT>
+SPECIAL_TOKEN :
+{
+  <MULTI_LINE_COMMENT: "*/" > : DEFAULT
+}
+
+
+<IN_SINGLE_LINE_COMMENT,IN_FORMAL_COMMENT,IN_MULTI_LINE_COMMENT>
+MORE :
+{
+  < ~[] >
+}
+
+
+
+/* RESERVED WORDS AND LITERALS */
+
+TOKEN :
+{
+  < SELECT: "select" >
+| < FROM: "from" >
+| < WHERE: "where" >
+| < AND: "and" >
+| < OR: "or" >
+| < IN: "in" >
+| < NOT: "not" >
+| < AS: "as" >
+| < CREATE: "create" >
+| < DROP: "drop" >
+| < TABLE: "table" >
+| < UPDATE: "update" >
+| < SET: "set" >
+| < DELETE: "delete" >
+| < INSERT: "insert" >
+| < VALUES: "values" >
+| < INTO: "into" >
+| < VARCHAR: "varchar" >
+| < INTEGER: "integer" >
+| < FLOAT: "float" >
+}
+
+/* LITERALS */
+
+TOKEN :
+{
+  < INTEGER_LITERAL:
+        <DECIMAL_LITERAL> (["l","L"])?
+      | <HEX_LITERAL> (["l","L"])?
+      | <OCTAL_LITERAL> (["l","L"])?
+  >
+|
+  < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* >
+|
+  < #HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+ >
+|
+  < #OCTAL_LITERAL: "0" (["0"-"7"])* >
+|
+  < FLOATING_POINT_LITERAL:
+        (["0"-"9"])+ "." (["0"-"9"])* (<EXPONENT>)? (["f","F","d","D"])?
+      | "." (["0"-"9"])+ (<EXPONENT>)? (["f","F","d","D"])?
+      | (["0"-"9"])+ <EXPONENT> (["f","F","d","D"])?
+      | (["0"-"9"])+ (<EXPONENT>)? ["f","F","d","D"]
+  >
+|
+  < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ >
+|
+  < CHARACTER_LITERAL:
+      "'"
+      (   (~["'","\\","\n","\r"])
+        | ("\\"
+            ( ["n","t","b","r","f","\\","'","\""]
+            | ["0"-"7"] ( ["0"-"7"] )?
+            | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+            )
+          )
+      )
+      "'"
+  >
+|
+  < STRING_LITERAL:
+      "\""
+      (   (~["\"","\\","\n","\r"])
+        | ("\\"
+            ( ["n","t","b","r","f","\\","'","\""]
+            | ["0"-"7"] ( ["0"-"7"] )?
+            | ["0"-"3"] ["0"-"7"] ["0"-"7"]
+            )
+          )
+      )*
+      "\""
+  >
+}
+
+/* IDENTIFIERS */
+
+TOKEN :
+{
+  < IDENTIFIER: <LETTER> (<LETTER>|<DIGIT>)* >
+|
+  < #LETTER:
+      [
+       /*"\u0024", //Martin:  entspricht dem $ */
+       "\u0041"-"\u005a",
+       "\u005f",
+       "\u0061"-"\u007a",
+       "\u00c0"-"\u00d6",
+       "\u00d8"-"\u00f6",
+       "\u00f8"-"\u00ff",
+       "\u0100"-"\u1fff",
+       "\u3040"-"\u318f",
+       "\u3300"-"\u337f",
+       "\u3400"-"\u3d2d",
+       "\u4e00"-"\u9fff",
+       "\uf900"-"\ufaff"
+      ]
+  >
+|
+  < #DIGIT:
+      [
+       "\u0030"-"\u0039",
+       "\u0660"-"\u0669",
+       "\u06f0"-"\u06f9",
+       "\u0966"-"\u096f",
+       "\u09e6"-"\u09ef",
+       "\u0a66"-"\u0a6f",
+       "\u0ae6"-"\u0aef",
+       "\u0b66"-"\u0b6f",
+       "\u0be7"-"\u0bef",
+       "\u0c66"-"\u0c6f",
+       "\u0ce6"-"\u0cef",
+       "\u0d66"-"\u0d6f",
+       "\u0e50"-"\u0e59",
+       "\u0ed0"-"\u0ed9",
+       "\u1040"-"\u1049"
+      ]
+  >
+}
+
+/* SEPARATORS */
+
+TOKEN :
+{
+  < LPAREN: "(" >
+| < RPAREN: ")" >
+| < COMMA: "," >
+| < DOT: "." >
+}
+
+
+/* OPERATORS */
+
+TOKEN :
+{
+  < EQ: "=" >
+| < LT: "<" >
+| < GT: ">" >
+| < LE: "<=" >
+| < GE: ">=" >
+| < NE: "!=" >
+}
+
+
+/*****************************************
+ * THE SIMPLE SQL GRAMMAR STARTS HERE *
+ *****************************************/
+
+List<ICommand> File():
+{
+    List<ICommand> result = new LinkedList<ICommand>();
+    ICommand sub;
+}
+{
+    sub = CompilationUnit()
+    { result.add(sub); }
+    
+    (LOOKAHEAD(2)
+        ";"
+        sub = CompilationUnit()
+        { result.add(sub); }
+    )*
+    [ ";" ]
+    <EOF>
+    { return result; }
+}
+
+ICommand CompilationUnit():
+{
+    ICommand result;
+}
+{
+ ( result = Query()
+ | result = Update()
+ | result = Delete()
+ | result = Insert()
+ | result = CreateTable()
+ | result = DropTable() )
+
+ { return result; }
+}
+
+PrintQuery Query():
+{
+    List<String> items;
+    Map<String, String> tables;
+    IRowSelector predicate = null;
+    IRelAlgExpr query;
+}
+{
+    <SELECT>
+    items = Items()
+    <FROM>
+    tables = Tables()
+    [ predicate = Where()]
+    {
+        query = null;
+        for(String table : tables.keySet()) {
+            if(query == null) {
+                query = new LoadTable(table);
+            } else {
+                query = new Product(query, new LoadTable(table));
+            }
+        }
+
+        if(query == null) {
+            throw new ParseException("No tables to load.");
+        }
+
+        query = new Projection(query, new HashSet<String>(items),
+                                new HashMap<String, String>());
+        if(predicate != null) {
+            query = new Selection(predicate, query);
+        }
+        return new PrintQuery(query);
+    }
+}
+
+List<String> Items():
+{
+    List<String> result = new LinkedList<String>();
+    String item;
+}
+{
+    item = Item() { result.add(item); }
+    (
+        "," item = Item() { result.add(item); }
+    )*
+    { return result; }
+}
+
+String Item():
+{
+    String table;
+    String item = null;
+}
+{
+    table = Name() ["." item = Name()]
+    {
+        if(item != null) {
+            throw new ParseException("selection by tablename not supported yet");
+        }
+        return table;
+    }
+}
+
+Map<String, String> Tables():
+{
+    Map<String, String> result = new HashMap<String, String>();
+    String[] subResult;
+}
+{
+    subResult = Table()
+    {
+        if(subResult[1] == null) {
+            result.put(subResult[0], subResult[0]);
+        } else {
+            throw new ParseException("Cannot rename tables yet");
+            result.put(subResult[0], subResult[1]);
+        }
+    }
+    (","
+        subResult = Table()
+        {
+            if(subResult[1] == null) {
+                result.put(subResult[0], subResult[0]);
+            } else {
+                throw new ParseException("Cannot rename tables yet");
+                result.put(subResult[0], subResult[1]);
+            }
+        }
+    )*
+
+    { return result; }
+}
+
+String[] Table():
+{
+    String tableName;
+    String rename = null;
+}
+{
+    tableName = Name() [<AS> rename = Name()]
+    { return new String[] {tableName, rename}; }
+}
+
+IRowSelector Where():
+{
+    IRowSelector result;
+}
+{
+    <WHERE> result = AndExpression()
+    {return result; }
+}
+
+IRowSelector AndExpression():
+{
+    IRowSelector result;
+    IRowSelector sub;
+}
+{
+    result = OrExpression()
+    (
+        <AND> sub = OrExpression()
+        { result = new BinaryOperation(result, BooleanValueCombination.AND, sub); }
+    )*
+    { return result; }
+}
+
+// TODO: WTF?
+IRowSelector OrExpression():
+{
+    IRowSelector result;
+    IRowSelector sub;
+}
+{
+    ["("]
+    result = EqualityExpression()
+    (
+        <OR> sub = EqualityExpression()
+        { result = new BinaryOperation(result, BooleanValueCombination.OR, sub); }
+    )*
+    [")"]
+    { return result; }
+}
+
+
+IRowSelector EqualityExpression():
+{
+    IValueProvider first;
+    IValueProvider second = null;
+    ValueComparer compareMode = null;
+}
+{
+    first = PrimaryExpression()
+    [
+        (
+             "=" { compareMode = ValueComparer.EQUALS; }
+            |"!=" { compareMode = ValueComparer.NOTEQUALS; }
+            |<LT> { compareMode = ValueComparer.LESS; }
+            |<GT> { compareMode = ValueComparer.GREATER; }
+            |<LE> { compareMode = ValueComparer.LESSEQUALS; }
+            |<GE> { compareMode = ValueComparer.GREATEREQUALS; }
+        )
+        second = PrimaryExpression()
+    ]
+
+    {
+        if(compareMode == null) {
+            throw new ParseException("Kann noch Keine vergleichlosen expressions");
+        }
+        return new Comparision(first, second, compareMode);
+    }
+}
+
+IValueProvider PrimaryExpression():
+{
+    String literal;
+    Token tableName;
+    Token columnName = null;
+}
+{
+    LOOKAHEAD(3)
+    tableName = <IDENTIFIER> ["." columnName = <IDENTIFIER>]
+    {
+        if(columnName != null) {
+            throw new ParseException("Kann noch keine Spalten nach Tabelle auswaehlen");
+        }
+        return new Column(tableName.image);
+    }
+ | literal = LiteralExpression() { return new Literal(literal); }
+
+}
+
+List<String> Literals():
+{
+    List<String> result = new LinkedList<String>();
+    Token literal;
+}
+{
+    literal = <STRING_LITERAL>
+    { result.add(literal.image); }
+    (
+        "," 
+        literal = <STRING_LITERAL>
+        { result.add(literal.image); }
+    )*
+    { return result; }
+}
+
+UpdateTable Update():
+{
+    String[] tableName;
+    Map<String, String> ass;
+    IRowSelector query = null;
+}
+{
+    <UPDATE>
+    tableName = Table()
+    {
+        if(tableName[1] != null) {
+            throw new ParseException("Cannot rename tables yet.");
+        }
+    }
+    <SET>
+    ass = AssignExpressions()
+    [ query = Where() ]
+
+    {
+        if(query == null) {
+            throw new ParseException("Updates ohne Where gibts noch net.");
+        } else {
+            return new UpdateTable(tableName[0], ass, query);
+        }
+    }
+}
+
+Map<String, String> AssignExpressions():
+{
+    String[] subResult;
+    Map<String, String> assignments = new HashMap<String, String>();
+}
+{
+    subResult = AssignExpression()
+    { assignments.put(subResult[0], subResult[1]); }
+    (
+        ","
+        subResult = AssignExpression() 
+        { assignments.put(subResult[0], subResult[1]); }
+    )*
+    { return assignments; }
+}
+
+String[] AssignExpression():
+{
+    String[] result = {null, null};
+}
+{
+    result[0] = Name() "=" result[1] = LiteralExpression()
+    { return result; }
+}
+
+String LiteralExpression():
+{
+    Token t;
+}
+{
+    t = <STRING_LITERAL>
+    { return t.image; }
+}
+
+ICommand Delete():
+{}
+{
+    { throw new ParseException("Harald hat Delete halt noch vergessen"); }
+    <DELETE> <FROM> Table() [Where()]
+    { return null; }
+}
+
+ICommand Insert():
+{
+    String[] tableName;
+    List<String> columnNames = null;
+    List<String> literals;
+}
+{
+    <INSERT> <INTO>
+    tableName = Table()
+    {
+        if (tableName[1] != null) {
+            throw new ParseException("renaming tables is not supported yet.");
+        }
+    }
+    [ "(" columnNames = ColumnNames() ")" ]
+    <VALUES> 
+    "(" literals = Literals() ")"
+    {
+        if(columnNames != null) {
+            int i;
+            Map<String, String> assignments = new HashMap<String, String>();
+            if(columnNames.size() != literals.size()) {
+                throw new ParseException(
+                    "ERROR: ColumnNames and Literals have different size");
+            }
+            for(i = 0; i < columnNames.size(); i++) {
+                assignments.put(columnNames.get(i), literals.get(i));
+            }
+            return new InsertCommandWithValues(tableName[0], assignments);
+        } else {
+            return new InsertCommandWithoutValues(tableName[0], literals);
+        }
+    }
+}
+
+List<String> ColumnNames():
+{
+    String name;
+    List<String> result;
+}
+{
+    { result = new LinkedList<String>(); }
+    name = Name() { result.add(name); }
+    ("," name = Name() { result.add(name); } )*
+    { return result; }
+}
+
+CreateTable CreateTable():
+{
+    String tableName;
+    List<String> columnNames;
+    String columnName;
+}
+{
+    <CREATE> <TABLE>
+    tableName = Name()
+    "("
+    { columnNames = new LinkedList<String>(); }
+    columnName = ColumnDefinition() { columnNames.add(columnName); }
+    ("," columnName = ColumnDefinition() { columnNames.add(columnName); })*
+    ")"
+    { return new CreateTable(tableName, columnNames); }
+}
+
+DropTable DropTable():
+{
+    String tableName;
+}
+{
+     <DROP>
+     tableName = Name()
+
+    { return new DropTable(tableName); }
+}
+
+String Name():
+{
+    Token t;
+}
+{
+    t = <IDENTIFIER>
+    { return t.image; }
+}
+
+String ColumnDefinition():
+{
+    String columnName;
+}
+{
+    columnName = Name()
+    DataType()
+    { return columnName; }
+}
+
+void DataType():
+{}
+{
+ <VARCHAR>
+}
+
