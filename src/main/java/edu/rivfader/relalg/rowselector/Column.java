@@ -2,6 +2,9 @@ package edu.rivfader.relalg.rowselector;
 
 import edu.rivfader.data.Row;
 
+import java.util.NoSuchElementException;
+import edu.rivfader.errors.UnknownColumnName;
+
 /**
  * This class implements the use of column values in comparisions.
  * @author harald
@@ -22,6 +25,10 @@ public class Column implements IValueProvider {
 
     @Override
     public String getValue(final Row data) {
-        return data.getData(columnName);
+        try {
+            return data.getData(columnName);
+        } catch(NoSuchElementException e) {
+            throw new UnknownColumnName(columnName, e);
+        }
     }
 }

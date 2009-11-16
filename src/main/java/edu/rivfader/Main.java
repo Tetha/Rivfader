@@ -2,6 +2,8 @@ package edu.rivfader;
 
 import edu.rivfader.commands.ICommand;
 import edu.rivfader.data.Database;
+import edu.rivfader.errors.NoColumnValueMappingPossible;
+import edu.rivfader.errors.UnknownColumnName;
 
 import java.io.Reader;
 import java.io.Writer;
@@ -52,8 +54,14 @@ public class Main {
                 c.execute(database, output);
             } catch (IOException e) {
                 System.out.println(e.toString());
-                return "Error: " + e.toString();
-            }         }
+                e.printStackTrace();
+                return "Error: " + e.toString() + "\n";
+            } catch (NoColumnValueMappingPossible e) {
+                return "Error: " + e.getMessage() + "\n";
+            } catch (UnknownColumnName e) {
+                return "Error: " + e.getMessage() + "\n";
+            }
+        }
         return output.toString();
     }
 }

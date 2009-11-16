@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Iterator;
+import java.util.Collection;
+
 import java.io.Serializable;
 /**
  * This implements a row from the database.
@@ -110,7 +112,7 @@ public class Row implements Serializable {
      * returns an iterator over all column names.
      * @return an iterable for all column names.
      */
-    public Iterable<String> columns() {
+    public Collection<String> columns() {
         return columnNames;
     }
 
@@ -120,8 +122,9 @@ public class Row implements Serializable {
             return false;
         }
         Row castedOther = (Row) other;
-        return columnValues.equals(castedOther.columnValues)
-                && columnNames.equals(castedOther.columnNames);
+        return (columnValues.equals(castedOther.columnValues)
+                    && columnNames.containsAll(castedOther.columnNames)
+                    && castedOther.columnNames.containsAll(columnNames));
     }
 
     @Override

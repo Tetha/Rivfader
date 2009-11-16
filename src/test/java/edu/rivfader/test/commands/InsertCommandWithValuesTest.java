@@ -10,12 +10,15 @@ import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 
+import static org.easymock.EasyMock.expect;
 import static org.powermock.api.easymock.PowerMock.createMock;
 import static org.powermock.api.easymock.PowerMock.replayAll;
 import static org.powermock.api.easymock.PowerMock.verifyAll;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.LinkedList;
 
 import java.io.Writer;
 import java.io.IOException;
@@ -37,9 +40,13 @@ public class InsertCommandWithValuesTest {
         valueRow.setData("cow", "milk");
         valueRow.setData("chicken", "egg");
 
-        database.openTableForWriting(tableName);
+        List<String> columnNames = new LinkedList<String>();
+        columnNames.add("cow");
+        columnNames.add("chicken");
+        expect(database.getColumnNames(tableName))
+            .andReturn(columnNames);
+
         database.appendRow(tableName, valueRow);
-        database.closeTable(tableName);
         replayAll();
         InsertCommandWithValues subject =
             new InsertCommandWithValues(tableName, values);

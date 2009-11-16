@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,6 +46,17 @@ public class Database {
     private File outBufferFile;
     public Database(final String databaseFolder) {
         baseFolder = new File(databaseFolder);
+    }
+
+    private class AppendingObjectOutputStream extends ObjectOutputStream {
+        public AppendingObjectOutputStream(final OutputStream os)
+            throws IOException {
+            super(os);
+        }
+
+        protected void writeStreamHeader() {
+            // nothing
+        }
     }
 
     /**
@@ -101,6 +113,13 @@ public class Database {
                                         new File(baseFolder, CATALOGUE_FILE)));
         output.writeObject(catalog);
         output.close();
+
+        File tableFile = new File(baseFolder, tableName+TABLE_SUFFIX);
+        tableFile.createNewFile();
+        output = new ObjectOutputStream(
+                                        new FileOutputStream(
+                                            tableFile));
+        output.close();
     }
 
     /**
@@ -109,7 +128,7 @@ public class Database {
      */
     public void dropTable(final String tableName)
         throws IOException {
-        File doomedFile = new File(baseFolder, tableName);
+        File doomedFile = new File(baseFolder, tableName+TABLE_SUFFIX);
         if(!doomedFile.exists()) {
             return;
         }
@@ -203,46 +222,12 @@ public class Database {
      */
     public void appendRow(final String tableName, final Row row)
         throws IOException{
-        File tempFile = File.createTempFile("table", "tmp");
-        ObjectInputStream input = new ObjectInputStream(
-                                    new FileInputStream(
-                                        new File(baseFolder,
-                                            tableName+TABLE_SUFFIX)));
-        ObjectOutputStream output = new ObjectOutputStream(
+        ObjectOutputStream output = new AppendingObjectOutputStream(
                                         new FileOutputStream(
-                                            tempFile));
-        while(true) {
-            try {
-                output.writeObject(input.readObject());
-            } catch(ClassNotFoundException e) {
-                throw new IOException("Table file for " + tableName + "borked",
-                                        e);
-            } catch(EOFException e) {
-                break;
-            }
-        }
-
-        input.close();
-        output.close();
-        input = new ObjectInputStream(
-                    new FileInputStream(
-                        tempFile));
-        output = new ObjectOutputStream(
-                    new FileOutputStream(
-                        new File(baseFolder,
-                            tableName+TABLE_SUFFIX)));
+                                            new File(baseFolder,
+                                                     tableName+TABLE_SUFFIX),
+                                            true));
         output.writeObject(row);
-        while(true) {
-            try {
-                output.writeObject(input.readObject());
-            } catch(ClassNotFoundException e) {
-                throw new IOException("Table file for " + tableName + "borked",
-                                        e);
-            } catch(EOFException e) {
-                break;
-            }
-        }
-        input.close();
         output.close();
     }
 
@@ -288,7 +273,6 @@ public class Database {
         @Override
         public boolean hasNext() {
             if(nextRowValid) {
-                System.err.println("RowReaderIterator.hasNext => true(1)");
                 return true;
             }
 
@@ -297,12 +281,10 @@ public class Database {
             } catch(ClassNotFoundException e) {
                 throw new RuntimeException(e);
             } catch(EOFException e) {
-                System.err.println("RowReaderIterator.hasNext => false");
                 return false;
             } catch(IOException e) {
                 throw new RuntimeException(e);
             }
-            System.err.println("RowReaderIterator.hasNext => true(2)");
             nextRowValid = true;
             return true;
         }

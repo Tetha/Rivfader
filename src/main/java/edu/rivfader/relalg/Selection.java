@@ -76,9 +76,10 @@ public class Selection implements IRelAlgExpr {
         public boolean hasNext() {
             if (!nextIsValid) {
                 while (source.hasNext()) {
-                    nextElement = source.next();
-                    nextIsValid = true;
-                    if (predicate.acceptsRow(nextElement)) {
+                    Row pne = source.next();
+                    if (predicate.acceptsRow(pne)) {
+                        nextElement = pne;
+                        nextIsValid = true;
                         break;
                     }
                 }

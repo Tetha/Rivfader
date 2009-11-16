@@ -40,10 +40,8 @@ public class InsertCommandWithoutValuesTest {
         Row valueRow = new Row("cow", "chicken");
         valueRow.setData("cow", "milk");
         valueRow.setData("chicken", "eggs");
-        database.openTableForWriting(tableName);
         expect(database.getColumnNames(tableName)).andReturn(columnList);
-        database.storeRow(tableName, valueRow);
-        database.closeTable(tableName);
+        database.appendRow(tableName, valueRow);
         replayAll();
         InsertCommandWithoutValues subject =
             new InsertCommandWithoutValues(tableName, values);

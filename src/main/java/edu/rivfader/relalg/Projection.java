@@ -86,7 +86,7 @@ public class Projection implements IRelAlgExpr {
             for (String column : input.columns()) {
                 if (renamedFields.containsKey(column)) {
                     result.setData(renamedFields.get(column),
-                            input.getData(column));
+                                input.getData(column));
                 }
             }
             return result;

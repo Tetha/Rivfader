@@ -10,6 +10,7 @@ public class RunQueries {
     }
 
     public void setInput(String query) {
+        System.err.println(query);
         core = new Main("/tmp/fitnesse-database");
         output = core.run(query);
     }

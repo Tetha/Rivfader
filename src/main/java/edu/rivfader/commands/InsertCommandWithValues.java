@@ -2,8 +2,10 @@ package edu.rivfader.commands;
 
 import edu.rivfader.data.Row;
 import edu.rivfader.data.Database;
-
+import edu.rivfader.errors.NoColumnValueMappingPossible;
 import java.util.Map;
+import java.util.Set;
+import java.util.List;
 
 import java.io.Writer;
 import java.io.IOException;
@@ -37,12 +39,22 @@ public class InsertCommandWithValues implements ICommand {
     @Override
     public void execute(final Database context, final Writer output)
         throws IOException {
-        Row insertedRow = new Row(values.keySet().iterator());
+        List<String> columnNames = context.getColumnNames(tableName);
+        if(!values.keySet().containsAll(columnNames)) {
+            Set<String> insertedColumns = values.keySet();
+            insertedColumns.removeAll(context.getColumnNames(tableName));
+            StringBuilder error = new StringBuilder();
+            error.append("Table " + tableName + " has no Value");
+            for(String badColumn : insertedColumns) {
+                error.append(" ");
+                error.append(badColumn);
+            }
+            throw new NoColumnValueMappingPossible(error.toString());
+        }
+        Row insertedRow = new Row(columnNames);
         for(String column : values.keySet()) {
             insertedRow.setData(column, values.get(column));
         }
-        context.openTableForWriting(tableName);
         context.appendRow(tableName, insertedRow);
-        context.closeTable(tableName);
     }
 }
