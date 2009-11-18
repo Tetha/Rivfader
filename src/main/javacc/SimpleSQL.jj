@@ -270,7 +270,7 @@ List<ICommand> File():
 {
     sub = CompilationUnit()
     { result.add(sub); }
-    
+
     (LOOKAHEAD(2)
         ";"
         sub = CompilationUnit()
@@ -497,7 +497,7 @@ List<String> Literals():
     literal = <STRING_LITERAL>
     { result.add(literal.image); }
     (
-        "," 
+        ","
         literal = <STRING_LITERAL>
         { result.add(literal.image); }
     )*
@@ -524,10 +524,10 @@ UpdateTable Update():
 
     {
         if(query == null) {
-            throw new ParseException("Updates ohne Where gibts noch net.");
-        } else {
-            return new UpdateTable(tableName[0], ass, query);
+            query = new Always();
         }
+        return new UpdateTable(tableName[0], ass, query);
+
     }
 }
 
@@ -541,7 +541,7 @@ Map<String, String> AssignExpressions():
     { assignments.put(subResult[0], subResult[1]); }
     (
         ","
-        subResult = AssignExpression() 
+        subResult = AssignExpression()
         { assignments.put(subResult[0], subResult[1]); }
     )*
     { return assignments; }
@@ -566,11 +566,21 @@ String LiteralExpression():
 }
 
 ICommand Delete():
-{}
 {
-    { throw new ParseException("Harald hat Delete halt noch vergessen"); }
-    <DELETE> <FROM> Table() [Where()]
-    { return null; }
+    String[] tableName;
+    IRowSelector predicate = null;
+}
+{
+    <DELETE> <FROM> tableName = Table() [ predicate = Where()]
+    {
+        if(tableName[1] != null) {
+            throw new ParseException("renaming tables is not supported yet.");
+        }
+        if (predicate == null) {
+            predicate = new Always();
+        }
+        return new Delete(tableName[0], predicate);
+    }
 }
 
 ICommand Insert():
@@ -588,7 +598,7 @@ ICommand Insert():
         }
     }
     [ "(" columnNames = ColumnNames() ")" ]
-    <VALUES> 
+    <VALUES>
     "(" literals = Literals() ")"
     {
         if(columnNames != null) {
