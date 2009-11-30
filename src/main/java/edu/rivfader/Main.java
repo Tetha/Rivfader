@@ -10,6 +10,10 @@ import java.io.Writer;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.IOException;
+import java.io.File;
+import java.io.EOFException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import java.util.List;
 
@@ -63,5 +67,31 @@ public class Main {
             }
         }
         return output.toString();
+    }
+
+    public static void main(String[] args) throws IOException {
+        Main core = null;
+        String queryFilename;
+        try {
+            core = new Main(args[0]);
+            queryFilename = args[1];
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("USAGE: program DATABASE QUERYFILE");
+            return;
+        }
+
+        StringBuilder query = new StringBuilder();
+        BufferedReader fromQueryFile = new BufferedReader(
+                                        new FileReader(
+                                            new File(queryFilename)));
+        while(true) {
+            String line = fromQueryFile.readLine();
+            if (line == null) {
+                break;
+            }
+            query.append(line);
+        }
+
+        System.out.print(core.run(query.toString()));
     }
 }
