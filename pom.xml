@@ -61,6 +61,17 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source_>1.6</source_>
+          <target>1.6</target>
+          <fork>true</fork>
+          <compilerArguments>
+            <Xlint:all></Xlint:all>
+          </compilerArguments>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>
