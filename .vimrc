@@ -24,7 +24,7 @@ set autowrite
 autocmd BufWrite *.java :%s/\s\+$//e
 
 " \d turns Set<foo> bar = HashSet into ...HashSet<foo>
-inoremap <Leader>d <ESC>:s/^\(.*\)\(<.*>\)\(.*\)$/\1\2\3\2/<CR>A
+inoremap <Leader>d <ESC>:s/^\(.*\)\(<.*>\)\(.*\)$/\1\2\3\2/<CR>:set nohlsearch<CR>A
 
 " F2 == :cn
 map <F2> :cn<CR>

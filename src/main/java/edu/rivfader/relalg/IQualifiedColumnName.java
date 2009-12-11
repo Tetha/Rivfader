@@ -1,6 +1,6 @@
 package edu.rivfader.relalg;
 
-public interface IQualifiedColumnName {
+public interface IQualifiedColumnName extends Comparable<IQualifiedColumnName> {
     /**
      * returns the name of the table of the column.
      * @return the name of the table

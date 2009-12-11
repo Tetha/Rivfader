@@ -6,6 +6,7 @@ import edu.rivfader.data.Row;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Set;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Iterator;
 
@@ -22,7 +23,7 @@ public class Projection implements IRelAlgExpr {
     /**
      * contains the fields which are also renamed.
      */
-    private Map<String, String> renamedFields;
+    private Set<IColumnProjection> selectedFields;
 
     /**
      * ontains the projected subExpression.
@@ -36,41 +37,58 @@ public class Projection implements IRelAlgExpr {
      * @param pRenamedFields fields to rename
      */
     public Projection(final IRelAlgExpr pSubExpression,
-                      final Set<String> pSelectedFields,
-                      final Map<String,
-                                String> pRenamedFields) { //XXX: kick,
+                      final Set<IColumnProjection> pSelectedFields) {
+        subExpression = pSubExpression;
+        selectedFields = pSelectedFields;
     }
 
     @Override
     public Iterator<IQualifiedNameRow> evaluate(final Database context) {
-        return new LinkedList<IQualifiedNameRow>().iterator();
+        return new ProjectionIterator(subExpression.evaluate(context));
     }
 
     /**
      * This iterator projects the column names in the row set.
      * @author harald.
      */
-    private class ProjectionIterator implements Iterator<QualifiedNameRow> {
+    private class ProjectionIterator implements Iterator<IQualifiedNameRow> {
         /**
          * contains the lazy row set to project.
          */
-        private Iterator<QualifiedNameRow> source;
+        private Iterator<IQualifiedNameRow> source;
 
         /**
          * cosntructs a new lazy row set from a lazy row set.
          * @param pSource the source row set to project
          */
         public ProjectionIterator(final Iterator<IQualifiedNameRow> pSource) {
+            source = pSource;
         }
 
         @Override
         public boolean hasNext() {
-            return false;
+            return source.hasNext();
         }
 
         @Override
-        public QualifiedNameRow next() {
-            return null;
+        public IQualifiedNameRow next() {
+            IQualifiedNameRow i; // input
+            IQualifiedNameRow o; // output
+            Set<IQualifiedColumnName> pcns; // projected column names.
+
+            pcns = new HashSet<IQualifiedColumnName>();
+
+            i = source.next();
+            for(IColumnProjection cp : selectedFields) {
+                pcns.addAll(cp.project(i));
+            }
+
+            o = new QualifiedNameRow(pcns);
+
+            for(IQualifiedColumnName scn : pcns) {
+                o.setData(scn, i.getData(scn));
+            }
+            return o;
         }
 
         @Override

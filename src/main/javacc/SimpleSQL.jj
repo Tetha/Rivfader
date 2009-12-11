@@ -323,8 +323,11 @@ PrintQuery Query():
             throw new ParseException("No tables to load.");
         }
 
-        query = new Projection(query, new HashSet<String>(items),
-                                new HashMap<String, String>());
+        Set<IColumnProjection> projections = new HashSet<IColumnProjection>();
+        for(String item : items) {
+            projections.add(new UnqualifiedColumnSelector(item));
+        }
+        query = new Projection(query, projections);
         if(predicate != null) {
             query = new Selection(predicate, query);
         }

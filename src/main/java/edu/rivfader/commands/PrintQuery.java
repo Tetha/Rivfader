@@ -8,6 +8,9 @@ import edu.rivfader.relalg.IQualifiedNameRow;
 import java.io.Writer;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Collections;
 
 /**
  * Implements the command to print the results of a certain query.
@@ -28,32 +31,44 @@ public class PrintQuery implements ICommand {
     }
 
     private String buildColumns(final IQualifiedNameRow source) {
-        Iterator<IQualifiedColumnName> names = source.columns().iterator();
-        StringBuilder columnRow = new StringBuilder();
-        IQualifiedColumnName cn; // current name
-        cn = names.next();
-        columnRow.append(cn.getTable() + "." + cn.getColumn());
-        while(names.hasNext()) {
-            columnRow.append(" ");
-            cn = names.next();
-            columnRow.append(cn.getTable() + "." + cn.getColumn());
+        List<IQualifiedColumnName> ns; // names
+        StringBuilder o; // output
+        boolean f; // first
+
+        ns = new LinkedList<IQualifiedColumnName>(source.columns());
+        Collections.sort(ns);
+        o =  new StringBuilder();
+        f = true;
+
+        for (IQualifiedColumnName cn : ns) { // current name
+            if (!f) {
+                o.append(" ");
+            }
+            f = false;
+            o.append(cn.getTable() + "." + cn.getColumn());
         }
-        columnRow.append('\n');
-        return columnRow.toString();
+        o.append('\n');
+        return o.toString();
     }
 
     private String buildValueRow(final IQualifiedNameRow source) {
-        Iterator<IQualifiedColumnName> names = source.columns().iterator();
-        StringBuilder valueRow = new StringBuilder();
-        IQualifiedColumnName cn; // current name
+        List<IQualifiedColumnName> ns; // names
+        StringBuilder o; // output
+        boolean f; // first
 
-        valueRow.append(source.getData(names.next()));
-        while(names.hasNext()) {
-            valueRow.append(" ");
-            valueRow.append(source.getData(names.next()));
+        ns = new LinkedList<IQualifiedColumnName>(source.columns());
+        Collections.sort(ns);
+        o = new StringBuilder();
+        f = true;
+        for (IQualifiedColumnName cn : ns) { // current name
+            if (!f) {
+                o.append(" ");
+            }
+            f = false;
+            o.append(source.getData(cn));
         }
-        valueRow.append('\n');
-        return valueRow.toString();
+        o.append('\n');
+        return o.toString();
     }
 
     @Override

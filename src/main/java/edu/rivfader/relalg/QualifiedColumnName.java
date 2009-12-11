@@ -48,4 +48,19 @@ public class QualifiedColumnName implements IQualifiedColumnName {
     public int hashCode() {
         return table.hashCode() ^ column.hashCode();
     }
+
+    @Override
+    public int compareTo(IQualifiedColumnName other) {
+        int tno; // table name ordering
+        int cno; // column name ordering
+
+        tno = table.compareTo(other.getTable());
+        cno = column.compareTo(other.getColumn());
+
+        if (tno == 0) {
+            return cno;
+        } else {
+            return tno;
+        }
+    }
 }
