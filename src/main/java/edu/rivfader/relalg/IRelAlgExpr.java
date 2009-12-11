@@ -13,5 +13,5 @@ public interface IRelAlgExpr {
      * @param context the database to evaluate the query in
      * @return an iterator over the row set
      */
-    Iterator<Row> evaluate(Database context);
+    Iterator<IQualifiedNameRow> evaluate(Database context);
 }

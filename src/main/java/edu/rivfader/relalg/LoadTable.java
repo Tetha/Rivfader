@@ -25,11 +25,30 @@ public class LoadTable implements IRelAlgExpr {
     }
 
     @Override
-    public Iterator<Row> evaluate(final Database context) {
+    public Iterator<IQualifiedNameRow> evaluate(final Database context) {
         try {
-            return context.loadTable(tablename);
+            return new WrappingIterator(context.loadTable(tablename));
         } catch (IOException e) {
             throw new RuntimeException("loading the table did not work", e);
+        }
+    }
+
+    private class WrappingIterator implements Iterator<IQualifiedNameRow> {
+        private Iterator<Row> source;
+        public WrappingIterator(Iterator<Row> pSource) {
+            source = pSource;
+        }
+
+        public boolean hasNext() {
+            return source.hasNext();
+        }
+
+        public IQualifiedNameRow next() {
+            return QualifiedNameRow.fromRow(tablename, source.next());
+        }
+
+        public void remove() {
+            source.remove();
         }
     }
 }

@@ -4,6 +4,7 @@ import edu.rivfader.data.Row;
 import edu.rivfader.relalg.QualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.QualifiedColumnName;
+import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.errors.UnknownColumnName;
 import edu.rivfader.errors.TableAmbiguous;
 import edu.rivfader.errors.AmbiguousColumnName;
@@ -15,9 +16,28 @@ import static org.junit.Assert.assertEquals;
 import java.util.Collection;
 
 public class QualifiedNameRowTest {
+    @Test public void combiningConstructor() {
+        IQualifiedColumnName n1 = new QualifiedColumnName("t", "r");
+        IQualifiedColumnName n2 = new QualifiedColumnName("u", "s");
+
+        IQualifiedNameRow first = new QualifiedNameRow(n1);
+        first.setData(n1, "cow");
+
+        QualifiedNameRow second = new QualifiedNameRow(n2);
+        second.setData(n2, "chicken");
+
+        QualifiedNameRow subject = new QualifiedNameRow(first, second);
+
+        assertEquals(2, subject.columns().size());
+        assertTrue(subject.columns().contains(n1));
+        assertTrue(subject.columns().contains(n2));
+        assertEquals("cow", subject.getData(n1));
+        assertEquals("chicken", subject.getData(n2));
+    }
+
     @Test public void columnsStored() {
-        QualifiedColumnName n1 = new QualifiedColumnName("t", "r");
-        QualifiedColumnName n2 = new QualifiedColumnName("u", "s");
+        IQualifiedColumnName n1 = new QualifiedColumnName("t", "r");
+        IQualifiedColumnName n2 = new QualifiedColumnName("u", "s");
         IQualifiedNameRow subject = new QualifiedNameRow(n1, n2);
         assertEquals(2, subject.columns().size());
         assertTrue(subject.columns().contains(n1));
@@ -25,14 +45,14 @@ public class QualifiedNameRowTest {
     }
 
     @Test public void columnsIndependent() {
-        QualifiedColumnName n = new QualifiedColumnName("t", "r");
+        IQualifiedColumnName n = new QualifiedColumnName("t", "r");
         IQualifiedNameRow subject = new QualifiedNameRow(n);
         subject.columns().remove(n);
         assertTrue(subject.columns().contains(n));
     }
 
     @Test public void existingUniqueNameResolved() {
-        QualifiedColumnName n = new QualifiedColumnName("t", "r");
+        IQualifiedColumnName n = new QualifiedColumnName("t", "r");
         IQualifiedNameRow subject = new QualifiedNameRow(n);
         assertEquals(n, subject.resolveUnqualifiedName("r"));
     }
@@ -52,7 +72,7 @@ public class QualifiedNameRowTest {
     }
 
     @Test public void setGetData() {
-        QualifiedColumnName n = new QualifiedColumnName("t", "r");
+        IQualifiedColumnName n = new QualifiedColumnName("t", "r");
         IQualifiedNameRow subject = new QualifiedNameRow(n);
         subject.setData(n, "cow");
         assertEquals("cow", subject.getData(n));
@@ -87,8 +107,8 @@ public class QualifiedNameRowTest {
         source.setData("foo", "foo");
         source.setData("bar", "bar");
         source.setData("baz", "baz");
-        QualifiedNameRow result = QualifiedNameRow.fromRow("t", source);
-        Collection<QualifiedColumnName> columns = result.columns();
+        IQualifiedNameRow result = QualifiedNameRow.fromRow("t", source);
+        Collection<IQualifiedColumnName> columns = result.columns();
         assertEquals(3, columns.size());
         assertTrue(columns.contains(new QualifiedColumnName("t", "foo")));
         assertTrue(columns.contains(new QualifiedColumnName("t", "bar")));
@@ -109,9 +129,9 @@ public class QualifiedNameRowTest {
     }
 
     @Test public void toRowPositive() {
-        QualifiedColumnName n1 = new QualifiedColumnName("t", "a");
-        QualifiedColumnName n2 = new QualifiedColumnName("t", "b");
-        QualifiedNameRow source = new QualifiedNameRow(n1, n2);
+        IQualifiedColumnName n1 = new QualifiedColumnName("t", "a");
+        IQualifiedColumnName n2 = new QualifiedColumnName("t", "b");
+        IQualifiedNameRow source = new QualifiedNameRow(n1, n2);
         source.setData(n1, "cow");
         source.setData(n2, "rabbit");
 
@@ -126,7 +146,7 @@ public class QualifiedNameRowTest {
 
     @Test(expected = TableAmbiguous.class)
     public void toRowTablesDiffer() {
-        QualifiedNameRow source = new QualifiedNameRow(
+        IQualifiedNameRow source = new QualifiedNameRow(
                                     new QualifiedColumnName("t", "a"),
                                     new QualifiedColumnName("w", "b"));
         QualifiedNameRow.toRow(source);

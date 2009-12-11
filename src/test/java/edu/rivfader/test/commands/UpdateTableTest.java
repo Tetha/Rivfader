@@ -4,6 +4,7 @@ import edu.rivfader.commands.UpdateTable;
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.rowselector.IRowSelector;
+import edu.rivfader.relalg.QualifiedNameRow;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -51,8 +52,12 @@ public class UpdateTableTest {
 
         database.openTableForWriting(tablename);
         expect(database.loadTable(tablename)).andReturn(rows.iterator());
-        expect(selectedRows.acceptsRow(modifiedRow)).andReturn(true);
-        expect(selectedRows.acceptsRow(unmodifiedRow)).andReturn(false);
+        expect(selectedRows
+                .acceptsRow(QualifiedNameRow.fromRow(tablename, modifiedRow)))
+            .andReturn(true);
+        expect(selectedRows
+                .acceptsRow(QualifiedNameRow.fromRow(tablename, unmodifiedRow)))
+            .andReturn(false);
         Row modifiedRowResult = new Row(columnNames);
         modifiedRowResult.setData("chicken", "chickens");
         modifiedRowResult.setData("cow", "milk");

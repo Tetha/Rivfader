@@ -12,31 +12,43 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class QualifiedNameRow implements IQualifiedNameRow {
-    private Map<QualifiedColumnName, String> values;
+    private Map<IQualifiedColumnName, String> values;
 
-    public QualifiedNameRow(QualifiedColumnName... columnNames) {
-        values = new HashMap<QualifiedColumnName, String>();
-        for (QualifiedColumnName cn : columnNames) {
+    public QualifiedNameRow(IQualifiedColumnName... columnNames) {
+        values = new HashMap<IQualifiedColumnName, String>();
+        for (IQualifiedColumnName cn : columnNames) {
             values.put(cn, null);
         }
     }
 
-    public QualifiedNameRow(Collection<QualifiedColumnName> columnNames) {
-        values = new HashMap<QualifiedColumnName, String>();
-        for(QualifiedColumnName cn : columnNames) {
+    public QualifiedNameRow(Collection<IQualifiedColumnName> columnNames) {
+        values = new HashMap<IQualifiedColumnName, String>();
+        for(IQualifiedColumnName cn : columnNames) {
             values.put(cn, null);
         }
     }
 
+    public QualifiedNameRow(IQualifiedNameRow first, IQualifiedNameRow second) {
+        values = new HashMap<IQualifiedColumnName, String>();
+        copyData(first);
+        copyData(second);
+    }
+
+    private void copyData(IQualifiedNameRow source) {
+        for(IQualifiedColumnName cn : source.columns()) {
+            values.put(cn, source.getData(cn));
+        }
+    }
     @Override
-    public Collection<QualifiedColumnName> columns() {
-        return new HashSet<QualifiedColumnName>(values.keySet());
+    public Collection<IQualifiedColumnName> columns() {
+        return new HashSet<IQualifiedColumnName>(values.keySet());
     }
 
     @Override
-    public QualifiedColumnName resolveUnqualifiedName(final String columnName) {
-        QualifiedColumnName r = null; // result
-        for(QualifiedColumnName n : values.keySet()) { // name
+    public IQualifiedColumnName resolveUnqualifiedName(
+            final String columnName) {
+        IQualifiedColumnName r = null; // result
+        for(IQualifiedColumnName n : values.keySet()) { // name
             if (n.getColumn().equals(columnName)) {
                 if (r == null) {
                     r = n;
@@ -52,7 +64,7 @@ public class QualifiedNameRow implements IQualifiedNameRow {
     }
 
     @Override
-    public String getData(final QualifiedColumnName column) {
+    public String getData(final IQualifiedColumnName column) {
         if (column == null) {
             throw new IllegalArgumentException("column == null");
         }
@@ -60,7 +72,7 @@ public class QualifiedNameRow implements IQualifiedNameRow {
     }
 
     @Override
-    public void setData(final QualifiedColumnName column,
+    public void setData(final IQualifiedColumnName column,
                         final String newData) {
         if (column == null) {
             throw new IllegalArgumentException("column == null");
@@ -74,13 +86,28 @@ public class QualifiedNameRow implements IQualifiedNameRow {
         values.put(column, newData);
     }
 
+    @Override //XXX: TEST
+    public boolean equals(Object other) {
+        if(!(other instanceof QualifiedNameRow)) {
+            return false;
+        }
+
+        QualifiedNameRow castedOther = (QualifiedNameRow) other;
+        return values.equals(castedOther.values);
+    }
+
+    @Override //XXX: implement
+    public int hashCode() {
+        return 0;
+    }
+
     /**
      * constructs a QualifiedNameRow with the same columns and data as
      * the source row.
      * @param tableName the tableName of the unqualified row
      * @param source the data row to use
      */
-    public static QualifiedNameRow fromRow(final String tableName,
+    public static IQualifiedNameRow fromRow(final String tableName,
                                            final Row source) {
         if (tableName == null) {
             throw new IllegalArgumentException("tableName == null");
@@ -90,8 +117,8 @@ public class QualifiedNameRow implements IQualifiedNameRow {
             throw new IllegalArgumentException();
         }
 
-        Set<QualifiedColumnName> columnNames =
-            new HashSet<QualifiedColumnName>();
+        Set<IQualifiedColumnName> columnNames =
+            new HashSet<IQualifiedColumnName>();
         for (String cn : source.columns()) { // columnname
             columnNames.add(new QualifiedColumnName(tableName, cn));
         }
@@ -108,10 +135,10 @@ public class QualifiedNameRow implements IQualifiedNameRow {
      * requires that all table names are identical.
      * @param source the sorce row
      */
-    public static Row toRow(QualifiedNameRow source) {
+    public static Row toRow(IQualifiedNameRow source) {
         Set<String> tns = new HashSet<String>(); // table names
         Set<String> cns = new HashSet<String>(); // column names
-        for(QualifiedColumnName cn : source.columns()) {
+        for(IQualifiedColumnName cn : source.columns()) {
             tns.add(cn.getTable());
             cns.add(cn.getColumn());
         }
@@ -122,7 +149,7 @@ public class QualifiedNameRow implements IQualifiedNameRow {
 
         Row r = new Row(cns.iterator());
 
-        for (QualifiedColumnName cn : source.columns()) {
+        for (IQualifiedColumnName cn : source.columns()) {
             r.setData(cn.getColumn(), source.getData(cn));
         }
         return r;

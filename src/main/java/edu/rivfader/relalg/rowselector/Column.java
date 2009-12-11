@@ -1,8 +1,7 @@
 package edu.rivfader.relalg.rowselector;
 
-import edu.rivfader.data.Row;
-
-import java.util.NoSuchElementException;
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.errors.UnknownColumnName;
 
 /**
@@ -24,11 +23,9 @@ public class Column implements IValueProvider {
     }
 
     @Override
-    public String getValue(final Row data) {
-        try {
-            return data.getData(columnName);
-        } catch(NoSuchElementException e) {
-            throw new UnknownColumnName(columnName, e);
-        }
+    public String getValue(final IQualifiedNameRow data) {
+        // resolved name
+        IQualifiedColumnName rn = data.resolveUnqualifiedName(columnName);
+        return data.getData(rn);
     }
 }

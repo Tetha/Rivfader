@@ -37,59 +37,40 @@ public class Projection implements IRelAlgExpr {
      */
     public Projection(final IRelAlgExpr pSubExpression,
                       final Set<String> pSelectedFields,
-                      final Map<String, String> pRenamedFields) {
-        renamedFields = pRenamedFields;
-        subExpression = pSubExpression;
-        for (String sf : pSelectedFields) {
-            renamedFields.put(sf, sf);
-        }
+                      final Map<String,
+                                String> pRenamedFields) { //XXX: kick,
     }
 
     @Override
-    public Iterator<Row> evaluate(final Database context) {
-        return new ProjectionIterator(subExpression.evaluate(context));
+    public Iterator<IQualifiedNameRow> evaluate(final Database context) {
+        return new LinkedList<IQualifiedNameRow>().iterator();
     }
 
     /**
      * This iterator projects the column names in the row set.
      * @author harald.
      */
-    private class ProjectionIterator implements Iterator<Row> {
+    private class ProjectionIterator implements Iterator<QualifiedNameRow> {
         /**
          * contains the lazy row set to project.
          */
-        private Iterator<Row> source;
+        private Iterator<QualifiedNameRow> source;
 
         /**
          * cosntructs a new lazy row set from a lazy row set.
          * @param pSource the source row set to project
          */
-        public ProjectionIterator(final Iterator<Row> pSource) {
-            source = pSource;
+        public ProjectionIterator(final Iterator<IQualifiedNameRow> pSource) {
         }
 
         @Override
         public boolean hasNext() {
-            return this.source.hasNext();
+            return false;
         }
 
         @Override
-        public Row next() {
-            Row input = source.next();
-            List<String> resultColumns = new LinkedList<String>();
-            for (String column : input.columns()) {
-                if (renamedFields.containsKey(column)) {
-                    resultColumns.add(renamedFields.get(column));
-                }
-            }
-            Row result = new Row(resultColumns);
-            for (String column : input.columns()) {
-                if (renamedFields.containsKey(column)) {
-                    result.setData(renamedFields.get(column),
-                                input.getData(column));
-                }
-            }
-            return result;
+        public QualifiedNameRow next() {
+            return null;
         }
 
         @Override

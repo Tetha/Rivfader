@@ -4,6 +4,10 @@ import edu.rivfader.commands.PrintQuery;
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.IRelAlgExpr;
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.QualifiedColumnName;
 
 import java.io.Writer;
 import java.io.IOException;
@@ -28,23 +32,25 @@ public class PrintQueryTest {
     public void checkPrintQueryExecution() throws IOException {
         Database database = createMock(Database.class);
         IRelAlgExpr query = createMock(IRelAlgExpr.class);
-        List<String> columns = new LinkedList<String>();
         Writer writer = createMock(Writer.class);
-        columns.add("cow");
-        columns.add("chicken");
-        Row row1 = new Row(columns);
-        row1.setData("cow", "milk");
-        row1.setData("chicken", "eggs");
-        Row row2 = new Row(columns);
-        row2.setData("cow", "cows");
-        row2.setData("chicken", "chickens");
-        List<Row> resultRows = new LinkedList<Row>();
+        List<IQualifiedColumnName> columns =
+            new LinkedList<IQualifiedColumnName>();
+        columns.add(new QualifiedColumnName("t", "cow"));
+        columns.add(new QualifiedColumnName("t", "chicken"));
+        IQualifiedNameRow row1 = new QualifiedNameRow(columns);
+        row1.setData(new QualifiedColumnName("t", "cow"), "milk");
+        row1.setData(new QualifiedColumnName("t", "chicken"), "eggs");
+        IQualifiedNameRow row2 = new QualifiedNameRow(columns);
+        row2.setData(new QualifiedColumnName("t", "cow"), "cows");
+        row2.setData(new QualifiedColumnName("t", "chicken"), "chickens");
+        List<IQualifiedNameRow> resultRows =
+            new LinkedList<IQualifiedNameRow>();
         resultRows.add(row1);
         resultRows.add(row2);
         expect(query.evaluate(database)).andReturn(resultRows.iterator());
-        writer.write("cow chicken\n");
-        writer.write("milk eggs\n");
-        writer.write("cows chickens\n");
+        writer.write("t.chicken t.cow\n");
+        writer.write("eggs milk\n");
+        writer.write("chickens cows\n");
         replayAll();
         PrintQuery subject = new PrintQuery(query);
         subject.execute(database, writer);
@@ -55,13 +61,15 @@ public class PrintQueryTest {
     public void checkEmptySetPrinted() throws IOException {
         Database database = createMock(Database.class);
         IRelAlgExpr query = createMock(IRelAlgExpr.class);
-        List<String> columns = new LinkedList<String>();
-        columns.add("cow");
-        columns.add("chicken");
+        List<IQualifiedColumnName> columns =
+            new LinkedList<IQualifiedColumnName>();
+        columns.add(new QualifiedColumnName("t", "cow"));
+        columns.add(new QualifiedColumnName("t", "chicken"));
 
         Writer writer  = createMock(Writer.class);
 
-        List<Row> resultRows = new LinkedList<Row>();
+        List<IQualifiedNameRow> resultRows =
+            new LinkedList<IQualifiedNameRow>();
         expect(query.evaluate(database)).andReturn(resultRows.iterator());
         writer.write("Empty result set.\n");
         replayAll();

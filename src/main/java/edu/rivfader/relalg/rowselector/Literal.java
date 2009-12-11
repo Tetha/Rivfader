@@ -1,6 +1,6 @@
 package edu.rivfader.relalg.rowselector;
 
-import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IQualifiedNameRow;
 
 /**
  * This class implements the use of literals in a Comparision.
@@ -21,7 +21,7 @@ public class Literal implements IValueProvider {
     }
 
     @Override
-    public String getValue(final Row data) {
+    public String getValue(final IQualifiedNameRow data) {
         return literalValue;
     }
 }

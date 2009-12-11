@@ -1,6 +1,6 @@
 package edu.rivfader.relalg.rowselector;
 
-import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IQualifiedNameRow;
 
 /**
  * A valueprovider encapsulates means to get a value.
@@ -16,6 +16,6 @@ public interface IValueProvider {
      * @param data the row to get data from
      * @return the value of this value provider
      */
-    String getValue(Row data);
+    String getValue(IQualifiedNameRow data);
 }
 

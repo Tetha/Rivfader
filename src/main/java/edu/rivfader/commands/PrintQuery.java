@@ -1,8 +1,9 @@
 package edu.rivfader.commands;
 
-import edu.rivfader.data.Row;
 import edu.rivfader.data.Database;
 import edu.rivfader.relalg.IRelAlgExpr;
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.IQualifiedNameRow;
 
 import java.io.Writer;
 import java.io.IOException;
@@ -26,21 +27,26 @@ public class PrintQuery implements ICommand {
         query = pQuery;
     }
 
-    private String buildColumns(final Row source) {
-        Iterator<String> names = source.columns().iterator();
+    private String buildColumns(final IQualifiedNameRow source) {
+        Iterator<IQualifiedColumnName> names = source.columns().iterator();
         StringBuilder columnRow = new StringBuilder();
-        columnRow.append(names.next());
+        IQualifiedColumnName cn; // current name
+        cn = names.next();
+        columnRow.append(cn.getTable() + "." + cn.getColumn());
         while(names.hasNext()) {
             columnRow.append(" ");
-            columnRow.append(names.next());
+            cn = names.next();
+            columnRow.append(cn.getTable() + "." + cn.getColumn());
         }
         columnRow.append('\n');
         return columnRow.toString();
     }
 
-    private String buildValueRow(final Row source) {
-        Iterator<String> names = source.columns().iterator();
+    private String buildValueRow(final IQualifiedNameRow source) {
+        Iterator<IQualifiedColumnName> names = source.columns().iterator();
         StringBuilder valueRow = new StringBuilder();
+        IQualifiedColumnName cn; // current name
+
         valueRow.append(source.getData(names.next()));
         while(names.hasNext()) {
             valueRow.append(" ");
@@ -53,17 +59,16 @@ public class PrintQuery implements ICommand {
     @Override
     public void execute(final Database context, final Writer output)
         throws IOException {
-        Iterator<Row> rows = query.evaluate(context);
+        Iterator<IQualifiedNameRow> rows = query.evaluate(context);
         if(!rows.hasNext()) {
             output.write("Empty result set.\n");
             return;
         }
-        Row current = rows.next();
+        IQualifiedNameRow current = rows.next();
         output.write(buildColumns(current));
         output.write(buildValueRow(current));
         while(rows.hasNext()) {
-            current = rows.next();
-            output.write(buildValueRow(current));
+            output.write(buildValueRow(rows.next()));
         }
     }
 }

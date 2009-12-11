@@ -3,6 +3,7 @@ package edu.rivfader.commands;
 import edu.rivfader.data.Row;
 import edu.rivfader.data.Database;
 import edu.rivfader.relalg.rowselector.IRowSelector;
+import edu.rivfader.relalg.QualifiedNameRow;
 
 import java.util.Map;
 import java.util.Iterator;
@@ -52,7 +53,8 @@ public class UpdateTable implements ICommand {
         Iterator<Row> rows = context.loadTable(tableName);
         while(rows.hasNext()) {
             row = rows.next();
-            if(selectedRows.acceptsRow(row)) {
+            if(selectedRows.acceptsRow(
+                                QualifiedNameRow.fromRow(tableName, row))) {
                 for(String column : row.columns()) {
                     if(assignments.containsKey(column)) {
                         row.setData(column, assignments.get(column));

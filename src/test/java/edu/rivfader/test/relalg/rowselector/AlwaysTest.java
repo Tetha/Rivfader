@@ -1,6 +1,6 @@
 package edu.rivfader.test.relalg.rowselector;
 
-import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.rowselector.Always;
 
 import org.junit.Test;
@@ -14,13 +14,10 @@ import static org.powermock.api.easymock.PowerMock.replayAll;
 import static org.powermock.api.easymock.PowerMock.verifyAll;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({
-    Row.class
-})
 public class AlwaysTest {
     @Test
     public void acceptsRowIsAlwaysTrue() {
-        Row rowMock = createMock(Row.class);
+        IQualifiedNameRow rowMock = createMock(IQualifiedNameRow.class);
         replayAll();
         Always subject = new Always();
         assertTrue(subject.acceptsRow(rowMock));

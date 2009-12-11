@@ -2,7 +2,6 @@ package edu.rivfader.relalg;
 
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -32,14 +31,14 @@ public class Product implements IRelAlgExpr {
     }
 
     @Override
-    public Iterator<Row> evaluate(final Database context) {
+    public Iterator<IQualifiedNameRow> evaluate(final Database context) {
         return new ProductResult(left, right, context);
     }
 
     /**
      * iterates over all rows in the result.
      */
-    private static class ProductResult implements Iterator<Row> {
+    private static class ProductResult implements Iterator<IQualifiedNameRow> {
         /**
          * contains the left subexpression.
          */
@@ -53,17 +52,17 @@ public class Product implements IRelAlgExpr {
         /**
          * contains an iterator over the rows in the left subexpression.
          */
-        private Iterator<Row> leftIterator;
+        private Iterator<IQualifiedNameRow> leftIterator;
 
         /**
          * contains an iterator over the rows in the right subexpression.
          */
-        private Iterator<Row> rightIterator;
+        private Iterator<IQualifiedNameRow> rightIterator;
 
         /**
          * contains the current left row.
          */
-        private Row leftRow;
+        private IQualifiedNameRow leftRow;
 
         /**
          * contains the database to evaluate the query in.
@@ -93,7 +92,7 @@ public class Product implements IRelAlgExpr {
         }
 
         @Override
-        public Row next() {
+        public IQualifiedNameRow next() {
             if (!rightIterator.hasNext()) {
                 if (leftIterator.hasNext()) {
                     leftRow = leftIterator.next();
@@ -102,8 +101,7 @@ public class Product implements IRelAlgExpr {
                     throw new NoSuchElementException();
                 }
             }
-            //return Row.combineRows(leftRow, rightIterator.next());
-            return new Row(leftRow, rightIterator.next());
+            return new QualifiedNameRow(leftRow, rightIterator.next());
         }
 
         @Override

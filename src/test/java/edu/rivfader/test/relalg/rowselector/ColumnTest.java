@@ -2,6 +2,9 @@ package edu.rivfader.test.relalg.rowselector;
 
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.rowselector.Column;
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.QualifiedColumnName;
+import edu.rivfader.relalg.IQualifiedNameRow;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,10 +24,12 @@ import static org.powermock.api.easymock.PowerMock.verifyAll;
 public class ColumnTest {
     @Test public void columnValue () {
         String columnName = "c";
+        IQualifiedColumnName rn = new QualifiedColumnName("t", "c");
         String columnValue = "v";
 
-        Row row = createMock(Row.class);
-        expect(row.getData(columnName)).andReturn(columnValue);
+        IQualifiedNameRow row = createMock(IQualifiedNameRow.class);
+        expect(row.resolveUnqualifiedName("c")).andReturn(rn);
+        expect(row.getData(rn)).andReturn(columnValue);
         replayAll();
         Column subject = new Column(columnName);
         assertEquals(columnValue, subject.getValue(row));

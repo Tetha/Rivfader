@@ -1,5 +1,5 @@
 package edu.rivfader.relalg.rowselector;
-import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IQualifiedNameRow;
 
 /**
  * A rowselector implements the filtering of rows.
@@ -11,5 +11,5 @@ public interface IRowSelector {
      * @param data the row to examine
      * @return true if the row is selected.
      */
-    boolean acceptsRow(Row data);
+    boolean acceptsRow(IQualifiedNameRow data);
 }

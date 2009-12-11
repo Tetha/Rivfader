@@ -1,6 +1,6 @@
 package edu.rivfader.relalg.rowselector;
 
-import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IQualifiedNameRow;
 
 /**
  * This class is a binary operation on IRowSelectors.
@@ -37,7 +37,7 @@ public class BinaryOperation implements IRowSelector {
     }
 
     @Override
-    public boolean acceptsRow(final Row data) {
+    public boolean acceptsRow(final IQualifiedNameRow data) {
         return combination.combineValues(left.acceptsRow(data),
                                          right.acceptsRow(data));
     }

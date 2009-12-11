@@ -1,6 +1,6 @@
 package edu.rivfader.relalg.rowselector;
 
-import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IQualifiedNameRow;
 
 /**
  * This implements a comparision of values.
@@ -38,7 +38,7 @@ public class Comparision implements IRowSelector {
 
 
     @Override
-    public boolean acceptsRow(final Row data) {
+    public boolean acceptsRow(final IQualifiedNameRow data) {
         String actualFirstValue = firstOperand.getValue(data);
         String actualSecondValue = secondOperand.getValue(data);
         return internalComparision.isGoodValuePair(actualFirstValue,

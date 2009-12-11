@@ -1,7 +1,8 @@
 package edu.rivfader.test.relalg;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.data.Row;
+import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Selection;
 import edu.rivfader.relalg.rowselector.IRowSelector;
@@ -26,21 +27,22 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({Row.class,Database.class})
+@PrepareForTest(Database.class)
 public class SelectionTest {
     @Test
     public void onlyGoodRowsPass() {
         Database database = createMock(Database.class);
-        Row first = createMock(Row.class);
-        Row second = createMock(Row.class);
-        Row third = createMock(Row.class);
+        IQualifiedNameRow first = createMock(IQualifiedNameRow.class);
+        IQualifiedNameRow second = createMock(IQualifiedNameRow.class);
+        IQualifiedNameRow third = createMock(IQualifiedNameRow.class);
 
         IRowSelector predicate = createMock(IRowSelector.class);
         expect(predicate.acceptsRow(first)).andReturn(true);
         expect(predicate.acceptsRow(second)).andReturn(false);
         expect(predicate.acceptsRow(third)).andReturn(true);
 
-        List<Row> previousRows = new LinkedList<Row>();
+        List<IQualifiedNameRow> previousRows =
+            new LinkedList<IQualifiedNameRow>();
         previousRows.add(first);
         previousRows.add(second);
         previousRows.add(third);
@@ -51,8 +53,8 @@ public class SelectionTest {
 
         replayAll();
         Selection subject = new Selection(predicate, subExpression);
-        Iterator<Row> selectedRows = subject.evaluate(database);
-        List<Row> gotRows = new LinkedList<Row>();
+        Iterator<IQualifiedNameRow> selectedRows = subject.evaluate(database);
+        List<IQualifiedNameRow> gotRows = new LinkedList<IQualifiedNameRow>();
         while(selectedRows.hasNext()) {
             gotRows.add(selectedRows.next());
         }
@@ -64,7 +66,8 @@ public class SelectionTest {
         } catch (NoSuchElementException e) {
             // all good
         }
-        List<Row> expectedRows = new LinkedList<Row>();
+        List<IQualifiedNameRow> expectedRows =
+            new LinkedList<IQualifiedNameRow>();
         expectedRows.add(first);
         expectedRows.add(third);
 

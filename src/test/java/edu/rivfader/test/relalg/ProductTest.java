@@ -4,6 +4,10 @@ import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Product;
+import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.QualifiedColumnName;
+import edu.rivfader.relalg.IQualifiedColumnName;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,29 +32,29 @@ import java.util.NoSuchElementException;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({Row.class,Database.class})
 public class ProductTest {
-    private interface RowIterator extends Iterator<Row> {};
+    private interface RowIterator extends Iterator<IQualifiedNameRow> {};
 
     @Test
     public void evaluateWorks() {
         Database database = createMock(Database.class);
-        List<Row> leftResult = new LinkedList<Row>();
-        List<String> leftColumnNames = new LinkedList<String>();
-        leftColumnNames.add("cow");
-        Row leftFirst = new Row(leftColumnNames);
-        leftFirst.setData("cow", "milk");
+        List<IQualifiedNameRow> leftResult =
+            new LinkedList<IQualifiedNameRow>();
+        IQualifiedColumnName ln = new QualifiedColumnName("t", "c");
+        IQualifiedNameRow leftFirst = new QualifiedNameRow(ln);
+        leftFirst.setData(ln, "cow");
         leftResult.add(leftFirst);
-        Row leftSecond = new Row(leftColumnNames);
-        leftSecond.setData("cow", "cows");
+        QualifiedNameRow leftSecond = new QualifiedNameRow(ln);
+        leftSecond.setData(ln, "more cow");
         leftResult.add(leftSecond);
 
-        List<Row> rightResult = new LinkedList<Row>();
-        List<String> rightColumnNames = new LinkedList<String>();
-        rightColumnNames.add("chicken");
-        Row rightFirst = new Row(rightColumnNames);
-        rightFirst.setData("chicken", "eggs");
+        List<IQualifiedNameRow> rightResult =
+            new LinkedList<IQualifiedNameRow>();
+        IQualifiedColumnName rn = new QualifiedColumnName("u", "d");
+        IQualifiedNameRow rightFirst = new QualifiedNameRow(rn);
+        rightFirst.setData(rn, "chicken");
         rightResult.add(rightFirst);
-        Row rightSecond = new Row(rightColumnNames);
-        rightSecond.setData("chicken", "chickens");
+        IQualifiedNameRow rightSecond = new QualifiedNameRow(rn);
+        rightSecond.setData(rn, "more chicken");
         rightResult.add(rightSecond);
 
         IRelAlgExpr left = createMock(IRelAlgExpr.class);
@@ -67,9 +71,9 @@ public class ProductTest {
 
         replayAll();
         Product subject = new Product(left, right);
-        Iterator<Row> resultRows = subject.evaluate(database);
+        Iterator<IQualifiedNameRow> resultRows = subject.evaluate(database);
 
-        List<Row> gotRows = new LinkedList<Row>();
+        List<IQualifiedNameRow> gotRows = new LinkedList<IQualifiedNameRow>();
         while(resultRows.hasNext()) {
             gotRows.add(resultRows.next());
         }
@@ -80,30 +84,13 @@ public class ProductTest {
         } catch(NoSuchElementException e) {
         }
 
-        List<Row> expectedRows = new LinkedList<Row>();
-        List<String> expectedColumnNames = new LinkedList<String>();
-        expectedColumnNames.add("cow");
-        expectedColumnNames.add("chicken");
+        List<IQualifiedNameRow> expectedRows =
+            new LinkedList<IQualifiedNameRow>();
 
-        Row firstExpected = new Row(expectedColumnNames);
-        firstExpected.setData("cow", "milk");
-        firstExpected.setData("chicken", "eggs");
-        expectedRows.add(firstExpected);
-
-        Row secondExpected = new Row(expectedColumnNames);
-        secondExpected.setData("cow", "milk");
-        secondExpected.setData("chicken", "chickens");
-        expectedRows.add(secondExpected);
-
-        Row thirdExpected = new Row(expectedColumnNames);
-        thirdExpected.setData("cow", "cows");
-        thirdExpected.setData("chicken", "eggs");
-        expectedRows.add(thirdExpected);
-
-        Row fourthExpected = new Row(expectedColumnNames);
-        fourthExpected.setData("cow", "cows");
-        fourthExpected.setData("chicken", "chickens");
-        expectedRows.add(fourthExpected);
+        expectedRows.add(new QualifiedNameRow(leftFirst, rightFirst));
+        expectedRows.add(new QualifiedNameRow(leftFirst, rightSecond));
+        expectedRows.add(new QualifiedNameRow(leftSecond, rightFirst));
+        expectedRows.add(new QualifiedNameRow(leftSecond, rightSecond));
 
         assertEquals(expectedRows, gotRows);
         verifyAll();
@@ -116,7 +103,7 @@ public class ProductTest {
         IRelAlgExpr right = createMock(IRelAlgExpr.class);
         RowIterator leftIterator = createMock(RowIterator.class);
         RowIterator rightIterator = createMock(RowIterator.class);
-        Row leftResult = createMock(Row.class);
+        IQualifiedNameRow leftResult = createMock(IQualifiedNameRow.class);
 
         expect(left.evaluate(database)).andReturn(leftIterator);
         expect(right.evaluate(database)).andReturn(rightIterator);

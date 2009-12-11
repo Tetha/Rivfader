@@ -1,7 +1,7 @@
 package edu.rivfader.relalg;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.rowselector.IRowSelector;
 
 import java.util.Iterator;
@@ -33,7 +33,7 @@ public class Selection implements IRelAlgExpr {
     }
 
     @Override
-    public Iterator<Row> evaluate(final Database context) {
+    public Iterator<IQualifiedNameRow> evaluate(final Database context) {
         return new SelectionIterator(predicate,
                                      subExpression.evaluate(context));
     }
@@ -42,7 +42,8 @@ public class Selection implements IRelAlgExpr {
      * This Iterator filters a lazily implemented RowSet.
      * @author harald.
      */
-    private static class SelectionIterator implements Iterator<Row> {
+    private static class SelectionIterator
+            implements Iterator<IQualifiedNameRow> {
         /**
          * contains the predicate to filter on.
          */
@@ -50,11 +51,11 @@ public class Selection implements IRelAlgExpr {
         /**
          * Contains the iterator to filter.
          */
-        private Iterator<Row> source;
+        private Iterator<IQualifiedNameRow> source;
         /**
          * contains the next row.
          */
-        private Row nextElement;
+        private IQualifiedNameRow nextElement;
 
         /**
          * contains if next is really the next element.
@@ -67,7 +68,7 @@ public class Selection implements IRelAlgExpr {
          * @param pSource the iterator to filter
          */
         public SelectionIterator(final IRowSelector pPredicate,
-                                 final Iterator<Row> pSource) {
+                                 final Iterator<IQualifiedNameRow> pSource) {
             predicate = pPredicate;
             source = pSource;
         }
@@ -76,7 +77,7 @@ public class Selection implements IRelAlgExpr {
         public boolean hasNext() {
             if (!nextIsValid) {
                 while (source.hasNext()) {
-                    Row pne = source.next();
+                    IQualifiedNameRow pne = source.next();
                     if (predicate.acceptsRow(pne)) {
                         nextElement = pne;
                         nextIsValid = true;
@@ -88,7 +89,7 @@ public class Selection implements IRelAlgExpr {
         }
 
         @Override
-        public Row next() {
+        public IQualifiedNameRow next() {
             if (hasNext()) {
                 nextIsValid = false;
                 return nextElement;
