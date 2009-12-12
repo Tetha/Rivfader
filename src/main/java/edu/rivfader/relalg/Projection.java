@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Iterator;
+import java.util.Collection;
 
 /**
  * This class implements the projection in relational algebra.
@@ -23,7 +24,7 @@ public class Projection implements IRelAlgExpr {
     /**
      * contains the fields which are also renamed.
      */
-    private Set<IColumnProjection> selectedFields;
+    private Collection<IColumnProjection> selectedFields;
 
     /**
      * ontains the projected subExpression.
@@ -37,7 +38,7 @@ public class Projection implements IRelAlgExpr {
      * @param pRenamedFields fields to rename
      */
     public Projection(final IRelAlgExpr pSubExpression,
-                      final Set<IColumnProjection> pSelectedFields) {
+                      final Collection<IColumnProjection> pSelectedFields) {
         subExpression = pSubExpression;
         selectedFields = pSelectedFields;
     }

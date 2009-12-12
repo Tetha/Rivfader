@@ -2,6 +2,10 @@ package edu.rivfader.commands;
 
 import edu.rivfader.data.Row;
 import edu.rivfader.data.Database;
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedColumnName;
+
 import edu.rivfader.errors.NoColumnValueMappingPossible;
 import java.util.Map;
 import java.util.Set;
@@ -9,6 +13,7 @@ import java.util.List;
 
 import java.io.Writer;
 import java.io.IOException;
+import edu.rivfader.relalg.ITable;
 
 /**
  * This implements the insert command with column names
@@ -19,7 +24,7 @@ public class InsertCommandWithValues implements ICommand {
     /**
      * contains the name of the table to insert values into.
      */
-    private String tableName;
+    private ITable table;
     /**
      * contains the values to insert into the table.
      */
@@ -30,31 +35,23 @@ public class InsertCommandWithValues implements ICommand {
      * @param pTableName the name of the table to insert into
      * @param pValues the values to insert into the table.
      */
-    public InsertCommandWithValues(final String pTableName,
+    public InsertCommandWithValues(final ITable pTable,
                          final Map<String, String> pValues) {
-        tableName = pTableName;
+        table = pTable;
         values = pValues;
     }
 
     @Override
     public void execute(final Database context, final Writer output)
         throws IOException {
-        List<String> columnNames = context.getColumnNames(tableName);
-        if(!values.keySet().containsAll(columnNames)) {
-            Set<String> insertedColumns = values.keySet();
-            insertedColumns.removeAll(context.getColumnNames(tableName));
-            StringBuilder error = new StringBuilder();
-            error.append("Table " + tableName + " has no Value");
-            for(String badColumn : insertedColumns) {
-                error.append(" ");
-                error.append(badColumn);
-            }
-            throw new NoColumnValueMappingPossible(error.toString());
+        IQualifiedNameRow ir; // inserted row
+        table.setDatabase(context);
+        ir = new QualifiedNameRow(table.getColumnNames());
+        for(String c : values.keySet()) { // column
+            IQualifiedColumnName rcn; // resolved column name
+            rcn = ir.resolveUnqualifiedName(c);
+            ir.setData(rcn, values.get(c));
         }
-        Row insertedRow = new Row(columnNames);
-        for(String column : values.keySet()) {
-            insertedRow.setData(column, values.get(column));
-        }
-        context.appendRow(tableName, insertedRow);
+        table.appendRow(ir);
     }
 }

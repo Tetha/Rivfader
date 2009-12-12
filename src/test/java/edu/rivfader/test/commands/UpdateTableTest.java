@@ -4,7 +4,11 @@ import edu.rivfader.commands.UpdateTable;
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.rowselector.IRowSelector;
+import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.QualifiedColumnName;
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.ITable;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -30,50 +34,53 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 public class UpdateTableTest {
     @Test
     public void updateExecution() throws IOException {
-        String tablename = "table";
-        Writer writer = createMock(Writer.class);
-        List<String> columnNames = new LinkedList<String>();
-        columnNames.add("chicken");
-        columnNames.add("cow");
-        IRowSelector selectedRows = createMock(IRowSelector.class);
-        Database database = createMock(Database.class);
-        Map<String, String> assignments = new HashMap<String, String>();
-        assignments.put("chicken", "chickens");
+        ITable t; // table mock;
+        Writer w; // writer mock
+        IQualifiedColumnName cow; // example column name
+        IQualifiedColumnName chicken; // another example column name
+        List<IQualifiedColumnName> cns; // column names
+        IRowSelector p; // predicate selecting the rows to change
+        Database db; // database mock
+        Map<String, String> as; //assignements
+        LinkedList<IQualifiedNameRow> rs; // loaded rows
+        IQualifiedNameRow mr; // row to change
+        IQualifiedNameRow umr; // row not to change
 
-        List<Row> rows = new LinkedList<Row>();
-        Row modifiedRow = new Row(columnNames);
-        modifiedRow.setData("chicken", "egg");
-        modifiedRow.setData("cow", "milk");
-        rows.add(modifiedRow);
-        Row unmodifiedRow = new Row(columnNames);
-        unmodifiedRow.setData("chicken", "mud");
-        unmodifiedRow.setData("cow", "cows");
-        rows.add(unmodifiedRow);
+        t = createMock(ITable.class);
+        w = createMock(Writer.class);
+        cow = createMock(IQualifiedColumnName.class);
+        chicken = createMock(IQualifiedColumnName.class);
+        cns = new LinkedList<IQualifiedColumnName>();
+        cns.add(chicken);
+        cns.add(cow);
 
-        database.openTableForWriting(tablename);
-        expect(database.loadTable(tablename)).andReturn(rows.iterator());
-        expect(selectedRows
-                .acceptsRow(QualifiedNameRow.fromRow(tablename, modifiedRow)))
-            .andReturn(true);
-        expect(selectedRows
-                .acceptsRow(QualifiedNameRow.fromRow(tablename, unmodifiedRow)))
-            .andReturn(false);
-        Row modifiedRowResult = new Row(columnNames);
-        modifiedRowResult.setData("chicken", "chickens");
-        modifiedRowResult.setData("cow", "milk");
-        database.storeRow(tablename, modifiedRowResult);
+        p = createMock(IRowSelector.class);
+        db = createMock(Database.class);
+        as = new HashMap<String, String>();
+        as.put("chicken", "chickens");
 
-        Row unmodifiedRowResult = new Row(columnNames);
-        unmodifiedRowResult.setData("chicken", "mud");
-        unmodifiedRowResult.setData("cow", "cows");
-        database.storeRow(tablename, unmodifiedRowResult);
-        database.closeTable(tablename);
+        rs = new LinkedList<IQualifiedNameRow>();
+        mr = createMock(IQualifiedNameRow.class);
+        rs.add(mr);
+
+        umr = createMock(IQualifiedNameRow.class);
+        rs.add(umr);
+
+        t.setDatabase(db);
+        t.openForWriting();
+        expect(t.load()).andReturn(rs.iterator());
+        expect(p.acceptsRow(mr)).andReturn(true);
+        expect(mr.resolveUnqualifiedName("chicken")).andReturn(chicken);
+        mr.setData(chicken, "chickens");
+        expect(p.acceptsRow(umr)).andReturn(false);
+
+        t.storeRow(mr);
+        t.storeRow(umr);
+        t.close();
 
         replayAll();
-        UpdateTable subject = new UpdateTable(tablename,
-                                              assignments,
-                                              selectedRows);
-        subject.execute(database, writer);
+        UpdateTable subject = new UpdateTable(t, as, p);
+        subject.execute(db, w);
         verifyAll();
     }
 }

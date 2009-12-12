@@ -4,8 +4,11 @@ import edu.rivfader.commands.Delete;
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.rowselector.IRowSelector;
+import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.QualifiedNameRow;
-
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.QualifiedColumnName;
+import edu.rivfader.relalg.ITable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -30,34 +33,45 @@ import java.io.Writer;
 public class DeleteTest {
     @Test
     public void deleteTest() throws IOException {
-        String tableName = "t";
-        IRowSelector predicate = createMock(IRowSelector.class);
-        Database databaseMock = createMock(Database.class);
-        Writer outputMock = createMock(Writer.class);
-        Row rowOne = new Row("c1", "c2");
-        Row rowTwo = new Row("c1", "c2");
-        rowOne.setData("c1", "d11");
-        rowOne.setData("c2", "d12");
-        rowTwo.setData("c1", "d21");
-        rowTwo.setData("c2", "d22");
+        IQualifiedColumnName c1; // one column name
+        IQualifiedColumnName c2; // another column name
+        IQualifiedNameRow r1; // an example row
+        IQualifiedNameRow r2; // another example row
+        List<IQualifiedNameRow> trs; // loaded rows in the table
+        IRowSelector p; // predicate to select rows to delete
+        ITable t; // table mock
+        Database db; // database mock
+        Writer w; // writer mock
+        t = createMock(ITable.class);
 
-        List<Row> tableRows = new LinkedList<Row>();
-        tableRows.add(rowOne);
-        tableRows.add(rowTwo);
-        databaseMock.openTableForWriting(tableName);
-        expect(databaseMock.loadTable(tableName))
-            .andReturn(tableRows.iterator());
-        expect(predicate.acceptsRow(
-                    QualifiedNameRow.fromRow(tableName, rowOne)))
-            .andReturn(true);
-        expect(predicate.acceptsRow(
-                    QualifiedNameRow.fromRow(tableName, rowTwo)))
-            .andReturn(false);
-        databaseMock.storeRow(tableName, rowTwo);
-        databaseMock.closeTable(tableName);
+        p = createMock(IRowSelector.class);
+        db = createMock(Database.class);
+        w = createMock(Writer.class);
+
+        c1 = new QualifiedColumnName("t", "c1");
+        c2 = new QualifiedColumnName("t", "c2");
+
+        r1 = new QualifiedNameRow(c1, c2);
+        r2 = new QualifiedNameRow(c1, c2);
+        r1.setData(c1, "d11");
+        r1.setData(c2, "d12");
+        r2.setData(c1, "d21");
+        r2.setData(c2, "d22");
+
+        trs = new LinkedList<IQualifiedNameRow>();
+        trs.add(r1);
+        trs.add(r2);
+
+        t.setDatabase(db);
+        t.openForWriting();
+        expect(t.load()).andReturn(trs.iterator());
+        expect(p.acceptsRow(r1)).andReturn(true);
+        expect(p.acceptsRow(r2)).andReturn(false);
+        t.storeRow(r2);
+        t.close();
         replayAll();
-        Delete subject = new Delete(tableName, predicate);
-        subject.execute(databaseMock, outputMock);
+        Delete subject = new Delete(t, p);
+        subject.execute(db, w);
         verifyAll();
     }
 }

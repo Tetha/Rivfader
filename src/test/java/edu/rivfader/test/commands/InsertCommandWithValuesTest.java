@@ -3,6 +3,11 @@ package edu.rivfader.test.commands;
 import edu.rivfader.commands.InsertCommandWithValues;
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.QualifiedColumnName;
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.ITable;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,29 +33,39 @@ import java.io.IOException;
 public class InsertCommandWithValuesTest {
     @Test
     public void valuesAreInserted() throws IOException {
-        String tableName = "table";
-        Writer writer = createMock(Writer.class);
-        Database database = createMock(Database.class);
+        ITable t; // table to operate on
+        Writer w; // writer mock
+        Database db; // database mock
+        Map<String, String> v; // the value-mapping for the insertion
+        IQualifiedNameRow vr; // the new row to expect
+        List<IQualifiedColumnName> cns; // list of columns of the table
+        IQualifiedColumnName c1; // example column name
+        IQualifiedColumnName c2; // another example column name
+        InsertCommandWithValues s; // subject to examine
 
-        Map<String, String> values = new HashMap<String, String>();
-        values.put("cow", "milk");
-        values.put("chicken", "egg");
+        t = createMock(ITable.class);
+        w = createMock(Writer.class);
+        db = createMock(Database.class);
+        c1 = new QualifiedColumnName("t", "cow");
+        c2 = new QualifiedColumnName("t", "chicken");
 
-        Row valueRow = new Row("chicken", "cow");
-        valueRow.setData("cow", "milk");
-        valueRow.setData("chicken", "egg");
+        v = new HashMap<String, String>();
+        v.put("cow", "milk");
+        v.put("chicken", "egg");
 
-        List<String> columnNames = new LinkedList<String>();
-        columnNames.add("cow");
-        columnNames.add("chicken");
-        expect(database.getColumnNames(tableName))
-            .andReturn(columnNames);
+        cns = new LinkedList<IQualifiedColumnName>();
+        cns.add(c1);
+        cns.add(c2);
 
-        database.appendRow(tableName, valueRow);
+        vr = new QualifiedNameRow(cns);
+        vr.setData(c1, "milk");
+        vr.setData(c2, "egg");
+        t.setDatabase(db);
+        expect(t.getColumnNames()).andReturn(cns);
+        t.appendRow(vr);
         replayAll();
-        InsertCommandWithValues subject =
-            new InsertCommandWithValues(tableName, values);
-        subject.execute(database, writer);
+        s = new InsertCommandWithValues(t, v);
+        s.execute(db, w);
         verifyAll();
     }
 }

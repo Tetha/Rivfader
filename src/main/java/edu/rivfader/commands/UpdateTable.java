@@ -3,7 +3,9 @@ package edu.rivfader.commands;
 import edu.rivfader.data.Row;
 import edu.rivfader.data.Database;
 import edu.rivfader.relalg.rowselector.IRowSelector;
-import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.ITable;
 
 import java.util.Map;
 import java.util.Iterator;
@@ -19,7 +21,7 @@ public class UpdateTable implements ICommand {
     /**
      * contains the name of the table to change.
      */
-    private String tableName;
+    private ITable table;
 
     /**
      * contains the assignments to make.
@@ -37,10 +39,10 @@ public class UpdateTable implements ICommand {
      * @param pAssignments a mapping from names to new values
      * @param pSelectedRows the predicate to select rows.
      */
-    public UpdateTable(final String pTableName,
+    public UpdateTable(final ITable pTable,
                        final Map<String, String> pAssignments,
                        final IRowSelector pSelectedRows) {
-        tableName = pTableName;
+        table = pTable;
         assignments = pAssignments;
         selectedRows = pSelectedRows;
     }
@@ -48,21 +50,25 @@ public class UpdateTable implements ICommand {
     @Override
     public void execute(final Database context, final Writer output)
         throws IOException {
-        context.openTableForWriting(tableName);
-        Row row;
-        Iterator<Row> rows = context.loadTable(tableName);
-        while(rows.hasNext()) {
-            row = rows.next();
-            if(selectedRows.acceptsRow(
-                                QualifiedNameRow.fromRow(tableName, row))) {
-                for(String column : row.columns()) {
-                    if(assignments.containsKey(column)) {
-                        row.setData(column, assignments.get(column));
-                    }
+        IQualifiedNameRow cr; // current row
+        Iterator<IQualifiedNameRow> rs; // rows
+
+        table.setDatabase(context);
+        table.openForWriting();
+
+        rs = table.load();
+        while(rs.hasNext()) {
+            cr = rs.next();
+            if(selectedRows.acceptsRow(cr)) {
+                for(String cn : assignments.keySet()) { // column name
+                    IQualifiedColumnName rcn; // resolved column name
+                    rcn = cr.resolveUnqualifiedName(cn);
+                    cr.setData(rcn, assignments.get(cn));
                 }
             }
-            context.storeRow(tableName, row);
+            table.storeRow(cr);
         }
-        context.closeTable(tableName);
+
+        table.close();
     }
 }

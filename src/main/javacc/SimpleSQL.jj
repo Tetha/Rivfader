@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Collection;
 
 import edu.rivfader.relalg.rowselector.*;
 import edu.rivfader.relalg.*;
@@ -298,8 +299,8 @@ ICommand CompilationUnit():
 
 PrintQuery Query():
 {
-    List<String> items;
-    Map<String, String> tables;
+    List<IColumnProjection> items;
+    Collection<ITable> tables;
     IRowSelector predicate = null;
     IRelAlgExpr query;
 }
@@ -311,11 +312,12 @@ PrintQuery Query():
     [ predicate = Where()]
     {
         query = null;
-        for(String table : tables.keySet()) {
+        // TODO
+        for(ITable table : tables) {
             if(query == null) {
-                query = new LoadTable(table);
+                query = table;
             } else {
-                query = new Product(query, new LoadTable(table));
+                query = new Product(query, table);
             }
         }
 
@@ -323,11 +325,7 @@ PrintQuery Query():
             throw new ParseException("No tables to load.");
         }
 
-        Set<IColumnProjection> projections = new HashSet<IColumnProjection>();
-        for(String item : items) {
-            projections.add(new UnqualifiedColumnSelector(item));
-        }
-        query = new Projection(query, projections);
+        query = new Projection(query, items);
         if(predicate != null) {
             query = new Selection(predicate, query);
         }
@@ -335,10 +333,10 @@ PrintQuery Query():
     }
 }
 
-List<String> Items():
+List<IColumnProjection> Items():
 {
-    List<String> result = new LinkedList<String>();
-    String item;
+    List<IColumnProjection> result = new LinkedList<IColumnProjection>();
+    IColumnProjection item;
 }
 {
     item = Item() { result.add(item); }
@@ -348,7 +346,7 @@ List<String> Items():
     { return result; }
 }
 
-String Item():
+IColumnProjection Item():
 {
     String table;
     String item = null;
@@ -356,51 +354,49 @@ String Item():
 {
     table = Name() ["." item = Name()]
     {
-        if(item != null) {
-            throw new ParseException("selection by tablename not supported yet");
+        if(item == null) {
+            return new UnqualifiedColumnSelector(table);
+        } else {
+            return new QualifiedColumnSelector(
+                    new QualifiedColumnName(table, item));
         }
-        return table;
     }
 }
 
-Map<String, String> Tables():
+Collection<ITable> Tables():
 {
-    Map<String, String> result = new HashMap<String, String>();
-    String[] subResult;
+    Collection<ITable> result = new LinkedList<ITable>();
+    ITable subResult;
 }
 {
     subResult = Table()
     {
-        if(subResult[1] == null) {
-            result.put(subResult[0], subResult[0]);
-        } else {
-            throw new ParseException("Cannot rename tables yet");
-            result.put(subResult[0], subResult[1]);
-        }
+        result.add(subResult);
     }
     (","
         subResult = Table()
         {
-            if(subResult[1] == null) {
-                result.put(subResult[0], subResult[0]);
-            } else {
-                throw new ParseException("Cannot rename tables yet");
-                result.put(subResult[0], subResult[1]);
-            }
+            result.add(subResult);
         }
     )*
 
     { return result; }
 }
 
-String[] Table():
+ITable Table():
 {
     String tableName;
     String rename = null;
 }
 {
     tableName = Name() [<AS> rename = Name()]
-    { return new String[] {tableName, rename}; }
+    {
+        if (rename == null) {
+            return new LoadTable(tableName);
+        } else {
+            throw new ParseException("Renaming not supported yet");
+        }
+    }
 }
 
 IRowSelector Where():
@@ -509,18 +505,13 @@ List<String> Literals():
 
 UpdateTable Update():
 {
-    String[] tableName;
+    ITable table;
     Map<String, String> ass;
     IRowSelector query = null;
 }
 {
     <UPDATE>
-    tableName = Table()
-    {
-        if(tableName[1] != null) {
-            throw new ParseException("Cannot rename tables yet.");
-        }
-    }
+    table = Table()
     <SET>
     ass = AssignExpressions()
     [ query = Where() ]
@@ -529,7 +520,7 @@ UpdateTable Update():
         if(query == null) {
             query = new Always();
         }
-        return new UpdateTable(tableName[0], ass, query);
+        return new UpdateTable(table, ass, query);
 
     }
 }
@@ -570,36 +561,28 @@ String LiteralExpression():
 
 ICommand Delete():
 {
-    String[] tableName;
+    ITable table;
     IRowSelector predicate = null;
 }
 {
-    <DELETE> <FROM> tableName = Table() [ predicate = Where()]
+    <DELETE> <FROM> table = Table() [ predicate = Where()]
     {
-        if(tableName[1] != null) {
-            throw new ParseException("renaming tables is not supported yet.");
-        }
         if (predicate == null) {
             predicate = new Always();
         }
-        return new Delete(tableName[0], predicate);
+        return new Delete(table, predicate);
     }
 }
 
 ICommand Insert():
 {
-    String[] tableName;
+    ITable table;
     List<String> columnNames = null;
     List<String> literals;
 }
 {
     <INSERT> <INTO>
-    tableName = Table()
-    {
-        if (tableName[1] != null) {
-            throw new ParseException("renaming tables is not supported yet.");
-        }
-    }
+    table = Table()
     [ "(" columnNames = ColumnNames() ")" ]
     <VALUES>
     "(" literals = Literals() ")"
@@ -614,9 +597,9 @@ ICommand Insert():
             for(i = 0; i < columnNames.size(); i++) {
                 assignments.put(columnNames.get(i), literals.get(i));
             }
-            return new InsertCommandWithValues(tableName[0], assignments);
+            return new InsertCommandWithValues(table, assignments);
         } else {
-            return new InsertCommandWithoutValues(tableName[0], literals);
+            return new InsertCommandWithoutValues(table, literals);
         }
     }
 }
