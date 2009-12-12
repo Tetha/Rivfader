@@ -47,7 +47,7 @@ public class InsertCommandWithoutValues implements ICommand {
         cns = table.getColumnNames();
         if(cns.size() != values.size()) {
             throw new NoColumnValueMappingPossible(
-                    "Incorect amount of values for table");
+                    "Incorrect amount of values for table");
         }
 
         vr = new QualifiedNameRow(cns);

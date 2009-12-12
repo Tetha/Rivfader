@@ -42,12 +42,12 @@ select C, D from T;-!|!-T.C T.D
 |!-drop T;
 create table T (C varchar, D varchar);
 insert into T values ("1");
-select C, D from T;-!|!-Error: Not enough values for table
+select C, D from T;-!|!-Error: Incorrect amount of values for table
 -!|
 |!-drop T;
 create table T (C varchar, D varchar);
 insert into T (A, C) values ("1", "2");
-select C, D from T;-!|!-Error: Table T has no Value A
+select C, D from T;-!|!-Error: Unknown column name A
 -!|
 |!-drop T;
 create table T (C varchar, D varchar);
