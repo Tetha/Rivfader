@@ -1,0 +1,2855 @@
+<?xml version="1.0"?>
+<testResults>
+  <FitNesseVersion>v20090513</FitNesseVersion>
+  <rootPath>RivfaderAcceptance</rootPath>
+  
+  <result>
+    <counts>
+      <right>1</right>
+      <wrong>3</wrong>
+      <ignores>0</ignores>
+      <exceptions>36</exceptions>
+    </counts>
+    <content><![CDATA[<H3> <span class="fail">Exceptions</span></H3><br/><a name="decisionTable_1_3"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-1381275245044531252');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-1381275245044531252"/></a>&nbsp;<span class="meta">decisionTable_1_3 </span>
+
+	<div class="hidden" id="-1381275245044531252"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_27"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('4398260220065263209');"><img src="/files/images/collapsableClosed.gif" class="left" id="img4398260220065263209"/></a>&nbsp;<span class="meta">decisionTable_1_27 </span>
+
+	<div class="hidden" id="4398260220065263209"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_39"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-8979599003513201556');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-8979599003513201556"/></a>&nbsp;<span class="meta">decisionTable_1_39 </span>
+
+	<div class="hidden" id="-8979599003513201556"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_19"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-9209844246295298473');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-9209844246295298473"/></a>&nbsp;<span class="meta">decisionTable_1_19 </span>
+
+	<div class="hidden" id="-9209844246295298473"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_7"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('2932147049779395147');"><img src="/files/images/collapsableClosed.gif" class="left" id="img2932147049779395147"/></a>&nbsp;<span class="meta">decisionTable_1_7 </span>
+
+	<div class="hidden" id="2932147049779395147"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_43"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-6890158753019084129');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-6890158753019084129"/></a>&nbsp;<span class="meta">decisionTable_1_43 </span>
+
+	<div class="hidden" id="-6890158753019084129"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_79"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('1958220467196506859');"><img src="/files/images/collapsableClosed.gif" class="left" id="img1958220467196506859"/></a>&nbsp;<span class="meta">decisionTable_1_79 </span>
+
+	<div class="hidden" id="1958220467196506859"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_67"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-6665822901916312780');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-6665822901916312780"/></a>&nbsp;<span class="meta">decisionTable_1_67 </span>
+
+	<div class="hidden" id="-6665822901916312780"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_31"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('8040546081458514262');"><img src="/files/images/collapsableClosed.gif" class="left" id="img8040546081458514262"/></a>&nbsp;<span class="meta">decisionTable_1_31 </span>
+
+	<div class="hidden" id="8040546081458514262"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_55"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('645024516933999901');"><img src="/files/images/collapsableClosed.gif" class="left" id="img645024516933999901"/></a>&nbsp;<span class="meta">decisionTable_1_55 </span>
+
+	<div class="hidden" id="645024516933999901"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_11"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-8235153866728976577');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-8235153866728976577"/></a>&nbsp;<span class="meta">decisionTable_1_11 </span>
+
+	<div class="hidden" id="-8235153866728976577"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.relalg.QualifiedNameRow.<init>(QualifiedNameRow.java:26)
+	at edu.rivfader.commands.InsertCommandWithValues.execute(InsertCommandWithValues.java:49)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_47"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-7175063099472399561');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-7175063099472399561"/></a>&nbsp;<span class="meta">decisionTable_1_47 </span>
+
+	<div class="hidden" id="-7175063099472399561"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_23"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('6391954645794351525');"><img src="/files/images/collapsableClosed.gif" class="left" id="img6391954645794351525"/></a>&nbsp;<span class="meta">decisionTable_1_23 </span>
+
+	<div class="hidden" id="6391954645794351525"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.relalg.QualifiedNameRow.<init>(QualifiedNameRow.java:26)
+	at edu.rivfader.commands.InsertCommandWithValues.execute(InsertCommandWithValues.java:49)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_75"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('2146131041124673778');"><img src="/files/images/collapsableClosed.gif" class="left" id="img2146131041124673778"/></a>&nbsp;<span class="meta">decisionTable_1_75 </span>
+
+	<div class="hidden" id="2146131041124673778"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_63"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-5423839149490860899');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-5423839149490860899"/></a>&nbsp;<span class="meta">decisionTable_1_63 </span>
+
+	<div class="hidden" id="-5423839149490860899"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_35"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-3705848196627535395');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-3705848196627535395"/></a>&nbsp;<span class="meta">decisionTable_1_35 </span>
+
+	<div class="hidden" id="-3705848196627535395"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_59"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('-1728440708223403804');"><img src="/files/images/collapsableClosed.gif" class="left" id="img-1728440708223403804"/></a>&nbsp;<span class="meta">decisionTable_1_59 </span>
+
+	<div class="hidden" id="-1728440708223403804"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_71"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('7044984384479251300');"><img src="/files/images/collapsableClosed.gif" class="left" id="img7044984384479251300"/></a>&nbsp;<span class="meta">decisionTable_1_71 </span>
+
+	<div class="hidden" id="7044984384479251300"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.GeneratedMethodAccessor3.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><a name="decisionTable_1_51"/><b></b><div class="collapse_rim"><div style="float: right;" class="meta"><a href="javascript:expandAll();">Expand All</a> | <a href="javascript:collapseAll();">Collapse All</a></div><a href="javascript:toggleCollapsable('6420535836946637838');"><img src="/files/images/collapsableClosed.gif" class="left" id="img6420535836946637838"/></a>&nbsp;<span class="meta">decisionTable_1_51 </span>
+
+	<div class="hidden" id="6420535836946637838"><pre>__EXCEPTION__:java.lang.NullPointerException
+	at edu.rivfader.commands.InsertCommandWithoutValues.execute(InsertCommandWithoutValues.java:48)
+	at edu.rivfader.Main.run(Main.java:58)
+	at edu.rivfader.test.fixtures.RunQueries.setInput(RunQueries.java:15)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at fitnesse.slim.StatementExecutor.callMethod(StatementExecutor.java:230)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:220)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+</pre></div>
+</div><hr/><span class="meta">classpath: fitnesse.jar</span><br/><span class="meta">classpath: /home/hk/code/rivfader/target/test-classes</span><br/><span class="meta">classpath: /home/hk/code/rivfader/target/classes</span><br/><br/><span class="meta">variable defined: TEST_SYSTEM=slim</span><br/><br/><span class="meta">variable defined: COLLAPSE_SETUP=true</span><br/><span class="meta">variable defined: COLLAPSE_TEARDOWN=true</span><br/><br/><table border="1" cellspacing="0">
+<tr><td>import</td>
+</tr>
+<tr><td>edu.rivfader.test.fixtures</td>
+</tr>
+</table>
+<table border="1" cellspacing="0">
+<tr><td colspan="2"><span class="pass">RunQueries</span></td>
+</tr>
+<tr><td>input</td>
+<td>output?</td>
+</tr>
+<tr><td>
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C, D from T;
+</td>
+<td>[null] <span class="fail">expected [T.C T.D
+"1" "2"
+]</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values("2", "2");
+select T.C, T.D from T;
+</td>
+<td>[null] <span class="fail">expected [T.C T.D
+"2" "2"
+]</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T (D, C) values ("2", "1");
+select C, D from T;</td>
+<td>[null] <span class="fail">expected [T.C T.D
+"1" "2"
+]</span></td>
+</tr>
+<tr><td>
+drop T;
+create table T (C varchar, D varchar);
+insert into T as S values ("1", "2");
+select C, D from T;</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1");
+select C, D from T;</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T (A, C) values ("1", "2");
+select C, D from T;</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C from T;</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = D;</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C != D;</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C < D;</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C > D;
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C <= D;
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C >= D;
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "2" and D = "3";
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "1" or D = "1";
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where X = "1";
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+delete from T;
+insert into T values ("3", "4");
+select C, D from T;
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+delete from T where C = "1";
+select C, D from T;
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "2" where D = "2";
+select C, D from T;
+</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+<tr><td>drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "3";
+select C, D from T;</td>
+<td><span class="error">Parse error: edu.rivfader.ParseException: Renaming not supported yet</span></td>
+</tr>
+</table>
+]]></content>
+    <relativePageName>BasicEvaluation</relativePageName>
+    
+        <tables>
+            <table>
+        <name>import_0</name>
+                <row>
+                    <col><![CDATA[import]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[edu.rivfader.test.fixtures]]></col>
+          
+        </row>
+        
+      </table>
+            <table>
+        <name>decisionTable_1</name>
+                <row>
+                    <col><![CDATA[pass(RunQueries)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[input]]></col>
+                    <col><![CDATA[output?]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C, D from T;
+]]></col>
+                    <col><![CDATA[[null] <span class="fail">expected [T.C T.D
+"1" "2"
+]</span>]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values("2", "2");
+select T.C, T.D from T;
+]]></col>
+                    <col><![CDATA[[null] <span class="fail">expected [T.C T.D
+"2" "2"
+]</span>]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T (D, C) values ("2", "1");
+select C, D from T;]]></col>
+                    <col><![CDATA[[null] <span class="fail">expected [T.C T.D
+"1" "2"
+]</span>]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[
+drop T;
+create table T (C varchar, D varchar);
+insert into T as S values ("1", "2");
+select C, D from T;]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1");
+select C, D from T;]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T (A, C) values ("1", "2");
+select C, D from T;]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C from T;]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = D;]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C != D;]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C < D;]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C > D;
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C <= D;
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C >= D;
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "2" and D = "3";
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "1" or D = "1";
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where X = "1";
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+delete from T;
+insert into T values ("3", "4");
+select C, D from T;
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+delete from T where C = "1";
+select C, D from T;
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "2" where D = "2";
+select C, D from T;
+]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+                <row>
+                    <col><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "3";
+select C, D from T;]]></col>
+                    <col><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></col>
+          
+        </row>
+        
+      </table>
+      
+    </tables>
+    
+    
+    <instructions>
+            <instructionResult>
+        <instruction><![CDATA[[import_0_0, import, edu.rivfader.test.fixtures]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_0, make, decisionTable_1, RunQueries]]]></instruction>
+        <slimResult><![CDATA[OK]]></slimResult>
+                <expectation>
+          <status>right</status>
+          <instructionId>decisionTable_1_0</instructionId>
+          <col>0</col>
+          <row>0</row>
+          <type>ConstructionExpectation</type>
+                    <actual><![CDATA[OK]]></actual>
+                              <expected><![CDATA[RunQueries]]></expected>
+                              <evaluationMessage><![CDATA[pass(RunQueries)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_1, call, decisionTable_1, table, [[input, output?], [
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C, D from T;
+, T.C T.D
+"1" "2"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values("2", "2");
+select T.C, T.D from T;
+, T.C T.D
+"2" "2"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T (D, C) values ("2", "1");
+select C, D from T;, T.C T.D
+"1" "2"
+], [
+drop T;
+create table T (C varchar, D varchar);
+insert into T as S values ("1", "2");
+select C, D from T;, T.C T.D
+"1" "2"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1");
+select C, D from T;, Error: Not enough values for table
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T (A, C) values ("1", "2");
+select C, D from T;, Error: Table T has no Value A
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C from T;, T.C
+"1"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = D;, T.C T.D
+"2" "2"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C != D;, T.C T.D
+"1" "2"
+"2" "1"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C < D;, T.C T.D
+"1" "2"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C > D;
+, T.C T.D
+"2" "1"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C <= D;
+, T.C T.D
+"1" "2"
+"2" "2"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C >= D;
+, T.C T.D
+"2" "2"
+"2" "1"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "2" and D = "3";
+, Empty result set.
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "1" or D = "1";
+, T.C T.D
+"1" "2"
+"2" "1"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where X = "1";
+, Error: Unknown column name X
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+delete from T;
+insert into T values ("3", "4");
+select C, D from T;
+, T.C T.D
+"3" "4"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+delete from T where C = "1";
+select C, D from T;
+, T.C T.D
+"2" "2"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "2" where D = "2";
+select C, D from T;
+, T.C T.D
+"2" "2"
+"2" "2"
+], [drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "3";
+select C, D from T;, T.C T.D
+"3" "2"
+"3" "2"
+]]]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS table[1] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_2, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_3, call, decisionTable_1, setInput, 
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C, D from T;
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_3>decisionTable_1_3</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_3</instructionId>
+          <col>0</col>
+          <row>2</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_3>decisionTable_1_3</a>]]></actual>
+                              <expected><![CDATA[
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C, D from T;
+]]></expected>
+                              <evaluationMessage><![CDATA[
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C, D from T;
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_4, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_5, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[null]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_5</instructionId>
+          <col>1</col>
+          <row>2</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[null]]></actual>
+                              <expected><![CDATA[T.C T.D
+"1" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[[null] <span class="fail">expected [T.C T.D
+"1" "2"
+]</span>]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_6, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_7, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values("2", "2");
+select T.C, T.D from T;
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_7>decisionTable_1_7</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_7</instructionId>
+          <col>0</col>
+          <row>3</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_7>decisionTable_1_7</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values("2", "2");
+select T.C, T.D from T;
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values("2", "2");
+select T.C, T.D from T;
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_8, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_9, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[null]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_9</instructionId>
+          <col>1</col>
+          <row>3</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[null]]></actual>
+                              <expected><![CDATA[T.C T.D
+"2" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[[null] <span class="fail">expected [T.C T.D
+"2" "2"
+]</span>]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_10, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_11, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T (D, C) values ("2", "1");
+select C, D from T;]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_11>decisionTable_1_11</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_11</instructionId>
+          <col>0</col>
+          <row>4</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_11>decisionTable_1_11</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T (D, C) values ("2", "1");
+select C, D from T;]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T (D, C) values ("2", "1");
+select C, D from T;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_12, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_13, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[null]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_13</instructionId>
+          <col>1</col>
+          <row>4</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[null]]></actual>
+                              <expected><![CDATA[T.C T.D
+"1" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[[null] <span class="fail">expected [T.C T.D
+"1" "2"
+]</span>]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_14, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_15, call, decisionTable_1, setInput, 
+drop T;
+create table T (C varchar, D varchar);
+insert into T as S values ("1", "2");
+select C, D from T;]]]></instruction>
+        <slimResult><![CDATA[/__VOID__/]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_15</instructionId>
+          <col>0</col>
+          <row>5</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[/__VOID__/]]></actual>
+                              <expected><![CDATA[
+drop T;
+create table T (C varchar, D varchar);
+insert into T as S values ("1", "2");
+select C, D from T;]]></expected>
+                              <evaluationMessage><![CDATA[
+drop T;
+create table T (C varchar, D varchar);
+insert into T as S values ("1", "2");
+select C, D from T;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_16, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_17, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_17</instructionId>
+          <col>1</col>
+          <row>5</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"1" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_18, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_19, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1");
+select C, D from T;]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_19>decisionTable_1_19</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_19</instructionId>
+          <col>0</col>
+          <row>6</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_19>decisionTable_1_19</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1");
+select C, D from T;]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1");
+select C, D from T;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_20, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_21, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_21</instructionId>
+          <col>1</col>
+          <row>6</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[Error: Not enough values for table
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_22, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_23, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T (A, C) values ("1", "2");
+select C, D from T;]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_23>decisionTable_1_23</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_23</instructionId>
+          <col>0</col>
+          <row>7</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_23>decisionTable_1_23</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T (A, C) values ("1", "2");
+select C, D from T;]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T (A, C) values ("1", "2");
+select C, D from T;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_24, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_25, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_25</instructionId>
+          <col>1</col>
+          <row>7</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[Error: Table T has no Value A
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_26, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_27, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C from T;]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_27>decisionTable_1_27</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_27</instructionId>
+          <col>0</col>
+          <row>8</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_27>decisionTable_1_27</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C from T;]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C from T;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_28, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_29, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_29</instructionId>
+          <col>1</col>
+          <row>8</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C
+"1"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_30, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_31, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = D;]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_31>decisionTable_1_31</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_31</instructionId>
+          <col>0</col>
+          <row>9</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_31>decisionTable_1_31</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = D;]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = D;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_32, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_33, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_33</instructionId>
+          <col>1</col>
+          <row>9</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"2" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_34, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_35, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C != D;]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_35>decisionTable_1_35</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_35</instructionId>
+          <col>0</col>
+          <row>10</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_35>decisionTable_1_35</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C != D;]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C != D;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_36, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_37, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_37</instructionId>
+          <col>1</col>
+          <row>10</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"1" "2"
+"2" "1"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_38, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_39, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C < D;]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_39>decisionTable_1_39</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_39</instructionId>
+          <col>0</col>
+          <row>11</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_39>decisionTable_1_39</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C < D;]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C < D;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_40, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_41, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_41</instructionId>
+          <col>1</col>
+          <row>11</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"1" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_42, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_43, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C > D;
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_43>decisionTable_1_43</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_43</instructionId>
+          <col>0</col>
+          <row>12</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_43>decisionTable_1_43</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C > D;
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C > D;
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_44, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_45, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_45</instructionId>
+          <col>1</col>
+          <row>12</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"2" "1"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_46, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_47, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C <= D;
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_47>decisionTable_1_47</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_47</instructionId>
+          <col>0</col>
+          <row>13</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_47>decisionTable_1_47</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C <= D;
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C <= D;
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_48, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_49, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_49</instructionId>
+          <col>1</col>
+          <row>13</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"1" "2"
+"2" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_50, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_51, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C >= D;
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_51>decisionTable_1_51</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_51</instructionId>
+          <col>0</col>
+          <row>14</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_51>decisionTable_1_51</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C >= D;
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C >= D;
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_52, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_53, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_53</instructionId>
+          <col>1</col>
+          <row>14</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"2" "2"
+"2" "1"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_54, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_55, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "2" and D = "3";
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_55>decisionTable_1_55</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_55</instructionId>
+          <col>0</col>
+          <row>15</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_55>decisionTable_1_55</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "2" and D = "3";
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "2" and D = "3";
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_56, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_57, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_57</instructionId>
+          <col>1</col>
+          <row>15</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[Empty result set.
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_58, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_59, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "1" or D = "1";
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_59>decisionTable_1_59</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_59</instructionId>
+          <col>0</col>
+          <row>16</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_59>decisionTable_1_59</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "1" or D = "1";
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "1" or D = "1";
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_60, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_61, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_61</instructionId>
+          <col>1</col>
+          <row>16</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"1" "2"
+"2" "1"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_62, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_63, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where X = "1";
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_63>decisionTable_1_63</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_63</instructionId>
+          <col>0</col>
+          <row>17</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_63>decisionTable_1_63</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where X = "1";
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where X = "1";
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_64, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_65, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_65</instructionId>
+          <col>1</col>
+          <row>17</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[Error: Unknown column name X
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_66, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_67, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+delete from T;
+insert into T values ("3", "4");
+select C, D from T;
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_67>decisionTable_1_67</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_67</instructionId>
+          <col>0</col>
+          <row>18</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_67>decisionTable_1_67</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+delete from T;
+insert into T values ("3", "4");
+select C, D from T;
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+delete from T;
+insert into T values ("3", "4");
+select C, D from T;
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_68, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_69, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_69</instructionId>
+          <col>1</col>
+          <row>18</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"3" "4"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_70, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_71, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+delete from T where C = "1";
+select C, D from T;
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_71>decisionTable_1_71</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_71</instructionId>
+          <col>0</col>
+          <row>19</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_71>decisionTable_1_71</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+delete from T where C = "1";
+select C, D from T;
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+delete from T where C = "1";
+select C, D from T;
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_72, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_73, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_73</instructionId>
+          <col>1</col>
+          <row>19</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"2" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_74, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_75, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "2" where D = "2";
+select C, D from T;
+]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_75>decisionTable_1_75</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_75</instructionId>
+          <col>0</col>
+          <row>20</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_75>decisionTable_1_75</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "2" where D = "2";
+select C, D from T;
+]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "2" where D = "2";
+select C, D from T;
+]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_76, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_77, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_77</instructionId>
+          <col>1</col>
+          <row>20</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"2" "2"
+"2" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_78, call, decisionTable_1, reset]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS reset[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_79, call, decisionTable_1, setInput, drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "3";
+select C, D from T;]]]></instruction>
+        <slimResult><![CDATA[Exception: <a href=#decisionTable_1_79>decisionTable_1_79</a>]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_79</instructionId>
+          <col>0</col>
+          <row>21</row>
+          <type>VoidReturnExpectation</type>
+                    <actual><![CDATA[Exception: <a href=#decisionTable_1_79>decisionTable_1_79</a>]]></actual>
+                              <expected><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "3";
+select C, D from T;]]></expected>
+                              <evaluationMessage><![CDATA[drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "3";
+select C, D from T;]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_80, call, decisionTable_1, execute]]]></instruction>
+        <slimResult><![CDATA[__EXCEPTION__:fitnesse.slim.SlimError: message:<<NO_METHOD_IN_CLASS execute[0] edu.rivfader.test.fixtures.RunQueries.>>
+	at fitnesse.slim.StatementExecutor.findMatchingMethod(StatementExecutor.java:246)
+	at fitnesse.slim.StatementExecutor.tryToInvokeMethod(StatementExecutor.java:218)
+	at fitnesse.slim.StatementExecutor.call(StatementExecutor.java:146)
+	at fitnesse.slim.Statement.callMethodAtIndex(Statement.java:97)
+	at fitnesse.slim.Statement.call(Statement.java:90)
+	at fitnesse.slim.Statement.execute(Statement.java:70)
+	at fitnesse.slim.ListExecutor.execute(ListExecutor.java:34)
+	at fitnesse.slim.SlimServer.executeInstructions(SlimServer.java:94)
+	at fitnesse.slim.SlimServer.processTheInstructions(SlimServer.java:79)
+	at fitnesse.slim.SlimServer.processOneSetOfInstructions(SlimServer.java:70)
+	at fitnesse.slim.SlimServer.tryProcessInstructions(SlimServer.java:56)
+	at fitnesse.slim.SlimServer.serve(SlimServer.java:32)
+	at fitnesse.socketservice.SocketService$ServerRunner.run(SocketService.java:88)
+	at java.lang.Thread.run(Thread.java:636)
+]]></slimResult>
+        
+      </instructionResult>
+            <instructionResult>
+        <instruction><![CDATA[[decisionTable_1_81, call, decisionTable_1, output]]]></instruction>
+        <slimResult><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></slimResult>
+                <expectation>
+          <status>ignored</status>
+          <instructionId>decisionTable_1_81</instructionId>
+          <col>1</col>
+          <row>21</row>
+          <type>ReturnedValueExpectation</type>
+                    <actual><![CDATA[Parse error: edu.rivfader.ParseException: Renaming not supported yet]]></actual>
+                              <expected><![CDATA[T.C T.D
+"3" "2"
+"3" "2"
+]]></expected>
+                              <evaluationMessage><![CDATA[error(Parse error: edu.rivfader.ParseException: Renaming not supported yet)]]></evaluationMessage>
+                  </expectation>
+        
+      </instructionResult>
+      
+    </instructions>
+    
+  </result>
+  
+  
+  <finalCounts>
+    <right>0</right>
+    <wrong>1</wrong>
+    <ignores>0</ignores>
+    <exceptions>0</exceptions>
+  </finalCounts>
+  
+</testResults>
+

@@ -1,0 +1,131 @@
+!3 !-slim-!
+|'''Date: '''|!-3:27:36 AM (CET) on Saturday, December 12, 2009-!|
+|'''Test Page: '''|.RivfaderAcceptance|
+|'''Command: '''|!-java -cp fitnesse.jar:/home/hk/code/rivfader/target/test-classes:/home/hk/code/rivfader/target/classes fitnesse.slim.SlimService  8086-!|
+|'''Exit code: '''|!-0-!|
+|'''Time elapsed: '''|!-0.831 seconds-!|
+----'''Standard Output:'''
+{{{edu.rivfader.ParseException: Renaming not supported yet
+}}}----'''Standard Error:'''
+{{{
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C, D from T;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values("2", "2");
+select T.C, T.D from T;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T (D, C) values ("2", "1");
+select C, D from T;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T as S values ("1", "2");
+select C, D from T;
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1");
+select C, D from T;
+drop T;
+create table T (C varchar, D varchar);
+insert into T (A, C) values ("1", "2");
+select C, D from T;
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+select C from T;
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = D;
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C != D;
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C < D;
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C > D;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C <= D;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C >= D;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "2" and D = "3";
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where C = "1" or D = "1";
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+select C, D from T where X = "1";
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+insert into T values ("2", "1");
+delete from T;
+insert into T values ("3", "4");
+select C, D from T;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+delete from T where C = "1";
+select C, D from T;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "2" where D = "2";
+select C, D from T;
+
+drop T;
+create table T (C varchar, D varchar);
+insert into T values ("1", "2");
+insert into T values ("2", "2");
+update T set C = "3";
+select C, D from T;
+}}}
