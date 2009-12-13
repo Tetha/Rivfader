@@ -135,3 +135,18 @@ insert into T values ("2", "1");
 select C, D from T where X = "1";
 -!|!-Error: Unknown column name X
 -!|
+|!-drop T;
+drop S;
+create table T(C varchar);
+create table U(D varchar);
+insert into T values ("1");
+insert into T values ("2");
+insert into U values ("1");
+insert into U values ("2");
+select C, D from T, U;
+-!|!-T.C U.D
+"1" "1"
+"1" "2"
+"2" "1"
+"2" "2"
+-!|
