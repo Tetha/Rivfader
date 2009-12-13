@@ -21,7 +21,6 @@ import static org.powermock.api.easymock.PowerMock.verifyAll;
 
 @RunWith(PowerMockRunner.class)
 public class QualifiedColumnTest {
-    @Ignore @Test public void gotNameNullFails() {}
     @Test public void valueIsRetrieved() {
         String ev; // expected value
         QualifiedColumn s; // subject

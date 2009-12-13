@@ -52,7 +52,7 @@ public class LoadTable implements ITable {
     }
 
     @Override
-    public String getName() { // TODO: test
+    public String getName() {
         return tablename;
     }
 

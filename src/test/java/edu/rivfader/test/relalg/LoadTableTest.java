@@ -310,10 +310,6 @@ public class LoadTableTest {
 
     }
 
-    @Ignore @Test public void appendRowFailsForNullRow() {} // TODO
-    @Ignore @Test public void appendRowFailsForMultipleTableNames() {} // TODO
-    @Ignore @Test public void appendRowFailsForWrongTableName() {} // TODO
-
     @Test public void appendRowIsDelegated()
         throws IOException {
         String tn; // table name

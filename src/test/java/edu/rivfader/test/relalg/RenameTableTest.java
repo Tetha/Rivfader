@@ -50,8 +50,6 @@ public class RenameTableTest {
         s = new RenameTable(dt, null);
     }
 
-    @Ignore @Test public void tableNameIsStored() {}
-
     @Test public void columnNamesTranslated() {
         String nn; // new table name
         String cn; // column name
@@ -242,7 +240,6 @@ public class RenameTableTest {
         verifyAll();
     }
 
-    @Ignore @Test public void storeRowFailsForWrongTableName() {}
     @Test public void storeRowTranslated() {
         String on; // old name
         String nn; // new name
