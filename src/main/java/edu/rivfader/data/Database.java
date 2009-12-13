@@ -48,7 +48,7 @@ public class Database {
         baseFolder = new File(databaseFolder);
     }
 
-    private class AppendingObjectOutputStream extends ObjectOutputStream {
+    private static class AppendingObjectOutputStream extends ObjectOutputStream {
         public AppendingObjectOutputStream(final OutputStream os)
             throws IOException {
             super(os);
