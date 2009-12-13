@@ -26,51 +26,44 @@ public class Database {
      * contains the suffix for all table variables.
      */
     private static final String TABLE_SUFFIX = ".table";
+
     /**
      * contains the name of the catalogue file.
      */
+
     private static final String CATALOGUE_FILE = "cataloge";
     /**
      * contains the base name of the database.
      */
+
     private final File baseFolder;
     /**
      * contains the table currently open for output, if outBuffer != null.
      */
+
     private String tableOpenForOutput;
+
     /**
      * contains a stream into the currently open output table.
      */
     private ObjectOutputStream outBuffer;
+
     /**
      * contains the name of the outbuffer file.
      */
     private File outBufferFile;
+
     public Database(final String databaseFolder) {
         baseFolder = new File(databaseFolder);
     }
 
     /**
-     * Implements an object output stream that outputs no
-     * header (which makes it possible to append to another object
-     * output stream that way)
-     * @author harald
+     * computes the file name for a table.
+     * @param tableName the table to compute the name for.
+     * @return the name of the table file.
      */
-    private static class AppendingObjectOutputStream
-            extends ObjectOutputStream {
-        /**
-         * constructs a new appending object output stream.
-         * @param es a place to write to
-         */
-        public AppendingObjectOutputStream(final OutputStream os)
-            throws IOException {
-            super(os);
-        }
-
-        @Override
-        protected void writeStreamHeader() {
-            // nothing
-        }
+    private File tableFilename(String tableName) {
+        return new File(baseFolder, tableName+TABLE_SUFFIX);
     }
 
     /**
@@ -81,9 +74,42 @@ public class Database {
     public Iterator<Row> loadTable(final String tableName) throws IOException {
         ObjectInputStream input = new ObjectInputStream(
                                     new FileInputStream(
-                                        new File(baseFolder,
-                                            tableName+TABLE_SUFFIX)));
+                                        tableFilename(tableName)));
         return new RowReaderIterator(input);
+    }
+
+    /**
+     * stores the catalogue.
+     * @param catalogue the catalogue to store.
+     */
+    private void storeCatalogue(Map<String, List<String>> catalogue)
+        throws IOException{
+        ObjectOutputStream output = new ObjectOutputStream(
+                                        new FileOutputStream(
+                                            new File(baseFolder,
+                                                     CATALOGUE_FILE)));
+        output.writeObject(catalogue);
+        output.close();
+    }
+
+    /**
+     * reads the catalogue.
+     * @return the catalogue.
+     */
+    private Map<String, List<String>> readCatalogue()
+        throws IOException {
+        Map<String, List<String>> catalogue;
+        ObjectInputStream input = new ObjectInputStream(
+                                    new FileInputStream(
+                                        new File(baseFolder,
+                                                 CATALOGUE_FILE)));
+        try {
+            catalogue = (Map<String, List<String>>) input.readObject();
+        } catch(ClassNotFoundException e) {
+            throw new IOException("catalogue file borked", e);
+        }
+        input.close();
+        return catalogue;
     }
 
     /**
@@ -98,41 +124,19 @@ public class Database {
             if(!baseFolder.mkdir()) {
                 throw new IOException("Cannot create database folder");
             }
-            Map<String, List<String>> cataloge =
+            Map<String, List<String>> catalogue =
                 new HashMap<String, List<String>>();
-            ObjectOutputStream output = new ObjectOutputStream(
-                                            new FileOutputStream(
-                                                new File(baseFolder,
-                                                         CATALOGUE_FILE)));
-            output.writeObject(cataloge);
-            output.close();
+            storeCatalogue(catalogue);
         }
 
-        Map<String, List<String>> catalog;
-        ObjectInputStream input = new ObjectInputStream(
-                                    new FileInputStream(
-                                        new File(baseFolder,
-                                                 CATALOGUE_FILE)));
-        try {
-            catalog = (Map<String, List<String>>) input.readObject();
-        } catch(ClassNotFoundException e) {
-            throw new IOException("catalogue file borked", e);
-        }
-        input.close();
+        Map<String, List<String>> catalogue = readCatalogue();
+        catalogue.put(tableName, columnNames);
+        storeCatalogue(catalogue);
 
-        catalog.put(tableName, columnNames);
-
-        ObjectOutputStream output = new ObjectOutputStream(
-                                    new FileOutputStream(
-                                        new File(baseFolder, CATALOGUE_FILE)));
-        output.writeObject(catalog);
-        output.close();
-
-        File tableFile = new File(baseFolder, tableName+TABLE_SUFFIX);
+        File tableFile = tableFilename(tableName);
         tableFile.createNewFile();
-        output = new ObjectOutputStream(
-                                        new FileOutputStream(
-                                            tableFile));
+        ObjectOutputStream output = new ObjectOutputStream(
+                                        new FileOutputStream(tableFile));
         output.close();
     }
 
@@ -142,7 +146,7 @@ public class Database {
      */
     public void dropTable(final String tableName)
         throws IOException {
-        File doomedFile = new File(baseFolder, tableName+TABLE_SUFFIX);
+        File doomedFile = tableFilename(tableName);
         if(!doomedFile.exists()) {
             return;
         }
@@ -150,23 +154,9 @@ public class Database {
             throw new IOException("Table " + tableName
                                    + " could not be deleted");
         }
-        Map<String, List<String>> catalogue;
-        ObjectInputStream input = new ObjectInputStream(
-                                    new FileInputStream(
-                                        new File(baseFolder, CATALOGUE_FILE)));
-        try {
-            catalogue = (Map<String, List<String>>) input.readObject();
-        } catch(ClassNotFoundException e) {
-            throw new IOException("catalogue file broken", e);
-        }
-        input.close();
+        Map<String, List<String>> catalogue = readCatalogue();
         catalogue.remove(tableName);
-        ObjectOutputStream output = new ObjectOutputStream(
-                                        new FileOutputStream(
-                                            new File(baseFolder,
-                                                CATALOGUE_FILE)));
-        output.writeObject(catalogue);
-        output.close();
+        storeCatalogue(catalogue);
     }
 
     /**
@@ -212,8 +202,7 @@ public class Database {
             ObjectInputStream input = new ObjectInputStream(
                             new FileInputStream(outBufferFile));
             ObjectOutputStream output = new ObjectOutputStream(
-                            new FileOutputStream(
-                                new File(baseFolder, tableName+TABLE_SUFFIX)));
+                            new FileOutputStream(tableFilename(tableName)));
             while(true) {
                 try {
                     output.writeObject(input.readObject());
@@ -238,8 +227,7 @@ public class Database {
         throws IOException{
         ObjectOutputStream output = new AppendingObjectOutputStream(
                                         new FileOutputStream(
-                                            new File(baseFolder,
-                                                     tableName+TABLE_SUFFIX),
+                                            tableFilename(tableName),
                                             true));
         output.writeObject(row);
         output.close();
@@ -254,14 +242,8 @@ public class Database {
         ObjectInputStream input = new ObjectInputStream(
                         new FileInputStream(
                             new File(baseFolder, CATALOGUE_FILE)));
-        Map<String, List<String>> catalog;
-        try {
-            catalog = (Map<String, List<String>>) input.readObject();
-        } catch (ClassNotFoundException e) {
-            throw new IOException("catalogue file borked", e);
-        }
-        input.close();
-        return catalog.get(tableName);
+        Map<String, List<String>> catalogue = readCatalogue();
+        return catalogue.get(tableName);
     }
 
     /**
@@ -316,6 +298,29 @@ public class Database {
         @Override
         public void remove() {
             throw new UnsupportedOperationException();
+        }
+    }
+
+    /**
+     * Implements an object output stream that outputs no
+     * header (which makes it possible to append to another object
+     * output stream that way)
+     * @author harald
+     */
+    private static class AppendingObjectOutputStream
+            extends ObjectOutputStream {
+        /**
+         * constructs a new appending object output stream.
+         * @param es a place to write to
+         */
+        public AppendingObjectOutputStream(final OutputStream os)
+            throws IOException {
+            super(os);
+        }
+
+        @Override
+        protected void writeStreamHeader() {
+            // nothing
         }
     }
 }
