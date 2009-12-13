@@ -1,5 +1,9 @@
 package edu.rivfader.relalg;
 
+/**
+ * This is a column name, qualified by the table name.
+ * @author harald
+ */
 public class QualifiedColumnName implements IQualifiedColumnName {
     /**
      * contains the table name.
@@ -7,10 +11,15 @@ public class QualifiedColumnName implements IQualifiedColumnName {
     private String table;
 
     /**
-     * contains the column name
+     * contains the column name.
      */
     private String column;
 
+    /**
+     * constructs a new name.
+     * @param pTable the name of the table
+     * @param pColumn the name of the column
+     */
     public QualifiedColumnName(String pTable, String pColumn) {
         if (pTable == null) {
             throw new IllegalArgumentException("pTable == null");

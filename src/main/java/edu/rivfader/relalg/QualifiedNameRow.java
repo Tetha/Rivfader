@@ -11,9 +11,20 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+ * this implements the IQualifiedNameRow.
+ * @author harald
+ */
 public class QualifiedNameRow implements IQualifiedNameRow {
+    /**
+     * contains the name to value mapping.
+     */
     private Map<IQualifiedColumnName, String> values;
 
+    /**
+     * constructs a new QualifiedNameRow with the given column names.
+     * @param columnNames the column names to use
+     */
     public QualifiedNameRow(IQualifiedColumnName... columnNames) {
         values = new HashMap<IQualifiedColumnName, String>();
         for (IQualifiedColumnName cn : columnNames) {
@@ -21,6 +32,10 @@ public class QualifiedNameRow implements IQualifiedNameRow {
         }
     }
 
+    /**
+     * constructs a new qualified name row from the column names.
+     * @param column names the colum names to use
+     */
     public QualifiedNameRow(Collection<IQualifiedColumnName> columnNames) {
         values = new HashMap<IQualifiedColumnName, String>();
         for(IQualifiedColumnName cn : columnNames) {
@@ -28,12 +43,21 @@ public class QualifiedNameRow implements IQualifiedNameRow {
         }
     }
 
+    /**
+     * creates the join of two qualified name rows.
+     * @param first the first row to join
+     * @param second the second row to join
+     */
     public QualifiedNameRow(IQualifiedNameRow first, IQualifiedNameRow second) {
         values = new HashMap<IQualifiedColumnName, String>();
         copyData(first);
         copyData(second);
     }
 
+    /**
+     * copies the data from the source row into this row.
+     * @param source where data comes from
+     */
     private void copyData(IQualifiedNameRow source) {
         for(IQualifiedColumnName cn : source.columns()) {
             values.put(cn, source.getData(cn));

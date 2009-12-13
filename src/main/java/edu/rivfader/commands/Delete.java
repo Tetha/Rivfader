@@ -15,7 +15,7 @@ import java.util.Iterator;
  */
 public class Delete implements ICommand {
     /**
-     * contains the name of the table to delete from
+     * contains the name of the table to delete from.
      */
     private ITable table;
 
@@ -25,7 +25,7 @@ public class Delete implements ICommand {
     private IRowSelector predicate;
 
     /**
-     * constructs a new delete-node
+     * constructs a new delete-node.
      * @param pTableName the name of the table to delete from
      * @param pPredicate the predicate when to delete
      */

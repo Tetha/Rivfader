@@ -6,9 +6,26 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
 
+/**
+ * This is a decorator that renames a table.
+ * @author harald
+ */
 public class RenameTable implements ITable {
+    /**
+     * contains the table to rename.
+     */
     private ITable renamedTable;
+
+    /**
+     * contains the new name of the table
+     */
     private String newName;
+
+    /**
+     * creates a new renaming table.
+     * @param pRenamedTable the table to rename
+     * @param pNewName the new table name
+     */
     public RenameTable(ITable pRenamedTable, String pNewName) {
         if (pRenamedTable == null) {
             throw new IllegalArgumentException("pRenamedTable is null");
@@ -21,10 +38,12 @@ public class RenameTable implements ITable {
         newName = pNewName;
     }
 
+    @Override
     public String getName() {
         return newName;
     }
 
+    @Override
     public List<IQualifiedColumnName> getColumnNames() {
         List<IQualifiedColumnName> o; // output
 
@@ -37,14 +56,17 @@ public class RenameTable implements ITable {
         return o;
     }
 
+    @Override
     public void setDatabase(Database context) {
         renamedTable.setDatabase(context);
     }
 
+    @Override
     public void openForWriting() {
         renamedTable.openForWriting();
     }
 
+    @Override
     public Iterator<IQualifiedNameRow> load() {
         return new RenamingIterator(renamedTable.load());
     }
@@ -95,6 +117,7 @@ public class RenameTable implements ITable {
         return new RenamingIterator(renamedTable.evaluate(context));
     }
 
+    @Override
     public void storeRow(IQualifiedNameRow newRow) {
         IQualifiedNameRow o; // output
         List<IQualifiedColumnName> rcns; // renamed column names
@@ -115,6 +138,7 @@ public class RenameTable implements ITable {
         renamedTable.storeRow(o);
     }
 
+    @Override
     public void appendRow(IQualifiedNameRow newRow) {
         IQualifiedNameRow o; // output
         List<IQualifiedColumnName> rcns; // renamed column names
@@ -135,6 +159,7 @@ public class RenameTable implements ITable {
         renamedTable.appendRow(o);
     }
 
+    @Override
     public void close() {
         renamedTable.close();
     }

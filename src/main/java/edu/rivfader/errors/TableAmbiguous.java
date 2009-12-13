@@ -8,7 +8,7 @@ import java.util.Collection;
  */
 public class TableAmbiguous extends RuntimeException {
     /**
-     * constructs a new eror
+     * constructs a new error.
      * @param tableNames the collectin of names.
      */
     public TableAmbiguous(Collection<String> tableNames) {

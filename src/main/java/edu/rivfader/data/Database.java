@@ -48,12 +48,24 @@ public class Database {
         baseFolder = new File(databaseFolder);
     }
 
-    private static class AppendingObjectOutputStream extends ObjectOutputStream {
+    /**
+     * Implements an object output stream that outputs no
+     * header (which makes it possible to append to another object
+     * output stream that way)
+     * @author harald
+     */
+    private static class AppendingObjectOutputStream
+            extends ObjectOutputStream {
+        /**
+         * constructs a new appending object output stream.
+         * @param es a place to write to
+         */
         public AppendingObjectOutputStream(final OutputStream os)
             throws IOException {
             super(os);
         }
 
+        @Override
         protected void writeStreamHeader() {
             // nothing
         }

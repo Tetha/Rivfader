@@ -2,6 +2,11 @@ package edu.rivfader.relalg;
 
 import java.util.Collection;
 
+/**
+ * an IQualifiedNameRow is a Row, but the column names of the
+ * row are fully qualified (opposed to the row, where they are
+ * unqualified.
+ */
 public interface IQualifiedNameRow {
     /**
      * returns all columns of this row.

@@ -158,20 +158,27 @@ public class LoadTable implements ITable {
         return load();
     }
 
+    /**
+     * this iterator turns all rows from the source into IQualifiedNameRows.
+     * @author harald
+     */
     private class WrappingIterator implements Iterator<IQualifiedNameRow> {
         private Iterator<Row> source;
         public WrappingIterator(Iterator<Row> pSource) {
             source = pSource;
         }
 
+        @Override
         public boolean hasNext() {
             return source.hasNext();
         }
 
+        @Override
         public IQualifiedNameRow next() {
             return QualifiedNameRow.fromRow(tablename, source.next());
         }
 
+        @Override
         public void remove() {
             source.remove();
         }

@@ -6,6 +6,7 @@ import java.util.Collection;
 /**
  * This is a single column projection, which is used to implement
  * entire table projections by using multiple single column projections.
+ * @author harald
  */
 public interface IColumnProjection {
     /**
