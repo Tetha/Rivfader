@@ -92,6 +92,9 @@ public class QualifiedNameRow implements IQualifiedNameRow {
         if (column == null) {
             throw new IllegalArgumentException("column == null");
         }
+        if (!values.containsKey(column)) {
+            throw new UnknownColumnName(column.toString());
+        }
         return values.get(column);
     }
 
@@ -110,7 +113,7 @@ public class QualifiedNameRow implements IQualifiedNameRow {
         values.put(column, newData);
     }
 
-    @Override //XXX: TEST
+    @Override
     public boolean equals(Object other) {
         if(!(other instanceof QualifiedNameRow)) {
             return false;
@@ -120,11 +123,24 @@ public class QualifiedNameRow implements IQualifiedNameRow {
         return values.equals(castedOther.values);
     }
 
-    @Override //XXX: implement
+    @Override
     public int hashCode() {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder o = new StringBuilder();
+        o.append("QualifiedNameRow(");
+        for (IQualifiedColumnName qcn : values.keySet()) {
+            o.append(qcn.toString());
+            o.append(" -> ");
+            o.append(values.get(qcn));
+            o.append(" ");
+        }
+        o.append(")");
+        return o.toString();
+    }
     /**
      * constructs a QualifiedNameRow with the same columns and data as
      * the source row.
@@ -178,4 +194,5 @@ public class QualifiedNameRow implements IQualifiedNameRow {
         }
         return r;
     }
+
 }

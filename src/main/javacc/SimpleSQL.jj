@@ -312,7 +312,6 @@ PrintQuery Query():
     [ predicate = Where()]
     {
         query = null;
-        // TODO
         for(ITable table : tables) {
             if(query == null) {
                 query = table;
@@ -325,10 +324,10 @@ PrintQuery Query():
             throw new ParseException("No tables to load.");
         }
 
-        query = new Projection(query, items);
         if(predicate != null) {
             query = new Selection(predicate, query);
         }
+        query = new Projection(query, items);
         return new PrintQuery(query);
     }
 }
@@ -486,7 +485,6 @@ IValueProvider PrimaryExpression():
                         new QualifiedColumnName(tableName.image,
                                                 columnName.image));
         }
-        return new Column(tableName.image);
     }
  | literal = LiteralExpression() { return new Literal(literal); }
 

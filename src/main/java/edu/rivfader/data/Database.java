@@ -239,10 +239,8 @@ public class Database {
      */
     public List<String> getColumnNames(final String tableName)
         throws IOException {
-        ObjectInputStream input = new ObjectInputStream(
-                        new FileInputStream(
-                            new File(baseFolder, CATALOGUE_FILE)));
         Map<String, List<String>> catalogue = readCatalogue();
+        System.err.println(catalogue.get(tableName).toString());
         return catalogue.get(tableName);
     }
 

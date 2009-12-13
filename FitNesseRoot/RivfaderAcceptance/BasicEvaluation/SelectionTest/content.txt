@@ -158,3 +158,10 @@ select C, D from T where T.D = "1";
 -!|!-T.C T.D
 "1" "1"
 -!|
+|!-drop T;
+create table T(C varchar, D varchar);
+insert into T values ("1", "2");
+select C from T where D = "2");
+-!|!-T.C
+"1"
+-!|
