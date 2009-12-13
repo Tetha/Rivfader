@@ -150,3 +150,11 @@ select C, D from T, U;
 "2" "1"
 "2" "2"
 -!|
+|!-drop T;
+create table T(C varchar, D varchar);
+insert into T values("1", "2");
+insert into T values("1", "1");
+select C, D from T where T.D = "1";
+-!|!-T.C T.D
+"1" "1"
+-!|

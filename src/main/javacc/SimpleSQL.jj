@@ -479,8 +479,12 @@ IValueProvider PrimaryExpression():
     LOOKAHEAD(3)
     tableName = <IDENTIFIER> ["." columnName = <IDENTIFIER>]
     {
-        if(columnName != null) {
-            throw new ParseException("Kann noch keine Spalten nach Tabelle auswaehlen");
+        if (columnName == null) {
+            return new Column(tableName.image);
+        } else {
+            return new QualifiedColumn(
+                        new QualifiedColumnName(tableName.image,
+                                                columnName.image));
         }
         return new Column(tableName.image);
     }
