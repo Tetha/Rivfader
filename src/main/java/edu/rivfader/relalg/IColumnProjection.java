@@ -1,7 +1,5 @@
 package edu.rivfader.relalg;
 
-import edu.rivfader.relalg.IQualifiedNameRow;
-
 import java.util.Collection;
 /**
  * This is a single column projection, which is used to implement

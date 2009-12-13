@@ -2,7 +2,6 @@ package edu.rivfader.relalg;
 
 import edu.rivfader.data.Row;
 import edu.rivfader.data.Database;
-import edu.rivfader.relalg.IQualifiedNameRow;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Iterator;
