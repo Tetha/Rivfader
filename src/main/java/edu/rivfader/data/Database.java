@@ -1,5 +1,7 @@
 package edu.rivfader.data;
 
+import edu.rivfader.errors.ColumnLoadError;
+import edu.rivfader.errors.ColumnWriteError;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -291,11 +293,11 @@ public class Database {
             try {
                 nextRow = (Row) input.readObject();
             } catch(ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                throw new ColumnLoadError("Table file corrupted");
             } catch(EOFException e) {
                 return false;
             } catch(IOException e) {
-                throw new RuntimeException(e);
+                throw new ColumnLoadError(e);
             }
             nextRowValid = true;
             return true;

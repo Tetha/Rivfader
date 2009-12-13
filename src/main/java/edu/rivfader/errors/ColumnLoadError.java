@@ -9,6 +9,13 @@ import java.io.IOException;
  */
 public class ColumnLoadError extends RuntimeException {
     /**
+     * constructs a new error.
+     * @param cause the reason why the write failed
+     */
+    public ColumnLoadError(String cause) {
+        super(cause);
+    }
+    /**
      * constructs a new exception.
      * @param cause what went wrong.
      */

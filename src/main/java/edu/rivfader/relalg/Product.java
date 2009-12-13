@@ -1,7 +1,6 @@
 package edu.rivfader.relalg;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.data.Row;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 

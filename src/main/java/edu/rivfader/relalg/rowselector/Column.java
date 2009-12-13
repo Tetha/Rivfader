@@ -2,7 +2,6 @@ package edu.rivfader.relalg.rowselector;
 
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedColumnName;
-import edu.rivfader.errors.UnknownColumnName;
 
 /**
  * This class implements the use of column values in comparisions.

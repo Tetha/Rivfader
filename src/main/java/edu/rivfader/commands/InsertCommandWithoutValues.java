@@ -1,7 +1,6 @@
 package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.data.Row;
 import edu.rivfader.relalg.ITable;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.QualifiedNameRow;

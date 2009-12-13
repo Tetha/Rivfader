@@ -1,7 +1,6 @@
 package edu.rivfader.relalg;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.data.Row;
 import java.util.Iterator;
 /**
  * This is the common interface for all relational algebra tree members.

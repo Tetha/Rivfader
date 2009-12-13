@@ -1,13 +1,9 @@
 package edu.rivfader.relalg;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.data.Row;
 
-import java.util.List;
-import java.util.LinkedList;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Iterator;
 import java.util.Collection;
 
