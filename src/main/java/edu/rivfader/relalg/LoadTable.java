@@ -53,6 +53,11 @@ public class LoadTable implements ITable {
     }
 
     @Override
+    public String getName() { // TODO: test
+        return tablename;
+    }
+
+    @Override
     public void setDatabase(Database pContext) {
         context = pContext;
     }

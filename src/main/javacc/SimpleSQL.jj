@@ -387,15 +387,16 @@ ITable Table():
 {
     String tableName;
     String rename = null;
+    ITable result;
 }
 {
     tableName = Name() [<AS> rename = Name()]
     {
-        if (rename == null) {
-            return new LoadTable(tableName);
-        } else {
-            throw new ParseException("Renaming not supported yet");
+        result = new LoadTable(tableName);
+        if (rename != null) {
+            result = new RenameTable(result, rename);
         }
+        return result;
     }
 }
 
@@ -525,7 +526,7 @@ UpdateTable Update():
     }
 }
 
-Map<String, String> AssignExpressions():
+Map<String, String> AssignExpressions(): // TODO: make this some interface, too
 {
     String[] subResult;
     Map<String, String> assignments = new HashMap<String, String>();
@@ -541,7 +542,7 @@ Map<String, String> AssignExpressions():
     { return assignments; }
 }
 
-String[] AssignExpression():
+String[] AssignExpression(): // TODO: make this some interface, too
 {
     String[] result = {null, null};
 }

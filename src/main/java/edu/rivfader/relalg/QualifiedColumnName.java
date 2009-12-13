@@ -63,4 +63,9 @@ public class QualifiedColumnName implements IQualifiedColumnName {
             return tno;
         }
     }
+
+    @Override //TODO: test
+    public String toString() {
+        return table + "." + column;
+    }
 }

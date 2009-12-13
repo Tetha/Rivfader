@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public interface ITable extends IRelAlgExpr {
+    String getName();
     List<IQualifiedColumnName> getColumnNames();
     void setDatabase(Database context);
     void openForWriting();

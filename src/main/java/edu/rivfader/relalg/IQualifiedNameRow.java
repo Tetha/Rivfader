@@ -7,7 +7,7 @@ public interface IQualifiedNameRow {
      * returns all columns of this row.
      * @return a collection of all columns.
      */
-    Collection<IQualifiedColumnName> columns();
+    Collection<IQualifiedColumnName> columns(); // TODO: inconsistent getter name
 
     /**
      * resolves a string to a name, raieses errors on ambiguities.
