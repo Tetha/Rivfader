@@ -39,26 +39,50 @@ public class Projection implements IRelAlgExpr {
         selectedFields = pSelectedFields;
     }
 
+    /**
+     * returns the projected sub expression.
+     * @return the projected sub expression
+     */
+    public IRelAlgExpr getSubExpression() {
+        return subExpression;
+    }
+
+    /**
+     * gets the column projection set.
+     */
+    public Collection<IColumnProjection> getSelectedFields() {
+        return selectedFields;
+    }
+
     @Override
     public Iterator<IQualifiedNameRow> evaluate(final Database context) {
-        return new ProjectionIterator(subExpression.evaluate(context));
+        return new ProjectionIterator(subExpression.evaluate(context),
+                                      selectedFields);
     }
 
     /**
      * This iterator projects the column names in the row set.
      * @author harald.
      */
-    private class ProjectionIterator implements Iterator<IQualifiedNameRow> {
+    private static class ProjectionIterator
+            implements Iterator<IQualifiedNameRow> {
         /**
          * contains the lazy row set to project.
          */
         private Iterator<IQualifiedNameRow> source;
 
         /**
+         * contains the set of column projections happening.
+         */
+        private Collection<IColumnProjection> selectedFields;
+
+        /**
          * cosntructs a new lazy row set from a lazy row set.
          * @param pSource the source row set to project
          */
-        public ProjectionIterator(final Iterator<IQualifiedNameRow> pSource) {
+        public ProjectionIterator(final Iterator<IQualifiedNameRow> pSource,
+                        final Collection<IColumnProjection> pSelectedFields) {
+            selectedFields = pSelectedFields;
             source = pSource;
         }
 
