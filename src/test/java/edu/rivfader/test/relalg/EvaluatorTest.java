@@ -12,6 +12,8 @@ import edu.rivfader.relalg.QualifiedColumnName;
 import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.Projection;
 import edu.rivfader.relalg.IColumnProjection;
+import edu.rivfader.relalg.Selection;
+import edu.rivfader.relalg.rowselector.IRowSelector;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -137,5 +139,40 @@ public class EvaluatorTest {
         verifyAll();
     }
 
+    @Test
+    public void transformSelection() {
+        Database database = createMock(Database.class);
+        IQualifiedNameRow first = createMock(IQualifiedNameRow.class);
+        IQualifiedNameRow second = createMock(IQualifiedNameRow.class);
+        IQualifiedNameRow third = createMock(IQualifiedNameRow.class);
 
+        IRowSelector predicate = createMock(IRowSelector.class);
+        expect(predicate.acceptsRow(first)).andReturn(true);
+        expect(predicate.acceptsRow(second)).andReturn(false);
+        expect(predicate.acceptsRow(third)).andReturn(true);
+
+        List<IQualifiedNameRow> previousRows =
+            new LinkedList<IQualifiedNameRow>();
+        previousRows.add(first);
+        previousRows.add(second);
+        previousRows.add(third);
+        IRelAlgExpr subExpression = new StubResult(previousRows);
+
+        replayAll();
+        Selection input = new Selection(predicate, subExpression);
+        Evaluator subject = new Evaluator(database);
+        Iterator<IQualifiedNameRow> selectedRows = subject.transform(input);
+        List<IQualifiedNameRow> gotRows = new LinkedList<IQualifiedNameRow>();
+        while(selectedRows.hasNext()) {
+            gotRows.add(selectedRows.next());
+        }
+
+        List<IQualifiedNameRow> expectedRows =
+            new LinkedList<IQualifiedNameRow>();
+        expectedRows.add(first);
+        expectedRows.add(third);
+
+        assertEquals(expectedRows, gotRows);
+        verifyAll();
+    }
 }
