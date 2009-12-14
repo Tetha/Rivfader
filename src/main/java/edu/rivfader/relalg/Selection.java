@@ -31,6 +31,22 @@ public class Selection implements IRelAlgExpr {
         subExpression = pSubExpression;
     }
 
+    /**
+     * returns the source expression of the selection.
+     * @return the subexpression
+     */
+    public IRelAlgExpr getSubExpression() {
+        return subExpression;
+    }
+
+    /**
+     * returns the predicate selecting rows.
+     * @return the row predicate.
+     */
+    public IRowSelector getPredicate() {
+        return predicate;
+    }
+
     @Override
     public Iterator<IQualifiedNameRow> evaluate(final Database context) {
         return new SelectionIterator(predicate,
