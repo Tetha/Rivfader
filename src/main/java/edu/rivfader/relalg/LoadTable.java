@@ -130,7 +130,7 @@ public class LoadTable implements ITable {
         }
     }
 
-    @Override
+
     public void close() {
         requireTableIsOpen();
         try {
@@ -145,7 +145,8 @@ public class LoadTable implements ITable {
         requireContextIsSet();
 
         try {
-            return new WrappingIterator(context.loadTable(tablename));
+            return new WrappingIterator(context.loadTable(tablename),
+                                        tablename);
         } catch (IOException e) {
             throw new RuntimeException("loading the table did not work", e);
         }
@@ -161,10 +162,13 @@ public class LoadTable implements ITable {
      * this iterator turns all rows from the source into IQualifiedNameRows.
      * @author harald
      */
-    private class WrappingIterator implements Iterator<IQualifiedNameRow> {
+    private static class WrappingIterator
+            implements Iterator<IQualifiedNameRow> {
         private Iterator<Row> source;
-        public WrappingIterator(Iterator<Row> pSource) {
+        private String tablename;
+        public WrappingIterator(Iterator<Row> pSource, String pTablename) {
             source = pSource;
+            tablename = pTablename;
         }
 
         @Override
