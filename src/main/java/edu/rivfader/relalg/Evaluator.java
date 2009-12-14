@@ -114,7 +114,7 @@ public class Evaluator
 
         @Override
         public boolean hasNext() {
-            return rightIterator.hasNext() || leftIterator.hasNext();
+            return leftIterator.hasNext() || rightIterator.hasNext();
         }
 
         @Override
