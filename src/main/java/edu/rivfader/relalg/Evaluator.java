@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.io.IOException;
 
@@ -55,7 +57,8 @@ public class Evaluator
 
     @Override
     public Iterator<IQualifiedNameRow> transformRenameTable(RenameTable r){
-        return null;
+        return new RenameTableIterator(r.evaluate(context),
+                                       r.getName());
     }
 
     /**
@@ -278,6 +281,57 @@ public class Evaluator
         @Override
         public IQualifiedNameRow next() {
             return QualifiedNameRow.fromRow(tablename, source.next());
+        }
+
+        @Override
+        public void remove() {
+            source.remove();
+        }
+    }
+
+    /**
+     * renames a table in the result set.
+     * @author harald
+     */
+    private static class RenameTableIterator
+            implements Iterator<IQualifiedNameRow> {
+        private Iterator<IQualifiedNameRow> source;
+        private String newName;
+
+        public RenameTableIterator(Iterator<IQualifiedNameRow> pSource,
+                                String pNewName) {
+            newName = pNewName;
+            source = pSource;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return source.hasNext();
+        }
+
+        @Override
+        public IQualifiedNameRow next() {
+            IQualifiedNameRow i; // input
+            IQualifiedNameRow o; // output
+            List<IQualifiedColumnName> rcns; // renamed column names
+
+            i = source.next();
+
+            rcns = new LinkedList<IQualifiedColumnName>();
+            // renamed column name
+            for (IQualifiedColumnName rcn : i.columns()) {
+                rcns.add(new QualifiedColumnName(newName, rcn.getColumn()));
+            }
+
+            o = new QualifiedNameRow(rcns);
+
+            // renamed column name
+            for(IQualifiedColumnName rcn : i.columns()) {
+                o.setData(new QualifiedColumnName(newName, rcn.getColumn()),
+                          i.getData(rcn));
+            }
+
+            return o;
         }
 
         @Override

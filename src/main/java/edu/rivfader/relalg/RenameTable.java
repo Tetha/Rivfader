@@ -68,13 +68,22 @@ public class RenameTable implements ITable {
 
     @Override
     public Iterator<IQualifiedNameRow> load() {
-        return new RenamingIterator(renamedTable.load());
+        return new RenamingIterator(renamedTable.load(), newName);
     }
 
-    private class RenamingIterator implements Iterator<IQualifiedNameRow> {
-        private Iterator<IQualifiedNameRow> source;
+    public Iterator<IQualifiedNameRow> evaluate(Database context) {
+        return new RenamingIterator(renamedTable.evaluate(context),
+                                    newName);
+    }
 
-        public RenamingIterator(Iterator<IQualifiedNameRow> pSource) {
+    private static class RenamingIterator
+            implements Iterator<IQualifiedNameRow> {
+        private Iterator<IQualifiedNameRow> source;
+        private String newName;
+
+        public RenamingIterator(Iterator<IQualifiedNameRow> pSource,
+                                String pNewName) {
+            newName = pNewName;
             source = pSource;
         }
 
@@ -112,9 +121,6 @@ public class RenameTable implements ITable {
         public void remove() {
             source.remove();
         }
-    }
-    public Iterator<IQualifiedNameRow> evaluate(Database context) {
-        return new RenamingIterator(renamedTable.evaluate(context));
     }
 
     @Override
