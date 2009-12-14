@@ -12,5 +12,6 @@ public interface IRelAlgExpr {
      * @param context the database to evaluate the query in
      * @return an iterator over the row set
      */
+    @Deprecated
     Iterator<IQualifiedNameRow> evaluate(Database context);
 }

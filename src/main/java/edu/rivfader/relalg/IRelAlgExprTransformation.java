@@ -3,7 +3,7 @@ package edu.rivfader.relalg;
 /**
  * This transforms an IRelAlgTransformation into something else.
  */
-public interface IRelalgTransformation<R> {
+public interface IRelAlgExprTransformation<R> {
     /**
      * transforms the given relalg expression.
      * @param input the IRelAlgExpr to transform
