@@ -4,6 +4,7 @@ import edu.rivfader.data.Database;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.Evaluator;
 
 import java.io.Writer;
 import java.io.IOException;
@@ -74,7 +75,8 @@ public class PrintQuery implements ICommand {
     @Override
     public void execute(final Database context, final Writer output)
         throws IOException {
-        Iterator<IQualifiedNameRow> rows = query.evaluate(context);
+        Evaluator e = new Evaluator(context);
+        Iterator<IQualifiedNameRow> rows = e.transform(query);
         if(!rows.hasNext()) {
             output.write("Empty result set.\n");
             return;

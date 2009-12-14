@@ -8,12 +8,14 @@ import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.QualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.QualifiedColumnName;
+import edu.rivfader.relalg.StubResult;
 
 import java.io.Writer;
 import java.io.IOException;
 
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Iterator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +33,7 @@ public class PrintQueryTest {
     @Test
     public void checkPrintQueryExecution() throws IOException {
         Database database = createMock(Database.class);
-        IRelAlgExpr query = createMock(IRelAlgExpr.class);
+        IRelAlgExpr query;
         Writer writer = createMock(Writer.class);
         List<IQualifiedColumnName> columns =
             new LinkedList<IQualifiedColumnName>();
@@ -47,7 +49,8 @@ public class PrintQueryTest {
             new LinkedList<IQualifiedNameRow>();
         resultRows.add(row1);
         resultRows.add(row2);
-        expect(query.evaluate(database)).andReturn(resultRows.iterator());
+        query = new StubResult<Iterator<IQualifiedNameRow>>(
+                    resultRows.iterator());
         writer.write("t.chicken t.cow\n");
         writer.write("eggs milk\n");
         writer.write("chickens cows\n");
@@ -60,7 +63,7 @@ public class PrintQueryTest {
     @Test
     public void checkEmptySetPrinted() throws IOException {
         Database database = createMock(Database.class);
-        IRelAlgExpr query = createMock(IRelAlgExpr.class);
+        IRelAlgExpr query;
         List<IQualifiedColumnName> columns =
             new LinkedList<IQualifiedColumnName>();
         columns.add(new QualifiedColumnName("t", "cow"));
@@ -70,7 +73,7 @@ public class PrintQueryTest {
 
         List<IQualifiedNameRow> resultRows =
             new LinkedList<IQualifiedNameRow>();
-        expect(query.evaluate(database)).andReturn(resultRows.iterator());
+        query = new StubResult<Iterator<IQualifiedNameRow>>(resultRows.iterator());
         writer.write("Empty result set.\n");
         replayAll();
         PrintQuery subject = new PrintQuery(query);
