@@ -1,49 +1,53 @@
 package edu.rivfader.relalg;
 
 import edu.rivfader.data.Database;
+import edu.rivfader.data.Row;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * This class implements the cartesian product of two relational algebra
- * expressions.
+ * evaluates a rel alg expression in a database into a lazily computed
+ * set of rows.
  * @author harald
  */
-public class Product implements IRelAlgExpr {
-    /**
-     * contains the lhs.
-     */
-    private IRelAlgExpr left;
-    /**
-     * contains the rhs.
-     */
-    private IRelAlgExpr right;
+public class Evaluator
+    extends BaseRelalgTransformation<Iterator<IQualifiedNameRow>>
+    implements IRelAlgExprTransformation<Iterator<IQualifiedNameRow>> {
 
-    /**
-     * Constructs a new product node.
-     * @param pLeft the left subexpression
-     * @param pRight the right subexpression
-     */
-    public Product(final IRelAlgExpr pLeft, final IRelAlgExpr pRight) {
-        left = pLeft;
-        right = pRight;
-    }
+    private Database context;
 
-    public IRelAlgExpr getLeft() {
-        return left;
-    }
-
-    public IRelAlgExpr getRight() {
-        return right;
+    public Evaluator(Database pContext) {
+        context = pContext;
     }
 
     @Override
-    public Iterator<IQualifiedNameRow> evaluate(final Database context) {
-        return new ProductResult(left, right, context);
+    public Iterator<IQualifiedNameRow> transformProduct(Product p){
+        return new ProductResult(p.getLeft(), p.getRight(), context);
+    }
+
+    @Override
+    public Iterator<IQualifiedNameRow> transformProjection(Projection p){
+        return null;
+    }
+
+    @Override
+    public Iterator<IQualifiedNameRow> transformSelection(Selection s){
+        return null;
+    }
+
+    @Override
+    public Iterator<IQualifiedNameRow> transformLoadTable(LoadTable l){
+        return null;
+    }
+
+    @Override
+    public Iterator<IQualifiedNameRow> transformRenameTable(RenameTable r){
+        return null;
     }
 
     /**
-     * iterates over all rows in the result.
+     * lazily computes the result of a product.
      */
     private static class ProductResult implements Iterator<IQualifiedNameRow> {
         /**
