@@ -4,6 +4,7 @@ import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.Evaluator;
 import edu.rivfader.relalg.StubResult;
+import edu.rivfader.relalg.RowSetStubResult;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Product;
 import edu.rivfader.relalg.QualifiedNameRow;
@@ -74,8 +75,8 @@ public class EvaluatorTest {
         rightSecond.setData(rn, "more chicken");
         rightResult.add(rightSecond);
 
-        IRelAlgExpr left = new StubResult<Iterator<IQualifiedNameRow>>(leftResult);
-        IRelAlgExpr right = new StubResult<Iterator<IQualifiedNameRow>>(rightResult);
+        IRelAlgExpr left = new RowSetStubResult(leftResult);
+        IRelAlgExpr right = new RowSetStubResult(rightResult);
 
         replayAll();
         Product input = new Product(left, right);
@@ -131,7 +132,7 @@ public class EvaluatorTest {
 
         ps.add(cp);
 
-        se = new StubResult<Iterator<IQualifiedNameRow>>(ser);
+        se = new RowSetStubResult(ser);
         expect(cp.project(row)).andReturn(scs);
         expect(row.getData(scn)).andReturn("some data");
 
@@ -165,8 +166,7 @@ public class EvaluatorTest {
         previousRows.add(first);
         previousRows.add(second);
         previousRows.add(third);
-        IRelAlgExpr subExpression =
-            new StubResult<Iterator<IQualifiedNameRow>>(previousRows);
+        IRelAlgExpr subExpression = new RowSetStubResult(previousRows);
 
         replayAll();
         Selection input = new Selection(predicate, subExpression);
@@ -270,7 +270,7 @@ public class EvaluatorTest {
         lrs = new LinkedList<IQualifiedNameRow>();
         lrs.add(sr1);
         lrs.add(sr2);
-        expect(dt.evaluate(db)).andReturn(lrs.iterator());
+        expect(dt.load()).andReturn(lrs.iterator());
 
         replayAll();
         i = new RenameTable(dt, nn);

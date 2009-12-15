@@ -7,11 +7,4 @@ import java.util.Iterator;
  * @author harald
  */
 public interface IRelAlgExpr {
-    /**
-     * This returns the (lazily evaluated) result set of rows.
-     * @param context the database to evaluate the query in
-     * @return an iterator over the row set
-     */
-    @Deprecated
-    Iterator<IQualifiedNameRow> evaluate(Database context);
 }

@@ -30,19 +30,19 @@ public class Evaluator
 
     @Override
     public Iterator<IQualifiedNameRow> transformProduct(Product p){
-        return new ProductResult(p.getLeft(), p.getRight(), context);
+        return new ProductResult(p.getLeft(), p.getRight(), context, this);
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformProjection(Projection p){
-        return new ProjectionIterator(p.getSubExpression().evaluate(context),
+        return new ProjectionIterator(transform(p.getSubExpression()),
                                       p.getSelectedFields());
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformSelection(Selection s){
         return new SelectionIterator(s.getPredicate(),
-                                     s.getSubExpression().evaluate(context));
+                                     transform(s.getSubExpression()));
     }
 
     @Override
@@ -96,6 +96,11 @@ public class Evaluator
         private Database context;
 
         /**
+         * Contains an Evaluator to re-evaluate subexpressions.
+         */
+        private IRelAlgExprTransformation<Iterator<IQualifiedNameRow>>
+            evaluator;
+        /**
          * constructs a new product result iterator.
          * @param pLeft the left subexpression
          * @param pRight the right subexpression
@@ -103,12 +108,15 @@ public class Evaluator
          */
         public ProductResult(final IRelAlgExpr pLeft,
                              final IRelAlgExpr pRight,
-                             final Database pContext) {
+                             final Database pContext,
+                             IRelAlgExprTransformation<
+                                Iterator<IQualifiedNameRow>> pEvaluator) {
             left = pLeft;
             right = pRight;
             context = pContext;
-            leftIterator = left.evaluate(context);
-            rightIterator = right.evaluate(context);
+            evaluator = pEvaluator;
+            leftIterator = evaluator.transform(left);
+            rightIterator = evaluator.transform(right);
             leftRow = leftIterator.next();
         }
 
@@ -122,7 +130,7 @@ public class Evaluator
             if (!rightIterator.hasNext()) {
                 if (leftIterator.hasNext()) {
                     leftRow = leftIterator.next();
-                    rightIterator = right.evaluate(context);
+                    rightIterator = evaluator.transform(right);
                 } else {
                     throw new NoSuchElementException();
                 }

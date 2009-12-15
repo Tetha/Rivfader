@@ -15,8 +15,8 @@ public abstract class BaseRelalgTransformation<R>
             o = transformLoadTable((LoadTable) input);
         } else if (input instanceof RenameTable) {
             o = transformRenameTable((RenameTable) input);
-        } else if (input instanceof StubResult) {
-            o = transformStubResult((StubResult<R>) input);
+        } else if (input instanceof IStubResult) {
+            o = transformStubResult((IStubResult<R>) input);
         } else {
             throw new IllegalArgumentException("Unexpected IRelAlgExpr "
                                                 + input.toString());
@@ -30,7 +30,7 @@ public abstract class BaseRelalgTransformation<R>
     public abstract R transformLoadTable(LoadTable l);
     public abstract R transformRenameTable(RenameTable r);
 
-    protected R transformStubResult(StubResult<R> sr) {
+    protected R transformStubResult(IStubResult<R> sr) {
         return sr.getExpectedResult();
     }
 }

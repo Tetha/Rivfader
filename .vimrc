@@ -1,5 +1,5 @@
 " make config
-set makeprg=mvn\ -f\ /home/hk/code/rivfader/pom.xml\ test-compile
+set makeprg=mvn\ -f\ /home/hk/code/rivfader/pom.xml\ clean\ test-compile
 set errorformat=
     \%[%^[]%\\@=%f:%l:\ %m,
     \%A%[%^[]%\\@=%f:[%l\\,%v]\ %m,
