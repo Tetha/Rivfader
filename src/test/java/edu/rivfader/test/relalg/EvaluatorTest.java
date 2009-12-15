@@ -14,6 +14,9 @@ import edu.rivfader.relalg.Projection;
 import edu.rivfader.relalg.IColumnProjection;
 import edu.rivfader.relalg.Selection;
 import edu.rivfader.relalg.rowselector.IRowSelector;
+import edu.rivfader.relalg.ITable;
+import edu.rivfader.relalg.LoadTable;
+import edu.rivfader.relalg.RenameTable;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +25,8 @@ import static org.junit.Assert.fail;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasItems;
 
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -37,10 +42,14 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Collection;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import java.io.IOException;
+
+@RunWith(PowerMockRunner.class)
 public class EvaluatorTest {
     @Test
     public void transformProductWorks() {
@@ -156,7 +165,8 @@ public class EvaluatorTest {
         previousRows.add(first);
         previousRows.add(second);
         previousRows.add(third);
-        IRelAlgExpr subExpression = new StubResult(previousRows);
+        IRelAlgExpr subExpression =
+            new StubResult<Iterator<IQualifiedNameRow>>(previousRows);
 
         replayAll();
         Selection input = new Selection(predicate, subExpression);
@@ -173,6 +183,106 @@ public class EvaluatorTest {
         expectedRows.add(third);
 
         assertEquals(expectedRows, gotRows);
+        verifyAll();
+    }
+
+    @Test public void transformLoadTable() throws IOException {
+        String tn; // table name
+        List<Row> dbrs; // database rows
+        Row fir; // first row returned from database
+        Database db; // Database mock
+        LoadTable i; // input
+        Evaluator s; // subject
+        Iterator<IQualifiedNameRow> r; // result
+        IQualifiedNameRow frr; // first result row
+
+        tn = "table";
+        dbrs = new LinkedList<Row>();
+        fir= new Row("foo", "bar");
+        fir.setData("foo", "foo");
+        fir.setData("bar", "bar");
+        dbrs.add(fir);
+
+        db = createMock(Database.class);
+        expect(db.loadTable(tn)).andReturn(dbrs.iterator());
+        replayAll();
+        i = new LoadTable(tn);
+        s = new Evaluator(db);
+        r = s.transformLoadTable(i);
+        frr = r.next();
+        assertThat(frr.columns().size(), is(equalTo(2)));
+        assertThat(frr.columns(), hasItem((IQualifiedColumnName)new QualifiedColumnName(tn, "foo")));
+        assertThat(frr.columns(), hasItem((IQualifiedColumnName)new QualifiedColumnName(tn, "bar")));
+        assertThat(frr.getData(new QualifiedColumnName(tn, "foo")), is(equalTo("foo")));
+        assertThat(frr.getData(new QualifiedColumnName(tn, "bar")), is(equalTo("bar")));
+        assertThat(r.hasNext(), is(false));
+        verifyAll();
+    }
+
+    @Test public void transformRenameTable() {
+        Database db; // database mock
+        String on; // old name
+        String nn; // new name
+        String cn1; // first column name
+        String cn2; // second column name
+        ITable dt; // decorated table
+        RenameTable i; // input
+        Iterator<IQualifiedNameRow> r; // result
+        Collection<IQualifiedNameRow> rrs; // result rows
+
+        IQualifiedColumnName sn1; // source name 1
+        IQualifiedColumnName sn2; // source name 2
+        IQualifiedColumnName tn1; // target name 1
+        IQualifiedColumnName tn2; // target name 2
+
+        IQualifiedNameRow sr1; // source row 1
+        IQualifiedNameRow sr2; // source row 2
+        IQualifiedNameRow tr1; // translated row 1
+        IQualifiedNameRow tr2; // translated row 2
+
+        List<IQualifiedNameRow> lrs; // loaded rows
+
+        on = "on";
+        nn = "nn";
+        db = createMock(Database.class);
+        dt = createMock(ITable.class);
+
+        sn1 = new QualifiedColumnName(on, "c1");
+        sn2 = new QualifiedColumnName(on, "c2");
+        tn1 = new QualifiedColumnName(nn, "c1");
+        tn2 = new QualifiedColumnName(nn, "c2");
+
+        sr1 = new QualifiedNameRow(sn1, sn2);
+        sr2 = new QualifiedNameRow(sn1, sn2);
+        tr1 = new QualifiedNameRow(tn1, tn2);
+        tr2 = new QualifiedNameRow(tn1, tn2);
+
+        sr1.setData(sn1, "d11");
+        sr1.setData(sn2, "d12");
+        sr2.setData(sn1, "d21");
+        sr2.setData(sn2, "d22");
+
+        tr1.setData(tn1, "d11");
+        tr1.setData(tn2, "d12");
+        tr2.setData(tn1, "d21");
+        tr2.setData(tn2, "d22");
+
+        lrs = new LinkedList<IQualifiedNameRow>();
+        lrs.add(sr1);
+        lrs.add(sr2);
+        expect(dt.evaluate(db)).andReturn(lrs.iterator());
+
+        replayAll();
+        i = new RenameTable(dt, nn);
+        Evaluator s = new Evaluator(db);
+        r = s.transformRenameTable(i);
+        rrs = new LinkedList<IQualifiedNameRow>();
+        while(r.hasNext()) {
+            rrs.add(r.next());
+        }
+
+        assertThat(rrs, hasItems(tr1, tr2));
+        assertThat(rrs.size(), is(equalTo(2)));
         verifyAll();
     }
 }

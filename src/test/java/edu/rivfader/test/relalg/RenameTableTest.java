@@ -7,6 +7,7 @@ import edu.rivfader.relalg.QualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.QualifiedColumnName;
+import edu.rivfader.relalg.IRelAlgExpr;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -174,71 +175,6 @@ public class RenameTableTest {
         verifyAll();
     }
 
-    @Test public void evaluateTranslated() {
-        Database db; // database mock
-        String on; // old name
-        String nn; // new name
-        String cn1; // first column name
-        String cn2; // second column name
-        ITable dt; // decorated table
-        RenameTable s; // subject
-        Iterator<IQualifiedNameRow> r; // result
-        Collection<IQualifiedNameRow> rrs; // result rows
-
-        IQualifiedColumnName sn1; // source name 1
-        IQualifiedColumnName sn2; // source name 2
-        IQualifiedColumnName tn1; // target name 1
-        IQualifiedColumnName tn2; // target name 2
-
-        IQualifiedNameRow sr1; // source row 1
-        IQualifiedNameRow sr2; // source row 2
-        IQualifiedNameRow tr1; // translated row 1
-        IQualifiedNameRow tr2; // translated row 2
-
-        List<IQualifiedNameRow> lrs; // loaded rows
-
-        on = "on";
-        nn = "nn";
-        db = createMock(Database.class);
-        dt = createMock(ITable.class);
-
-        sn1 = new QualifiedColumnName(on, "c1");
-        sn2 = new QualifiedColumnName(on, "c2");
-        tn1 = new QualifiedColumnName(nn, "c1");
-        tn2 = new QualifiedColumnName(nn, "c2");
-
-        sr1 = new QualifiedNameRow(sn1, sn2);
-        sr2 = new QualifiedNameRow(sn1, sn2);
-        tr1 = new QualifiedNameRow(tn1, tn2);
-        tr2 = new QualifiedNameRow(tn1, tn2);
-
-        sr1.setData(sn1, "d11");
-        sr1.setData(sn2, "d12");
-        sr2.setData(sn1, "d21");
-        sr2.setData(sn2, "d22");
-
-        tr1.setData(tn1, "d11");
-        tr1.setData(tn2, "d12");
-        tr2.setData(tn1, "d21");
-        tr2.setData(tn2, "d22");
-
-        lrs = new LinkedList<IQualifiedNameRow>();
-        lrs.add(sr1);
-        lrs.add(sr2);
-        expect(dt.evaluate(db)).andReturn(lrs.iterator());
-
-        replayAll();
-        s = new RenameTable(dt, nn);
-        r = s.evaluate(db);
-        rrs = new LinkedList<IQualifiedNameRow>();
-        while(r.hasNext()) {
-            rrs.add(r.next());
-        }
-
-        assertThat(rrs, hasItems(tr1, tr2));
-        assertThat(rrs.size(), is(equalTo(2)));
-        verifyAll();
-    }
 
     @Test public void storeRowTranslated() {
         String on; // old name

@@ -3,9 +3,9 @@ package edu.rivfader.test.relalg;
 import edu.rivfader.data.Database;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.Projection;
+import edu.rivfader.relalg.IColumnProjection;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.IQualifiedColumnName;
-import edu.rivfader.relalg.IColumnProjection;
 
 import org.junit.runner.RunWith;
 import org.junit.Test;

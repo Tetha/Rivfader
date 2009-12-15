@@ -57,7 +57,7 @@ public class Evaluator
 
     @Override
     public Iterator<IQualifiedNameRow> transformRenameTable(RenameTable r){
-        return new RenameTableIterator(r.evaluate(context),
+        return new RenameTableIterator(r.getSource().load(),
                                        r.getName());
     }
 

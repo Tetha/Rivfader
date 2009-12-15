@@ -2,6 +2,7 @@ package edu.rivfader.test.relalg;
 
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
+import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.LoadTable;
 import edu.rivfader.relalg.QualifiedColumnName;
 import edu.rivfader.relalg.IQualifiedColumnName;
@@ -181,36 +182,6 @@ public class LoadTableTest {
         verifyAll();
     }
 
-    @Test public void evaluateWorks() throws IOException {
-        String tn; // table name
-        List<Row> dbrs; // database rows
-        Row fir; // first row returned from database
-        Database db; // Database mock
-        LoadTable s; // subject
-        Iterator<IQualifiedNameRow> r; // result
-        IQualifiedNameRow frr; // first result row
-
-        tn = "table";
-        dbrs = new LinkedList<Row>();
-        fir= new Row("foo", "bar");
-        fir.setData("foo", "foo");
-        fir.setData("bar", "bar");
-        dbrs.add(fir);
-
-        db = createMock(Database.class);
-        expect(db.loadTable(tn)).andReturn(dbrs.iterator());
-        replayAll();
-        s = new LoadTable(tn);
-        r = s.evaluate(db);
-        frr = r.next();
-        assertThat(frr.columns().size(), is(equalTo(2)));
-        assertThat(frr.columns(), hasItem((IQualifiedColumnName)new QualifiedColumnName(tn, "foo")));
-        assertThat(frr.columns(), hasItem((IQualifiedColumnName)new QualifiedColumnName(tn, "bar")));
-        assertThat(frr.getData(new QualifiedColumnName(tn, "foo")), is(equalTo("foo")));
-        assertThat(frr.getData(new QualifiedColumnName(tn, "bar")), is(equalTo("bar")));
-        assertThat(r.hasNext(), is(false));
-        verifyAll();
-    }
 
     @Test(expected = ColumnWriteError.class)
     public void storeRowWithdisagreeingTableNamesFails()

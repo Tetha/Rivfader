@@ -38,6 +38,10 @@ public class RenameTable implements ITable {
         newName = pNewName;
     }
 
+    public ITable getSource() {
+        return renamedTable;
+    }
+
     @Override
     public String getName() {
         return newName;
