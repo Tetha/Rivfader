@@ -11,6 +11,7 @@ import java.util.LinkedList;
 public class RowSetStubResult
     implements IStubResult<Iterator<IQualifiedNameRow>> {
     private List<IQualifiedNameRow> resultRows;
+    private List<IQualifiedColumnName> columnNames;
 
     /**
      * constructs a new empty rowset.
@@ -27,36 +28,29 @@ public class RowSetStubResult
         resultRows = new LinkedList<IQualifiedNameRow>(pResultRows);
     }
 
+    public void setColumnNames(String[]... pColumnNames) {
+        columnNames = new LinkedList<IQualifiedColumnName>();
+        for (int i = 0; i < pColumnNames.length; i++) {
+            if (pColumnNames[i].length != 2) {
+                throw new IllegalArgumentException("column name "
+                                                    + i
+                                                    + " messed up.");
+            }
+            columnNames.add(new QualifiedColumnName(pColumnNames[i][0],
+                                                    pColumnNames[i][1]));
+        }
+    }
+
     /**
      * expects a new row.
-     * The parameters must be arrays of length 3, whereas the first entry
-     * in the array must be the table name, the second parameter must be
-     * the column name and the third parameter must be the value for
-     * the column described by the first two entries.
      * @param columnValuePairs column-value specifications.
      */
-    public void expectRow(String[][] columnValuePairs) {
-        List<IQualifiedColumnName> qns; // qualified Names
-        List<String> vs; // values
+    public void expectRow(String... values) {
         IQualifiedNameRow nr; // new row
 
-        qns = new LinkedList<IQualifiedColumnName>();
-        vs = new LinkedList<String>();
-
-        for(int i = 0; i < columnValuePairs.length; i++) {
-            String[] ccvp = columnValuePairs[i]; // current column value pair
-            if (ccvp.length != 3) {
-                throw new IllegalArgumentException("column value pair #"
-                                                    + i
-                                                    + " has wrong length");
-            }
-            qns.add(new QualifiedColumnName(ccvp[0], ccvp[1]));
-            vs.add(ccvp[2]);
-        }
-
-        nr = new QualifiedNameRow(qns);
-        for(int i = 0; i < qns.size(); i++) {
-            nr.setData(qns.get(i), vs.get(i));
+        nr = new QualifiedNameRow(columnNames);
+        for(int i = 0; i < values.length; i += 3) {
+            nr.setData(columnNames.get(i), values[i]);
         }
         resultRows.add(nr);
     }

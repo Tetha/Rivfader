@@ -75,7 +75,11 @@ public class EvaluatorTest {
         rightSecond.setData(rn, "more chicken");
         rightResult.add(rightSecond);
 
-        IRelAlgExpr left = new RowSetStubResult(leftResult);
+        //IRelAlgExpr left = new RowSetStubResult(leftResult);
+        RowSetStubResult left = new RowSetStubResult();
+        left.setColumnNames(new String[]{"t", "c"});
+        left.expectRow("cow");
+        left.expectRow("more cow");
         IRelAlgExpr right = new RowSetStubResult(rightResult);
 
         replayAll();
