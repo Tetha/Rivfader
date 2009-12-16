@@ -324,7 +324,7 @@ public class Evaluator
             List<IQualifiedColumnName> rcns; // renamed column names
 
             i = source.next();
-
+            System.err.println(i);
             rcns = new LinkedList<IQualifiedColumnName>();
             // renamed column name
             for (IQualifiedColumnName rcn : i.columns()) {

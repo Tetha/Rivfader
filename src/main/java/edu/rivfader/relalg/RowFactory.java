@@ -47,7 +47,7 @@ public class RowFactory {
         IQualifiedNameRow nr; // new row
 
         nr = new QualifiedNameRow(columnNames);
-        for(int i = 0; i < values.length; i += 3) {
+        for(int i = 0; i < values.length; i++) {
             nr.setData(columnNames.get(i), values[i]);
         }
         rows.add(nr);
