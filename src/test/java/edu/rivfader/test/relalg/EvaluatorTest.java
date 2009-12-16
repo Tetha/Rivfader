@@ -18,6 +18,7 @@ import edu.rivfader.relalg.rowselector.IRowSelector;
 import edu.rivfader.relalg.ITable;
 import edu.rivfader.relalg.LoadTable;
 import edu.rivfader.relalg.RenameTable;
+import edu.rivfader.relalg.RowFactory;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,29 +59,20 @@ public class EvaluatorTest {
         List<IQualifiedNameRow> leftResult =
             new LinkedList<IQualifiedNameRow>();
         IQualifiedColumnName ln = new QualifiedColumnName("t", "c");
-        IQualifiedNameRow leftFirst = new QualifiedNameRow(ln);
-        leftFirst.setData(ln, "cow");
-        leftResult.add(leftFirst);
-        QualifiedNameRow leftSecond = new QualifiedNameRow(ln);
-        leftSecond.setData(ln, "more cow");
-        leftResult.add(leftSecond);
+        RowFactory leftRows = new RowFactory(new String[] {"t", "c"});
+        leftRows.addRow("cow");
+        leftRows.addRow("more cow");
+        leftResult = leftRows.getRows();
 
         List<IQualifiedNameRow> rightResult =
             new LinkedList<IQualifiedNameRow>();
-        IQualifiedColumnName rn = new QualifiedColumnName("u", "d");
-        IQualifiedNameRow rightFirst = new QualifiedNameRow(rn);
-        rightFirst.setData(rn, "chicken");
-        rightResult.add(rightFirst);
-        IQualifiedNameRow rightSecond = new QualifiedNameRow(rn);
-        rightSecond.setData(rn, "more chicken");
-        rightResult.add(rightSecond);
+        RowFactory rightRows = new RowFactory(new String[] {"u", "d"});
+        rightRows.addRow("chicken");
+        rightRows.addRow("more chicken");
+        rightResult = rightRows.getRows();
 
-        //IRelAlgExpr left = new RowSetStubResult(leftResult);
-        RowSetStubResult left = new RowSetStubResult();
-        left.setColumnNames(new String[]{"t", "c"});
-        left.expectRow("cow");
-        left.expectRow("more cow");
-        IRelAlgExpr right = new RowSetStubResult(rightResult);
+        RowSetStubResult right = new RowSetStubResult(rightResult);
+        RowSetStubResult left = new RowSetStubResult(leftResult);
 
         replayAll();
         Product input = new Product(left, right);
@@ -92,15 +84,17 @@ public class EvaluatorTest {
             gotRows.add(resultRows.next());
         }
 
-        List<IQualifiedNameRow> expectedRows =
-            new LinkedList<IQualifiedNameRow>();
+        RowFactory expectedRows = new RowFactory();
+        expectedRows.addRow(new QualifiedNameRow(leftResult.get(0),
+                                                 rightResult.get(0)));
+        expectedRows.addRow(new QualifiedNameRow(leftResult.get(0),
+                                                 rightResult.get(1)));
+        expectedRows.addRow(new QualifiedNameRow(leftResult.get(1),
+                                                 rightResult.get(0)));
+        expectedRows.addRow(new QualifiedNameRow(leftResult.get(1),
+                                                 rightResult.get(1)));
 
-        expectedRows.add(new QualifiedNameRow(leftFirst, rightFirst));
-        expectedRows.add(new QualifiedNameRow(leftFirst, rightSecond));
-        expectedRows.add(new QualifiedNameRow(leftSecond, rightFirst));
-        expectedRows.add(new QualifiedNameRow(leftSecond, rightSecond));
-
-        assertEquals(expectedRows, gotRows);
+        assertEquals(expectedRows.getRows(), gotRows);
         verifyAll();
     }
 
@@ -246,35 +240,25 @@ public class EvaluatorTest {
 
         List<IQualifiedNameRow> lrs; // loaded rows
 
+        RowFactory srs; // source rows
+        RowFactory trs; // transformed rows
+
         on = "on";
         nn = "nn";
         db = createMock(Database.class);
         dt = createMock(ITable.class);
 
-        sn1 = new QualifiedColumnName(on, "c1");
-        sn2 = new QualifiedColumnName(on, "c2");
-        tn1 = new QualifiedColumnName(nn, "c1");
-        tn2 = new QualifiedColumnName(nn, "c2");
+        srs = new RowFactory(new String[] {"on", "c1"},
+                             new String[] {"on", "c2"});
+        srs.addRow("d11", "d12");
+        srs.addRow("d21", "d22");
 
-        sr1 = new QualifiedNameRow(sn1, sn2);
-        sr2 = new QualifiedNameRow(sn1, sn2);
-        tr1 = new QualifiedNameRow(tn1, tn2);
-        tr2 = new QualifiedNameRow(tn1, tn2);
+        trs = new RowFactory(new String[] {"nn", "c1"},
+                             new String[] {"nn", "c2"});
+        trs.addRow("d11", "d12");
+        trs.addRow("d21", "d22");
 
-        sr1.setData(sn1, "d11");
-        sr1.setData(sn2, "d12");
-        sr2.setData(sn1, "d21");
-        sr2.setData(sn2, "d22");
-
-        tr1.setData(tn1, "d11");
-        tr1.setData(tn2, "d12");
-        tr2.setData(tn1, "d21");
-        tr2.setData(tn2, "d22");
-
-        lrs = new LinkedList<IQualifiedNameRow>();
-        lrs.add(sr1);
-        lrs.add(sr2);
-        expect(dt.load()).andReturn(lrs.iterator());
+        expect(dt.load()).andReturn(srs.getRows().iterator());
 
         replayAll();
         i = new RenameTable(dt, nn);
@@ -285,8 +269,8 @@ public class EvaluatorTest {
             rrs.add(r.next());
         }
 
-        assertThat(rrs, hasItems(tr1, tr2));
-        assertThat(rrs.size(), is(equalTo(2)));
+        assertThat(new LinkedList<IQualifiedNameRow>(rrs),
+                   is(equalTo(trs.getRows())));
         verifyAll();
     }
 }
