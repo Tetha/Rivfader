@@ -26,8 +26,7 @@ public interface ICostAccumulator {
     void handleProductStatistics(Product actingNode,
                                  int leftInput,
                                  int rightInput,
-                                 int leftColumns,
-                                 int rightColumns);
+                                 int columns);
 
     /**
      * returns the overall costs.
