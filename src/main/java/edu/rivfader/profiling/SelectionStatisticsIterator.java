@@ -4,40 +4,23 @@ import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.Selection;
 import java.util.Iterator;
 
-public class SelectionStatisticsIterator implements Iterator<IQualifiedNameRow> {
-    private int columns;
+public class SelectionStatisticsIterator extends StatisticsIterator {
     private Selection activeNode;
-    private ICostAccumulator statisticsDestination;
     private ICountingIterator<IQualifiedNameRow> ingoingRowCounter;
-    private ICountingIterator<IQualifiedNameRow> outcomingRowCounter;
 
     public SelectionStatisticsIterator(Selection pActiveNode,
-            Iterator<IQualifiedNameRow> selectedRows,
-            ICostAccumulator pStatisticsDestination,
+            Iterator<IQualifiedNameRow> wrappedIterator,
+            ICostAccumulator statisticsDestination,
             ICountingIterator<IQualifiedNameRow> inputCounter) {
+        super(wrappedIterator, statisticsDestination);
         ingoingRowCounter = inputCounter;
-        outcomingRowCounter = new CountingIterator<IQualifiedNameRow>(selectedRows);
-        statisticsDestination = pStatisticsDestination;
         activeNode = pActiveNode;
     }
 
-    @Override public boolean hasNext() {
-        boolean o = outcomingRowCounter.hasNext();
-        if (!o) {
-            statisticsDestination.handleSelectionStatistics(activeNode,
-                        ingoingRowCounter.getNumberOfElements(),
-                        outcomingRowCounter.getNumberOfElements(),
-                        columns);
-        }
-        return o;
-    }
-    @Override public IQualifiedNameRow next() {
-        IQualifiedNameRow o = outcomingRowCounter.next();
-        columns = o.columns().size();
-        return o;
-    }
-
-    @Override public void remove() {
-        outcomingRowCounter.remove();
+    protected void announceStatistics() {
+        statisticsDestination.handleSelectionStatistics(activeNode,
+                ingoingRowCounter.getNumberOfElements(),
+                wrappedIterator.getNumberOfElements(),
+                columns);
     }
 }
