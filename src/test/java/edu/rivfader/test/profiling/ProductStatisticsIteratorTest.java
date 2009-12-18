@@ -34,32 +34,23 @@ public class ProductStatisticsIteratorTest {
     }
 
     @Test public void evaluateWorks() {
-        int leftCount = 2;
-        int rightCount = 3;
-        ICountingIterator<IQualifiedNameRow> leftInput =
-            createMock(RowCountingIterator.class);
-        ICountingIterator<IQualifiedNameRow> rightInput =
-            createMock(RowCountingIterator.class);
         ICostAccumulator statisticsDestination =
             createMock(ICostAccumulator.class);
         Product activeNode;
 
         activeNode = createMock(Product.class);
-        expect(leftInput.getNumberOfElements()).andReturn(leftCount);
-        expect(rightInput.getNumberOfElements()).andReturn(rightCount);
 
         RowFactory productRows = new RowFactory(new String[] {"t", "c"});
         productRows.addRow("d1");
         productRows.addRow("d2");
         Iterator<IQualifiedNameRow> productOutput = productRows.getRows().iterator();
         statisticsDestination.handleProductStatistics(activeNode,
-                                                    leftCount, rightCount,
+                                                    productRows.getRows().size(),
                                                     1);
 
         replayAll();
         ProductStatisticsIterator subject = new ProductStatisticsIterator(
-                    activeNode, statisticsDestination,
-                    leftInput, rightInput, productOutput);
+                    activeNode, statisticsDestination, productOutput);
         List<IQualifiedNameRow> subjectOutput =
             new LinkedList<IQualifiedNameRow>();
         while(subject.hasNext()) {

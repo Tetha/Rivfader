@@ -28,10 +28,9 @@ public class Block1Costs implements ICostAccumulator {
 
     @Override
     public void handleProductStatistics(Product actingNode,
-                                 int leftInput,
-                                 int rightInput,
+                                 int rows,
                                  int columns) {
-        costs += leftInput * rightInput * columns;
+        costs += rows * columns;
     }
 
     @Override

@@ -24,8 +24,7 @@ public interface ICostAccumulator {
      * computes and stores costs for the product.
      */
     void handleProductStatistics(Product actingNode,
-                                 int leftInput,
-                                 int rightInput,
+                                 int rowCount,
                                  int columns);
 
     /**

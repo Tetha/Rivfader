@@ -67,8 +67,7 @@ public class Block1CostsTests {
     @Test public void checkProductCalculation() {
         ICostAccumulator subject;
         Product activeNode;
-        int leftRows = 10;
-        int rightRows = 100;
+        int noRows = 100;
         int columns = 5;
 
         activeNode = createMock(Product.class);
@@ -76,10 +75,10 @@ public class Block1CostsTests {
         subject = new Block1Costs();
         replayAll();
         subject.handleProductStatistics(activeNode,
-                                 leftRows, rightRows,
+                                 noRows,
                                  columns);
         verifyAll();
-        assertThat(subject.getCost(), is(equalTo(leftRows*rightRows*columns)));
+        assertThat(subject.getCost(), is(equalTo(noRows*columns)));
     }
 
     @Test public void checkCostsAddedTogether() {
