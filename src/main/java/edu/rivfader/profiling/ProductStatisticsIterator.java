@@ -11,19 +11,14 @@ public class ProductStatisticsIterator extends StatisticsIterator {
 
     public ProductStatisticsIterator(Product pActiveNode,
                             ICostAccumulator statisticsDestination,
-                            ICountingIterator<IQualifiedNameRow> pLeftInput,
-                            ICountingIterator<IQualifiedNameRow> pRightInput,
                             Iterator<IQualifiedNameRow> productOutput) {
         super(productOutput, statisticsDestination);
-        leftInput = pLeftInput;
-        rightInput = pRightInput;
         activeNode = pActiveNode;
     }
 
     protected void announceStatistics() {
         statisticsDestination.handleProductStatistics(activeNode,
-                                            leftInput.getNumberOfElements(),
-                                            rightInput.getNumberOfElements(),
-                                            columns);
+                                        wrappedIterator.getNumberOfElements(),
+                                        columns);
     }
 }
