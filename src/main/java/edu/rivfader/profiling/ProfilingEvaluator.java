@@ -26,15 +26,17 @@ public class ProfilingEvaluator extends Evaluator {
 
     @Override
     public Iterator<IQualifiedNameRow> transformSelection(Selection s) {
+        ICountingIterator<IQualifiedNameRow> inputSet =
+            transform(s.getSubExpression());
         return new SelectionStatisticsIterator(s, inputSet,
                                                statisticsDestination,
-                                               transform(s.getSubExpression());
+                                               inputSet);
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformProjection(Projection p) {
         return new ProjectionStatisticsIterator(statisticsDestination,
-                                                transform(p.getSubExpression(),
+                                                transform(p.getSubExpression()),
                                                 p);
     }
 
