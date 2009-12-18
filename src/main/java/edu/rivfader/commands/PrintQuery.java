@@ -6,6 +6,10 @@ import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.Evaluator;
 
+import edu.rivfader.profiling.ProfilingEvaluator;
+import edu.rivfader.profiling.Block1Costs;
+import edu.rivfader.profiling.ICostAccumulator;
+
 import java.io.Writer;
 import java.io.IOException;
 import java.util.Iterator;
@@ -75,7 +79,8 @@ public class PrintQuery implements ICommand {
     @Override
     public void execute(final Database context, final Writer output)
         throws IOException {
-        Evaluator e = new Evaluator(context);
+        ICostAccumulator costs = new Block1Costs();
+        Evaluator e = new ProfilingEvaluator(context, costs);
         Iterator<IQualifiedNameRow> rows = e.transform(query);
         if(!rows.hasNext()) {
             output.write("Empty result set.\n");
@@ -87,5 +92,6 @@ public class PrintQuery implements ICommand {
         while(rows.hasNext()) {
             output.write(buildValueRow(rows.next()));
         }
+        output.write("Costs: " + costs.getCost() + "\n");
     }
 }

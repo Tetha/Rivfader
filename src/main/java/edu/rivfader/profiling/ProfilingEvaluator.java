@@ -5,7 +5,9 @@ import edu.rivfader.data.Database;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Evaluator;
 import edu.rivfader.relalg.Selection;
+import edu.rivfader.relalg.SelectionEvaluationIterator;
 import edu.rivfader.relalg.Projection;
+import edu.rivfader.relalg.ProjectionEvaluationIterator;
 import edu.rivfader.relalg.Product;
 import edu.rivfader.relalg.IQualifiedNameRow;
 
@@ -28,7 +30,8 @@ public class ProfilingEvaluator extends Evaluator {
     public Iterator<IQualifiedNameRow> transformSelection(Selection s) {
         ICountingIterator<IQualifiedNameRow> inputSet =
             transform(s.getSubExpression());
-        return new SelectionStatisticsIterator(s, inputSet,
+        return new SelectionStatisticsIterator(s,
+                new SelectionEvaluationIterator(s.getPredicate(), inputSet),
                                                statisticsDestination,
                                                inputSet);
     }
@@ -36,13 +39,14 @@ public class ProfilingEvaluator extends Evaluator {
     @Override
     public Iterator<IQualifiedNameRow> transformProjection(Projection p) {
         return new ProjectionStatisticsIterator(statisticsDestination,
-                                                transform(p.getSubExpression()),
-                                                p);
+                    new ProjectionEvaluationIterator(
+                        transform(p.getSubExpression()),
+                        p.getSelectedFields()), p);
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformProduct(Product p) {
         return new ProductStatisticsIterator(p, statisticsDestination,
-                                             transform(p));
+                        super.transformProduct(p));
     }
 }
