@@ -1,10 +1,10 @@
-package edu.rivfader.test.relalg;
+package edu.rivfader.test.evaluation;
 
 import edu.rivfader.data.Row;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.QualifiedColumnName;
 import edu.rivfader.relalg.IQualifiedColumnName;
-import edu.rivfader.relalg.LoadTableEvaluationIterator;
+import edu.rivfader.evaluation.LoadTableEvaluationIterator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

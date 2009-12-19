@@ -1,8 +1,12 @@
-package edu.rivfader.relalg;
+package edu.rivfader.evaluation;
+
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.IRelAlgExpr;
+import edu.rivfader.relalg.IRelAlgExprTransformation;
 
 import java.util.NoSuchElementException;
 import java.util.Iterator;
-
 /**
  * lazily computes the result of a product.
  */

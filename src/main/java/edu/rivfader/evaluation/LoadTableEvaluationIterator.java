@@ -1,7 +1,10 @@
-package edu.rivfader.relalg;
+package edu.rivfader.evaluation;
 
 import edu.rivfader.data.Row;
 import java.util.Iterator;
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.QualifiedNameRow;
+
 /**
  * this iterator turns all rows from the source into IQualifiedNameRows.
  * @author harald

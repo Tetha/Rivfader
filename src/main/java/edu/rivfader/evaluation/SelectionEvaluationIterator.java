@@ -1,5 +1,6 @@
-package edu.rivfader.relalg;
+package edu.rivfader.evaluation;
 
+import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.rowselector.IRowSelector;
 import java.util.NoSuchElementException;
 import java.util.Iterator;

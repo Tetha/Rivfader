@@ -1,11 +1,11 @@
-package edu.rivfader.test.relalg;
+package edu.rivfader.test.evaluation;
 
-import edu.rivfader.relalg.Evaluator;
+import edu.rivfader.evaluation.Evaluator;
 import edu.rivfader.relalg.RowSetStubResult;
 import edu.rivfader.relalg.QualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.RowFactory;
-import edu.rivfader.relalg.ProductEvaluationIterator;
+import edu.rivfader.evaluation.ProductEvaluationIterator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

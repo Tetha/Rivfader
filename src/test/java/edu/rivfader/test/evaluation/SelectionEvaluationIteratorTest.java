@@ -1,8 +1,8 @@
-package edu.rivfader.test.relalg;
+package edu.rivfader.test.evaluation;
 
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.rowselector.IRowSelector;
-import edu.rivfader.relalg.SelectionEvaluationIterator;
+import edu.rivfader.evaluation.SelectionEvaluationIterator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

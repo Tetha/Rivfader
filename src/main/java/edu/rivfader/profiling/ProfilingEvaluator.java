@@ -3,11 +3,11 @@ package edu.rivfader.profiling;
 import edu.rivfader.data.Database;
 
 import edu.rivfader.relalg.IRelAlgExpr;
-import edu.rivfader.relalg.Evaluator;
+import edu.rivfader.evaluation.Evaluator;
+import edu.rivfader.evaluation.ProjectionEvaluationIterator;
 import edu.rivfader.relalg.Selection;
-import edu.rivfader.relalg.SelectionEvaluationIterator;
+import edu.rivfader.evaluation.SelectionEvaluationIterator;
 import edu.rivfader.relalg.Projection;
-import edu.rivfader.relalg.ProjectionEvaluationIterator;
 import edu.rivfader.relalg.Product;
 import edu.rivfader.relalg.IQualifiedNameRow;
 

@@ -4,7 +4,7 @@ import edu.rivfader.data.Database;
 import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.IQualifiedNameRow;
-import edu.rivfader.relalg.Evaluator;
+import edu.rivfader.evaluation.Evaluator;
 
 import edu.rivfader.profiling.ProfilingEvaluator;
 import edu.rivfader.profiling.Block1Costs;

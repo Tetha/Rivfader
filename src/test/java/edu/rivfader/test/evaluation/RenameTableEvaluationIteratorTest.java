@@ -1,8 +1,8 @@
-package edu.rivfader.test.relalg;
+package edu.rivfader.test.evaluation;
 
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.RowFactory;
-import edu.rivfader.relalg.RenameTableEvaluationIterator;
+import edu.rivfader.evaluation.RenameTableEvaluationIterator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

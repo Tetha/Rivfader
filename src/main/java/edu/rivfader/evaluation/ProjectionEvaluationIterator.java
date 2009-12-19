@@ -1,4 +1,9 @@
-package edu.rivfader.relalg;
+package edu.rivfader.evaluation;
+
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.IColumnProjection;
 
 import java.util.Iterator;
 import java.util.Collection;

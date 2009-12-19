@@ -1,9 +1,13 @@
-package edu.rivfader.relalg;
+package edu.rivfader.evaluation;
+
+import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.QualifiedNameRow;
+import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.QualifiedColumnName;
 
 import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
-
 /**
  * renames a table in the result set.
  * @author harald
