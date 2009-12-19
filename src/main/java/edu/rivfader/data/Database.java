@@ -96,6 +96,7 @@ public class Database {
      * reads the catalogue.
      * @return the catalogue.
      */
+    @SuppressWarnings("unchecked")
     private Map<String, List<String>> readCatalogue()
         throws IOException {
         Map<String, List<String>> catalogue;

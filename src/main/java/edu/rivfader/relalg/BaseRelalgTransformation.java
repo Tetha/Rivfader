@@ -3,6 +3,7 @@ package edu.rivfader.relalg;
 public abstract class BaseRelalgTransformation<R>
     implements IRelAlgExprTransformation<R> {
     @Override
+    @SuppressWarnings("unchecked")
     public R transform(IRelAlgExpr input) {
         R o; // output
         if (input instanceof Product) {

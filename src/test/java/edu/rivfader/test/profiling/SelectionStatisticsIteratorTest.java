@@ -27,6 +27,9 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Selection.class)
 public class SelectionStatisticsIteratorTest {
+    private interface RowCounter extends ICountingIterator<IQualifiedNameRow> {
+    }
+
     @Test public void evaluationWorks() {
         ICostAccumulator statisticsDestination;
         ICountingIterator<IQualifiedNameRow> inputCounter;
@@ -38,7 +41,7 @@ public class SelectionStatisticsIteratorTest {
         selectedRows.addRow("a");
         selectedRows.addRow("b");
 
-        inputCounter = createMock(ICountingIterator.class);
+        inputCounter = createMock(RowCounter.class);
         activeNode = createMock(Selection.class);
         statisticsDestination = createMock(ICostAccumulator.class);
         statisticsDestination.handleSelectionStatistics(activeNode,
