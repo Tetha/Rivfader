@@ -1,5 +1,6 @@
 package edu.rivfader.evaluation;
 
+import edu.rivfader.relalg.Product;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.QualifiedNameRow;
 import edu.rivfader.relalg.IRelAlgExpr;
@@ -47,12 +48,12 @@ public class ProductEvaluationIterator implements Iterator<IQualifiedNameRow> {
      * @param pRight the right subexpression
      * @param pContext the database to evaluate the query in
      */
-    public ProductEvaluationIterator(final IRelAlgExpr pLeft,
-            final IRelAlgExpr pRight,
+    public ProductEvaluationIterator(
+            final Product p,
             IRelAlgExprTransformation<Iterator<IQualifiedNameRow>>
                 pEvaluator) {
-        left = pLeft;
-        right = pRight;
+        left = p.getLeft();
+        right = p.getRight();
         evaluator = pEvaluator;
         leftIterator = evaluator.transform(left);
         rightIterator = evaluator.transform(right);

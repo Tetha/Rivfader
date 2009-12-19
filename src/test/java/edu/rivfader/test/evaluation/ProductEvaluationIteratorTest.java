@@ -4,6 +4,7 @@ import edu.rivfader.evaluation.Evaluator;
 import edu.rivfader.relalg.RowSetStubResult;
 import edu.rivfader.relalg.QualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.Product;
 import edu.rivfader.relalg.RowFactory;
 import edu.rivfader.evaluation.ProductEvaluationIterator;
 
@@ -47,6 +48,7 @@ public class ProductEvaluationIteratorTest {
         RowSetStubResult right = new RowSetStubResult(rightResult);
         RowSetStubResult left = new RowSetStubResult(leftResult);
 
+        Product p = new Product(left, right);
         Evaluator evaluator = createMock(Evaluator.class);
         expect(evaluator.transform(left))
             .andReturn(leftRows.getRows().iterator());
@@ -57,7 +59,7 @@ public class ProductEvaluationIteratorTest {
 
         replayAll();
         ProductEvaluationIterator subject = new ProductEvaluationIterator(
-                            left, right, evaluator);
+                            p, evaluator);
 
         List<IQualifiedNameRow> gotRows = new LinkedList<IQualifiedNameRow>();
         while(subject.hasNext()) {

@@ -39,19 +39,19 @@ public class Evaluator
 
     @Override
     public Iterator<IQualifiedNameRow> transformProduct(Product p){
-        return new ProductEvaluationIterator(p.getLeft(), p.getRight(), this);
+        return new ProductEvaluationIterator(p, this);
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformProjection(Projection p){
-        return new ProjectionEvaluationIterator(transform(p.getSubExpression()),
-                                      p.getSelectedFields());
+        return new ProjectionEvaluationIterator(p,
+                                            transform(p.getSubExpression()));
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformSelection(Selection s){
-        return new SelectionEvaluationIterator(s.getPredicate(),
-                                     transform(s.getSubExpression()));
+        return new SelectionEvaluationIterator(s,
+                                         transform(s.getSubExpression()));
     }
 
     @Override

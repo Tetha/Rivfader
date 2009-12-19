@@ -1,6 +1,7 @@
 package edu.rivfader.evaluation;
 
 import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.Selection;
 import edu.rivfader.relalg.rowselector.IRowSelector;
 import java.util.NoSuchElementException;
 import java.util.Iterator;
@@ -33,9 +34,10 @@ public class SelectionEvaluationIterator
      * @param pPredicate the predicate to filter on
      * @param pSource the iterator to filter
      */
-    public SelectionEvaluationIterator(final IRowSelector pPredicate,
+    public SelectionEvaluationIterator(
+                             final Selection evaluatedNode,
                              final Iterator<IQualifiedNameRow> pSource) {
-        predicate = pPredicate;
+        predicate = evaluatedNode.getPredicate();
         source = pSource;
     }
 

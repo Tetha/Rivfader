@@ -1,6 +1,7 @@
 package edu.rivfader.test.evaluation;
 
 import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.Selection;
 import edu.rivfader.relalg.rowselector.IRowSelector;
 import edu.rivfader.evaluation.SelectionEvaluationIterator;
 
@@ -11,9 +12,9 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.core.classloader.annotations.PrepareForTest;
 
 import static org.easymock.EasyMock.expect;
-
 import static org.powermock.api.easymock.PowerMock.createMock;
 import static org.powermock.api.easymock.PowerMock.replayAll;
 import static org.powermock.api.easymock.PowerMock.verifyAll;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.LinkedList;
 
 @RunWith(PowerMockRunner.class)
+@PrepareForTest(Selection.class)
 public class SelectionEvaluationIteratorTest {
     @Test
     public void transformSelection() {
@@ -33,6 +35,7 @@ public class SelectionEvaluationIteratorTest {
         expect(predicate.acceptsRow(first)).andReturn(true);
         expect(predicate.acceptsRow(second)).andReturn(false);
         expect(predicate.acceptsRow(third)).andReturn(true);
+        Selection s = new Selection(predicate, null);
 
         List<IQualifiedNameRow> previousRows =
             new LinkedList<IQualifiedNameRow>();
@@ -42,7 +45,7 @@ public class SelectionEvaluationIteratorTest {
 
         replayAll();
         SelectionEvaluationIterator subject = new SelectionEvaluationIterator(
-                                        predicate, previousRows.iterator());
+                                        s, previousRows.iterator());
         List<IQualifiedNameRow> gotRows = new LinkedList<IQualifiedNameRow>();
         while(subject.hasNext()) {
             gotRows.add(subject.next());

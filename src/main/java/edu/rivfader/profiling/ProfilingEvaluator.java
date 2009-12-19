@@ -31,7 +31,7 @@ public class ProfilingEvaluator extends Evaluator {
         ICountingIterator<IQualifiedNameRow> inputSet =
             transform(s.getSubExpression());
         return new SelectionStatisticsIterator(s,
-                new SelectionEvaluationIterator(s.getPredicate(), inputSet),
+                new SelectionEvaluationIterator(s, inputSet),
                                                statisticsDestination,
                                                inputSet);
     }
@@ -39,9 +39,9 @@ public class ProfilingEvaluator extends Evaluator {
     @Override
     public Iterator<IQualifiedNameRow> transformProjection(Projection p) {
         return new ProjectionStatisticsIterator(statisticsDestination,
-                    new ProjectionEvaluationIterator(
-                        transform(p.getSubExpression()),
-                        p.getSelectedFields()), p);
+                    new ProjectionEvaluationIterator(p,
+                        transform(p.getSubExpression())),
+                    p);
     }
 
     @Override

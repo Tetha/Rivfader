@@ -4,6 +4,7 @@ import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.QualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.IColumnProjection;
+import edu.rivfader.relalg.Projection;
 
 import java.util.Iterator;
 import java.util.Collection;
@@ -31,9 +32,9 @@ public class ProjectionEvaluationIterator
      * @param pSource the source row set to project
      */
     public ProjectionEvaluationIterator(
-                    final Iterator<IQualifiedNameRow> pSource,
-                    final Collection<IColumnProjection> pSelectedFields) {
-        selectedFields = pSelectedFields;
+                    Projection evaluatedProjection,
+                    final Iterator<IQualifiedNameRow> pSource) {
+        selectedFields = evaluatedProjection.getSelectedFields();
         source = pSource;
     }
 
