@@ -54,6 +54,7 @@ public class PrintQueryTest {
         writer.write("t.chicken t.cow\n");
         writer.write("eggs milk\n");
         writer.write("chickens cows\n");
+        writer.write("Costs: 0\n");
         replayAll();
         PrintQuery subject = new PrintQuery(query);
         subject.execute(database, writer);
