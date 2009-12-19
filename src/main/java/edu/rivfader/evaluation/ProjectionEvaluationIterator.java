@@ -33,9 +33,9 @@ public class ProjectionEvaluationIterator
      */
     public ProjectionEvaluationIterator(
                     Projection evaluatedProjection,
-                    final Iterator<IQualifiedNameRow> pSource) {
+                    Evaluator e) {
         selectedFields = evaluatedProjection.getSelectedFields();
-        source = pSource;
+        source = e.transform(evaluatedProjection.getSubExpression());
     }
 
     @Override

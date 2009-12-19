@@ -1,9 +1,11 @@
 package edu.rivfader.test.evaluation;
 
 import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.IRelAlgExpr;
 import edu.rivfader.relalg.Selection;
 import edu.rivfader.relalg.rowselector.IRowSelector;
 import edu.rivfader.evaluation.SelectionEvaluationIterator;
+import edu.rivfader.evaluation.Evaluator;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +25,7 @@ import java.util.List;
 import java.util.LinkedList;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(Selection.class)
+@PrepareForTest({Evaluator.class, Selection.class})
 public class SelectionEvaluationIteratorTest {
     @Test
     public void transformSelection() {
@@ -35,7 +37,9 @@ public class SelectionEvaluationIteratorTest {
         expect(predicate.acceptsRow(first)).andReturn(true);
         expect(predicate.acceptsRow(second)).andReturn(false);
         expect(predicate.acceptsRow(third)).andReturn(true);
-        Selection s = new Selection(predicate, null);
+        IRelAlgExpr subexpression = createMock(IRelAlgExpr.class);
+        Selection s = new Selection(predicate, subexpression);
+        Evaluator e = createMock(Evaluator.class);
 
         List<IQualifiedNameRow> previousRows =
             new LinkedList<IQualifiedNameRow>();
@@ -43,9 +47,11 @@ public class SelectionEvaluationIteratorTest {
         previousRows.add(second);
         previousRows.add(third);
 
+        expect(e.transform(subexpression)).andReturn(previousRows.iterator());
+
         replayAll();
-        SelectionEvaluationIterator subject = new SelectionEvaluationIterator(
-                                        s, previousRows.iterator());
+        SelectionEvaluationIterator subject =
+            new SelectionEvaluationIterator(s, e);
         List<IQualifiedNameRow> gotRows = new LinkedList<IQualifiedNameRow>();
         while(subject.hasNext()) {
             gotRows.add(subject.next());

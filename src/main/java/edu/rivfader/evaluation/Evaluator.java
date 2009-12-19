@@ -44,14 +44,12 @@ public class Evaluator
 
     @Override
     public Iterator<IQualifiedNameRow> transformProjection(Projection p){
-        return new ProjectionEvaluationIterator(p,
-                                            transform(p.getSubExpression()));
+        return new ProjectionEvaluationIterator(p, this);
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformSelection(Selection s){
-        return new SelectionEvaluationIterator(s,
-                                         transform(s.getSubExpression()));
+        return new SelectionEvaluationIterator(s, this);
     }
 
     @Override

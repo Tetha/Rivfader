@@ -36,9 +36,9 @@ public class SelectionEvaluationIterator
      */
     public SelectionEvaluationIterator(
                              final Selection evaluatedNode,
-                             final Iterator<IQualifiedNameRow> pSource) {
+                             final Evaluator e) {
         predicate = evaluatedNode.getPredicate();
-        source = pSource;
+        source = e.transform(evaluatedNode.getSubExpression());
     }
 
     @Override

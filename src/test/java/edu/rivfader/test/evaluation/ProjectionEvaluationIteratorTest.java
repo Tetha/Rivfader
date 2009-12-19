@@ -5,6 +5,8 @@ import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.Projection;
 import edu.rivfader.relalg.IColumnProjection;
 import edu.rivfader.evaluation.ProjectionEvaluationIterator;
+import edu.rivfader.evaluation.Evaluator;
+import edu.rivfader.relalg.IRelAlgExpr;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +30,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(Projection.class)
+@PrepareForTest({Evaluator.class, Projection.class})
 public class ProjectionEvaluationIteratorTest {
     @Test
     public void transformProjection() {
@@ -40,8 +42,12 @@ public class ProjectionEvaluationIteratorTest {
         Set<IColumnProjection> ps; // projections
         List<IQualifiedNameRow> rrs; // returned rows
         Projection p; // input projection
+        Evaluator e; // mock evaluator
+        IRelAlgExpr se; // sub expression
 
+        e = createMock(Evaluator.class);
         p = createMock(Projection.class);
+        se = createMock(IRelAlgExpr.class);
         scn = createMock(IQualifiedColumnName.class);
         ser = new LinkedList<IQualifiedNameRow>();
         row = createMock(IQualifiedNameRow.class);
@@ -50,8 +56,11 @@ public class ProjectionEvaluationIteratorTest {
         ps = new HashSet<IColumnProjection>();
         rrs = new LinkedList<IQualifiedNameRow>();
 
+        expect(p.getSubExpression()).andReturn(se);
         expect(p.getSelectedFields()).andReturn(ps);
         ser.add(row);
+
+        expect(e.transform(se)).andReturn(ser.iterator());
 
         scs.add(scn);
 
@@ -62,7 +71,7 @@ public class ProjectionEvaluationIteratorTest {
 
         replayAll();
         ProjectionEvaluationIterator subject =
-            new ProjectionEvaluationIterator(p, ser.iterator());
+            new ProjectionEvaluationIterator(p, e);
         while(subject.hasNext()) {
             rrs.add(subject.next());
         }
