@@ -44,8 +44,8 @@ public class ProjectionStatisticsIteratorTest {
 
         replayAll();
         subject = new ProjectionStatisticsIterator(costDestination,
-                                                   input.iterator(),
-                                                   activeNode);
+                                                    activeNode,
+                                                   input.iterator());
         output = new LinkedList<IQualifiedNameRow>();
         while(subject.hasNext()) {
             output.add(subject.next());

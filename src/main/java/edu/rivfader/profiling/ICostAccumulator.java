@@ -9,7 +9,6 @@ public interface ICostAccumulator {
      * computes and stores costs for the selection.
      */
     void handleSelectionStatistics(Selection actingNode,
-                                   int inputRows,
                                    int outputRows,
                                    int columns);
 

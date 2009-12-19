@@ -50,7 +50,7 @@ public class ProductStatisticsIteratorTest {
 
         replayAll();
         ProductStatisticsIterator subject = new ProductStatisticsIterator(
-                    activeNode, statisticsDestination, productOutput);
+                    statisticsDestination,activeNode, productOutput);
         List<IQualifiedNameRow> subjectOutput =
             new LinkedList<IQualifiedNameRow>();
         while(subject.hasNext()) {

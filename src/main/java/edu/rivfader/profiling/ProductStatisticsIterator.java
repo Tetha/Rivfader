@@ -9,9 +9,9 @@ public class ProductStatisticsIterator extends StatisticsIterator {
     private ICountingIterator leftInput;
     private ICountingIterator rightInput;
 
-    public ProductStatisticsIterator(Product pActiveNode,
-                            ICostAccumulator statisticsDestination,
-                            Iterator<IQualifiedNameRow> productOutput) {
+    public ProductStatisticsIterator(ICostAccumulator statisticsDestination,
+                                    Product pActiveNode,
+                                    Iterator<IQualifiedNameRow> productOutput) {
         super(productOutput, statisticsDestination);
         activeNode = pActiveNode;
     }

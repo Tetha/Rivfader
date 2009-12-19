@@ -22,31 +22,20 @@ public class ProfilingEvaluator extends Evaluator {
     }
 
     @Override
-    public ICountingIterator<IQualifiedNameRow> transform(IRelAlgExpr e) {
-        return new CountingIterator<IQualifiedNameRow>(super.transform(e));
-    }
-
-    @Override
     public Iterator<IQualifiedNameRow> transformSelection(Selection s) {
-        ICountingIterator<IQualifiedNameRow> inputSet =
-            transform(s.getSubExpression());
-        return new SelectionStatisticsIterator(s,
-                new SelectionEvaluationIterator(s, inputSet),
-                                               statisticsDestination,
-                                               inputSet);
+        return new SelectionStatisticsIterator(statisticsDestination, s,
+                                                super.transformSelection(s));
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformProjection(Projection p) {
-        return new ProjectionStatisticsIterator(statisticsDestination,
-                    new ProjectionEvaluationIterator(p,
-                        transform(p.getSubExpression())),
-                    p);
+        return new ProjectionStatisticsIterator(statisticsDestination, p,
+                                                super.transformProjection(p));
     }
 
     @Override
     public Iterator<IQualifiedNameRow> transformProduct(Product p) {
-        return new ProductStatisticsIterator(p, statisticsDestination,
-                        super.transformProduct(p));
+        return new ProductStatisticsIterator(statisticsDestination, p,
+                                             super.transformProduct(p));
     }
 }

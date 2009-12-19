@@ -18,13 +18,11 @@ public class Block1Costs implements ICostAccumulator {
 
     @Override
     public void handleSelectionStatistics(Selection actingNode,
-                                   int inputRows,
                                    int outputRows,
                                    int columns) {
         if (countedNodes.contains(actingNode)) {
             return;
         } else {
-            System.err.println(actingNode.toString() + " " + inputRows + " " + columns);
             costs += outputRows * columns;
             countedNodes.add(actingNode);
         }
@@ -37,7 +35,6 @@ public class Block1Costs implements ICostAccumulator {
         if (countedNodes.contains(actingNode)) {
             return;
         } else {
-            System.err.println(actingNode.toString() + " " + inputRows + " " + columns);
             costs += actingNode.getSelectedFields().size() * inputRows;
             countedNodes.add(actingNode);
         }
@@ -50,7 +47,6 @@ public class Block1Costs implements ICostAccumulator {
         if (countedNodes.contains(actingNode)) {
             return;
         } else {
-            System.err.println(actingNode.toString() + " " + rows + " " + columns);
             costs += rows * columns;
             countedNodes.add(actingNode);
         }

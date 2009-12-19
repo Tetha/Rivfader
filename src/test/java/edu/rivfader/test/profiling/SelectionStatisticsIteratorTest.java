@@ -32,7 +32,6 @@ public class SelectionStatisticsIteratorTest {
 
     @Test public void evaluationWorks() {
         ICostAccumulator statisticsDestination;
-        ICountingIterator<IQualifiedNameRow> inputCounter;
         Iterator<IQualifiedNameRow> output;
         SelectionStatisticsIterator subject;
         Selection activeNode;
@@ -41,18 +40,15 @@ public class SelectionStatisticsIteratorTest {
         selectedRows.addRow("a");
         selectedRows.addRow("b");
 
-        inputCounter = createMock(RowCounter.class);
         activeNode = createMock(Selection.class);
         statisticsDestination = createMock(ICostAccumulator.class);
         statisticsDestination.handleSelectionStatistics(activeNode,
-                                                        42,
                                                         selectedRows.getRows().size(),
                                                         1);
-        expect(inputCounter.getNumberOfElements()).andReturn(42);
         output = selectedRows.getRows().iterator();
         replayAll();
-        subject = new SelectionStatisticsIterator(activeNode, output,
-                statisticsDestination, inputCounter);
+        subject = new SelectionStatisticsIterator(statisticsDestination,
+                                                  activeNode, output);
         List<IQualifiedNameRow> result = new LinkedList<IQualifiedNameRow>();
         while(subject.hasNext()) {
             result.add(subject.next());

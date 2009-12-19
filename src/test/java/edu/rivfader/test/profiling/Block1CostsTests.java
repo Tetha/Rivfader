@@ -32,12 +32,10 @@ public class Block1CostsTests {
     @Test public void checkSelectionCalculation() {
         int result;
         Selection activeNode = createMock(Selection.class);
-        int ingoingRowCount = 10;
         int outcomingRowCount = 5;
         int columns = 3;
         ICostAccumulator subject = new Block1Costs();
         subject.handleSelectionStatistics(activeNode,
-                                          ingoingRowCount,
                                           outcomingRowCount,
                                           columns);
         assertThat(subject.getCost(), is(equalTo(outcomingRowCount*columns)));
@@ -84,13 +82,12 @@ public class Block1CostsTests {
     @Test public void checkCostsAddedTogether() {
         int result;
         Selection activeNode = createMock(Selection.class);
-        int ingoingRowCount = 10;
         int outcomingRowCount = 5;
         int columns = 3;
         ICostAccumulator subject = new Block1Costs();
-        subject.handleSelectionStatistics(activeNode, ingoingRowCount,
+        subject.handleSelectionStatistics(activeNode,
                                           outcomingRowCount, columns);
-        subject.handleSelectionStatistics(activeNode, ingoingRowCount,
+        subject.handleSelectionStatistics(activeNode,
                                           outcomingRowCount, columns);
         assertThat(subject.getCost(), is(equalTo(2*outcomingRowCount*columns)));
     }

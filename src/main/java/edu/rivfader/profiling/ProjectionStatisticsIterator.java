@@ -10,8 +10,8 @@ public class ProjectionStatisticsIterator
     private Projection activeNode;
 
     public ProjectionStatisticsIterator(ICostAccumulator statisticsDestination,
-            Iterator<IQualifiedNameRow> wrappedIterator,
-            Projection pActiveNode) {
+            Projection pActiveNode,
+            Iterator<IQualifiedNameRow> wrappedIterator) {
         super(wrappedIterator, statisticsDestination);
         activeNode = pActiveNode;
     }
