@@ -1,15 +1,15 @@
 package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.relalg.IQualifiedNameRow;
-import edu.rivfader.relalg.QualifiedNameRow;
-import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.representation.IQualifiedNameRow;
+import edu.rivfader.relalg.representation.QualifiedNameRow;
+import edu.rivfader.relalg.representation.IQualifiedColumnName;
 
 import java.util.Map;
 
 import java.io.Writer;
 import java.io.IOException;
-import edu.rivfader.relalg.ITable;
+import edu.rivfader.relalg.representation.ITable;
 
 /**
  * This implements the insert command with column names

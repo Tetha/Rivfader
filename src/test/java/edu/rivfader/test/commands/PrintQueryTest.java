@@ -3,12 +3,12 @@ package edu.rivfader.test.commands;
 import edu.rivfader.commands.PrintQuery;
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
-import edu.rivfader.relalg.IRelAlgExpr;
-import edu.rivfader.relalg.IQualifiedNameRow;
-import edu.rivfader.relalg.QualifiedNameRow;
-import edu.rivfader.relalg.IQualifiedColumnName;
-import edu.rivfader.relalg.QualifiedColumnName;
-import edu.rivfader.relalg.StubResult;
+import edu.rivfader.relalg.representation.IRelAlgExpr;
+import edu.rivfader.relalg.representation.IQualifiedNameRow;
+import edu.rivfader.relalg.representation.QualifiedNameRow;
+import edu.rivfader.relalg.representation.IQualifiedColumnName;
+import edu.rivfader.relalg.representation.QualifiedColumnName;
+import edu.rivfader.relalg.operations.StubResult;
 
 import java.io.Writer;
 import java.io.IOException;

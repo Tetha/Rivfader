@@ -18,8 +18,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Collection;
 
-import edu.rivfader.relalg.rowselector.*;
-import edu.rivfader.relalg.*;
+import edu.rivfader.rowselector.*;
+import edu.rivfader.rowselector.representation.*;
+import edu.rivfader.relalg.representation.*;
 import edu.rivfader.commands.*;
 
 public class SimpleSQLParser

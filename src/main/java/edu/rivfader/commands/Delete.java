@@ -1,10 +1,10 @@
 package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.relalg.ITable;
-import edu.rivfader.relalg.rowselector.IRowSelector;
-import edu.rivfader.relalg.rowselector.AcceptsRowEvaluator;
-import edu.rivfader.relalg.IQualifiedNameRow;
+import edu.rivfader.relalg.representation.ITable;
+import edu.rivfader.rowselector.representation.IRowSelector;
+import edu.rivfader.rowselector.operations.AcceptsRowEvaluator;
+import edu.rivfader.relalg.representation.IQualifiedNameRow;
 
 import java.io.IOException;
 import java.io.Writer;

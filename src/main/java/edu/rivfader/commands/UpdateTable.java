@@ -1,11 +1,11 @@
 package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.relalg.rowselector.IRowSelector;
-import edu.rivfader.relalg.IQualifiedNameRow;
-import edu.rivfader.relalg.IQualifiedColumnName;
-import edu.rivfader.relalg.ITable;
-import edu.rivfader.relalg.rowselector.AcceptsRowEvaluator;
+import edu.rivfader.rowselector.representation.IRowSelector;
+import edu.rivfader.relalg.representation.IQualifiedNameRow;
+import edu.rivfader.relalg.representation.IQualifiedColumnName;
+import edu.rivfader.relalg.representation.ITable;
+import edu.rivfader.rowselector.operations.AcceptsRowEvaluator;
 import java.util.Map;
 import java.util.Iterator;
 

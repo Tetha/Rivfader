@@ -1,10 +1,10 @@
 package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.relalg.ITable;
-import edu.rivfader.relalg.IQualifiedNameRow;
-import edu.rivfader.relalg.QualifiedNameRow;
-import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.representation.ITable;
+import edu.rivfader.relalg.representation.IQualifiedNameRow;
+import edu.rivfader.relalg.representation.QualifiedNameRow;
+import edu.rivfader.relalg.representation.IQualifiedColumnName;
 import edu.rivfader.errors.NoColumnValueMappingPossible;
 import java.io.Writer;
 import java.io.IOException;

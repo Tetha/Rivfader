@@ -1,14 +1,14 @@
 package edu.rivfader.commands;
 
 import edu.rivfader.data.Database;
-import edu.rivfader.relalg.IRelAlgExpr;
-import edu.rivfader.relalg.IQualifiedColumnName;
-import edu.rivfader.relalg.IQualifiedNameRow;
-import edu.rivfader.evaluation.Evaluator;
+import edu.rivfader.relalg.representation.IRelAlgExpr;
+import edu.rivfader.relalg.representation.IQualifiedColumnName;
+import edu.rivfader.relalg.representation.IQualifiedNameRow;
+import edu.rivfader.relalg.operation.evaluation.Evaluator;
 
-import edu.rivfader.profiling.ProfilingEvaluator;
-import edu.rivfader.profiling.Block1Costs;
-import edu.rivfader.profiling.ICostAccumulator;
+import edu.rivfader.relalg.operations.profiling_evaluation.ProfilingEvaluator;
+import edu.rivfader.relalg.operations.profiling_evaluation.Block1Costs;
+import edu.rivfader.relalg.operations.profiling_evaluation.ICostAccumulator;
 
 import java.io.Writer;
 import java.io.IOException;

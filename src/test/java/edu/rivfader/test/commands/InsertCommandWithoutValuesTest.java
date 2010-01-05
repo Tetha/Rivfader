@@ -3,11 +3,11 @@ package edu.rivfader.test.commands;
 import edu.rivfader.commands.InsertCommandWithoutValues;
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
-import edu.rivfader.relalg.ITable;
-import edu.rivfader.relalg.QualifiedNameRow;
-import edu.rivfader.relalg.IQualifiedNameRow;
-import edu.rivfader.relalg.QualifiedColumnName;
-import edu.rivfader.relalg.IQualifiedColumnName;
+import edu.rivfader.relalg.representation.ITable;
+import edu.rivfader.relalg.representation.QualifiedNameRow;
+import edu.rivfader.relalg.representation.IQualifiedNameRow;
+import edu.rivfader.relalg.representation.QualifiedColumnName;
+import edu.rivfader.relalg.representation.IQualifiedColumnName;
 
 import java.io.Writer;
 import java.io.IOException;
