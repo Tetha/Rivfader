@@ -7,8 +7,4 @@ import edu.rivfader.relalg.IQualifiedNameRow;
  * @author harald
  */
 public class Always implements IRowSelector {
-    @Override
-    public boolean acceptsRow(IQualifiedNameRow examinedRow) {
-        return true;
-    }
 }

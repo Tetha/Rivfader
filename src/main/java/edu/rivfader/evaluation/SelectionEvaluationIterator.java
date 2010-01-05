@@ -3,6 +3,7 @@ package edu.rivfader.evaluation;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.Selection;
 import edu.rivfader.relalg.rowselector.IRowSelector;
+import edu.rivfader.relalg.rowselector.AcceptsRowEvaluator;
 import java.util.NoSuchElementException;
 import java.util.Iterator;
 /**
@@ -46,7 +47,8 @@ public class SelectionEvaluationIterator
         if (!nextIsValid) {
             while (source.hasNext()) {
                 IQualifiedNameRow pne = source.next();
-                if (predicate.acceptsRow(pne)) {
+                AcceptsRowEvaluator eval = new AcceptsRowEvaluator(pne);
+                if (eval.evaluate(predicate)) {
                     nextElement = pne;
                     nextIsValid = true;
                     break;

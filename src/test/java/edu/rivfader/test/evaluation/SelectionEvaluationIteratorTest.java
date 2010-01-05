@@ -6,6 +6,9 @@ import edu.rivfader.relalg.Selection;
 import edu.rivfader.relalg.rowselector.IRowSelector;
 import edu.rivfader.evaluation.SelectionEvaluationIterator;
 import edu.rivfader.evaluation.Evaluator;
+import edu.rivfader.relalg.RowSetStubResult;
+import edu.rivfader.relalg.rowselector.StubResult;
+import edu.rivfader.data.Database;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,29 +28,24 @@ import java.util.List;
 import java.util.LinkedList;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({Evaluator.class, Selection.class})
+@PrepareForTest({Database.class})
 public class SelectionEvaluationIteratorTest {
     @Test
     public void transformSelection() {
+        Database db = createMock(Database.class);
         IQualifiedNameRow first = createMock(IQualifiedNameRow.class);
         IQualifiedNameRow second = createMock(IQualifiedNameRow.class);
         IQualifiedNameRow third = createMock(IQualifiedNameRow.class);
 
-        IRowSelector predicate = createMock(IRowSelector.class);
-        expect(predicate.acceptsRow(first)).andReturn(true);
-        expect(predicate.acceptsRow(second)).andReturn(false);
-        expect(predicate.acceptsRow(third)).andReturn(true);
-        IRelAlgExpr subexpression = createMock(IRelAlgExpr.class);
-        Selection s = new Selection(predicate, subexpression);
-        Evaluator e = createMock(Evaluator.class);
-
+        IRowSelector predicate = new StubResult(true, false, true);
         List<IQualifiedNameRow> previousRows =
             new LinkedList<IQualifiedNameRow>();
         previousRows.add(first);
         previousRows.add(second);
         previousRows.add(third);
-
-        expect(e.transform(subexpression)).andReturn(previousRows.iterator());
+        IRelAlgExpr subExpression = new RowSetStubResult(previousRows);
+        Selection s = new Selection(predicate, subExpression);
+        Evaluator e = new Evaluator(db);
 
         replayAll();
         SelectionEvaluationIterator subject =

@@ -9,7 +9,7 @@ import edu.rivfader.relalg.QualifiedNameRow;
 import edu.rivfader.relalg.QualifiedColumnName;
 import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.ITable;
-
+import edu.rivfader.relalg.rowselector.StubResult;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +54,7 @@ public class UpdateTableTest {
         cns.add(chicken);
         cns.add(cow);
 
-        p = createMock(IRowSelector.class);
+        p = new StubResult(true, false);
         db = createMock(Database.class);
         as = new HashMap<String, String>();
         as.put("chicken", "chickens");
@@ -69,10 +69,8 @@ public class UpdateTableTest {
         t.setDatabase(db);
         t.openForWriting();
         expect(t.load()).andReturn(rs.iterator());
-        expect(p.acceptsRow(mr)).andReturn(true);
         expect(mr.resolveUnqualifiedName("chicken")).andReturn(chicken);
         mr.setData(chicken, "chickens");
-        expect(p.acceptsRow(umr)).andReturn(false);
 
         t.storeRow(mr);
         t.storeRow(umr);

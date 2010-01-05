@@ -5,7 +5,7 @@ import edu.rivfader.relalg.rowselector.IRowSelector;
 import edu.rivfader.relalg.IQualifiedNameRow;
 import edu.rivfader.relalg.IQualifiedColumnName;
 import edu.rivfader.relalg.ITable;
-
+import edu.rivfader.relalg.rowselector.AcceptsRowEvaluator;
 import java.util.Map;
 import java.util.Iterator;
 
@@ -58,7 +58,8 @@ public class UpdateTable implements ICommand {
         rs = table.load();
         while(rs.hasNext()) {
             cr = rs.next();
-            if(selectedRows.acceptsRow(cr)) {
+            AcceptsRowEvaluator ar = new AcceptsRowEvaluator(cr);
+            if(ar.evaluate(selectedRows)) {
                 for(String cn : assignments.keySet()) { // column name
                     IQualifiedColumnName rcn; // resolved column name
                     rcn = cr.resolveUnqualifiedName(cn);

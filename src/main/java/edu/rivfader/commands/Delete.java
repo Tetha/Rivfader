@@ -3,6 +3,7 @@ package edu.rivfader.commands;
 import edu.rivfader.data.Database;
 import edu.rivfader.relalg.ITable;
 import edu.rivfader.relalg.rowselector.IRowSelector;
+import edu.rivfader.relalg.rowselector.AcceptsRowEvaluator;
 import edu.rivfader.relalg.IQualifiedNameRow;
 
 import java.io.IOException;
@@ -45,7 +46,8 @@ public class Delete implements ICommand {
         rs = table.load();
         while (rs.hasNext()) {
             cr = rs.next();
-            if (!predicate.acceptsRow(cr)) {
+            AcceptsRowEvaluator evaluator = new AcceptsRowEvaluator(cr);
+            if (!evaluator.evaluate(predicate)) {
                 table.storeRow(cr);
             }
         }

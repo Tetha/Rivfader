@@ -47,10 +47,4 @@ public class BinaryOperation implements IRowSelector {
     public BooleanValueCombination getCombination() {
         return combination;
     }
-
-    @Override
-    public boolean acceptsRow(final IQualifiedNameRow data) {
-        return combination.combineValues(left.acceptsRow(data),
-                                         right.acceptsRow(data));
-    }
 }

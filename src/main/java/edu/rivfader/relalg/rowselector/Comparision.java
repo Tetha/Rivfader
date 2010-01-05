@@ -36,12 +36,15 @@ public class Comparision implements IRowSelector {
         secondOperand = pSecondOperand;
     }
 
+    public ValueComparer getComparision() {
+        return internalComparision;
+    }
 
-    @Override
-    public boolean acceptsRow(final IQualifiedNameRow data) {
-        String actualFirstValue = firstOperand.getValue(data);
-        String actualSecondValue = secondOperand.getValue(data);
-        return internalComparision.isGoodValuePair(actualFirstValue,
-                                                   actualSecondValue);
+    public IValueProvider getLeft() {
+        return firstOperand;
+    }
+
+    public IValueProvider getRight() {
+        return secondOperand;
     }
 }
