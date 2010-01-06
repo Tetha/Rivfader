@@ -7,34 +7,22 @@ import edu.rivfader.relalg.representation.Selection;
 import edu.rivfader.rowselector.representation.IRowSelector;
 import edu.rivfader.rowselector.representation.BinaryOperation;
 import edu.rivfader.rowselector.representation.BooleanValueCombination;
+import edu.rivfader.rowselector.operations.ConjunctionSplitter;
 
 import edu.rivfader.relalg.representation.Projection;
 import edu.rivfader.relalg.representation.Product;
 import edu.rivfader.relalg.representation.LoadTable;
 import edu.rivfader.relalg.representation.RenameTable;
 
-import java.util.List;
-import java.util.LinkedList;
+import java.util.Collection;
 
 public class SelectionSplitter
     extends BaseRelalgTransformation<IRelAlgExpr>
     implements IRelAlgExprTransformation<IRelAlgExpr> {
 
 
-    private List<IRowSelector> collectPredicates(IRowSelector s) {
-        List<IRowSelector> result = new LinkedList<IRowSelector>();
-        if (s instanceof BinaryOperation) {
-            BinaryOperation castedS = (BinaryOperation) s;
-            if (castedS.getCombination() == BooleanValueCombination.AND) {
-                result.addAll(collectPredicates(castedS.getLeft()));
-                result.addAll(collectPredicates(castedS.getRight()));
-            } else {
-                result.add(s);
-            }
-        } else {
-            result.add(s);
-        }
-        return result;
+    private Collection<IRowSelector> collectPredicates(IRowSelector s) {
+        return new ConjunctionSplitter().transform(s);
     }
 
     @Override

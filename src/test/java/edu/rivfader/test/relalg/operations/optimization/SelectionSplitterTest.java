@@ -8,12 +8,14 @@ import edu.rivfader.relalg.representation.IColumnProjection;
 import edu.rivfader.relalg.representation.Projection;
 import edu.rivfader.relalg.representation.Product;
 import edu.rivfader.relalg.representation.Selection;
+import edu.rivfader.rowselector.operations.RowselectorStubResult;
 import edu.rivfader.rowselector.representation.IRowSelector;
 import edu.rivfader.rowselector.representation.BinaryOperation;
 import edu.rivfader.rowselector.representation.BooleanValueCombination;
 
 import edu.rivfader.relalg.operations.optimization.SelectionSplitter;
 
+import java.util.List;
 import java.util.LinkedList;
 import java.util.Collection;
 
@@ -98,12 +100,19 @@ public class SelectionSplitterTest {
         IRelAlgExpr subResult;
         StubResult<IRelAlgExpr> subExpression;
         IRowSelector[] basePredicates = new IRowSelector[3];
+        IRowSelector[] results = new IRowSelector[3];
         IRowSelector predicate;
 
         subResult = createMock(IRelAlgExpr.class);
         subExpression = new StubResult<IRelAlgExpr>(subResult);
         for(int i = 0; i < basePredicates.length; i++) {
-            basePredicates[i] = createMock(IRowSelector.class);
+            results[i] = createMock(IRowSelector.class);
+            List<IRowSelector> currentSubResult =
+                new LinkedList<IRowSelector>();
+            currentSubResult.add(results[i]);
+            basePredicates[i] =
+                new RowselectorStubResult<Collection<IRowSelector>>(
+                            currentSubResult);
         }
 
         predicate = new BinaryOperation(
@@ -135,33 +144,10 @@ public class SelectionSplitterTest {
         assertThat(transformedSelections[2].getSubExpression(),
                     is(equalTo(subResult)));
         for(int i = 0; i < basePredicates.length; i++) {
-            assertThat(basePredicates[i], is(anyOf(
+            assertThat(results[i], is(anyOf(
                         equalTo(transformedSelections[0].getPredicate()),
                         equalTo(transformedSelections[1].getPredicate()),
                         equalTo(transformedSelections[2].getPredicate()))));
         }
-    }
-
-    @Test public void checkTransformProjectionKeepsOrsTogether() {
-        IRelAlgExpr subResult = createMock(IRelAlgExpr.class);
-
-        IRowSelector[] basePredicates = { createMock(IRowSelector.class),
-                                          createMock(IRowSelector.class) };
-
-        StubResult<IRelAlgExpr> subExpression =
-            new StubResult<IRelAlgExpr>(subResult);
-        IRowSelector predicate = new BinaryOperation(basePredicates[0],
-                                                   BooleanValueCombination.OR,
-                                                   basePredicates[1]);
-        Selection input = new Selection(predicate, subExpression);
-        replayAll();
-        SelectionSplitter subject = new SelectionSplitter();
-        IRelAlgExpr result = subject.transformSelection(input);
-        verifyAll();
-
-        assertThat(result, is(instanceOf(Selection.class)));
-        Selection castedResult = (Selection)result;
-        assertThat(castedResult.getSubExpression(), is(equalTo(subResult)));
-        assertThat(castedResult.getPredicate(), is(equalTo(predicate)));
     }
 }

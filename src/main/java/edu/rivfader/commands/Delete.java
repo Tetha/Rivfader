@@ -47,7 +47,7 @@ public class Delete implements ICommand {
         while (rs.hasNext()) {
             cr = rs.next();
             AcceptsRowEvaluator evaluator = new AcceptsRowEvaluator(cr);
-            if (!evaluator.evaluate(predicate)) {
+            if (!evaluator.transform(predicate)) {
                 table.storeRow(cr);
             }
         }

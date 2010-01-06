@@ -59,7 +59,7 @@ public class UpdateTable implements ICommand {
         while(rs.hasNext()) {
             cr = rs.next();
             AcceptsRowEvaluator ar = new AcceptsRowEvaluator(cr);
-            if(ar.evaluate(selectedRows)) {
+            if(ar.transform(selectedRows)) {
                 for(String cn : assignments.keySet()) { // column name
                     IQualifiedColumnName rcn; // resolved column name
                     rcn = cr.resolveUnqualifiedName(cn);

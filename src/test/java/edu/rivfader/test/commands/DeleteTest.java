@@ -4,7 +4,7 @@ import edu.rivfader.commands.Delete;
 import edu.rivfader.data.Database;
 import edu.rivfader.data.Row;
 import edu.rivfader.rowselector.representation.IRowSelector;
-import edu.rivfader.rowselector.representation.StubResult;
+import edu.rivfader.rowselector.operations.RowselectorStubResult;
 import edu.rivfader.relalg.representation.IQualifiedNameRow;
 import edu.rivfader.relalg.representation.QualifiedNameRow;
 import edu.rivfader.relalg.representation.IQualifiedColumnName;
@@ -45,7 +45,7 @@ public class DeleteTest {
         Writer w; // writer mock
         t = createMock(ITable.class);
 
-        p = new StubResult(true, false);
+        p = new RowselectorStubResult<Boolean>(true, false);
         db = createMock(Database.class);
         w = createMock(Writer.class);
 

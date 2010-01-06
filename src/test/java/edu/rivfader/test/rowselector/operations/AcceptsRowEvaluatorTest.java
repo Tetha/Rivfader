@@ -3,13 +3,13 @@ package edu.rivfader.test.rowselector.operations;
 import edu.rivfader.relalg.representation.IQualifiedNameRow;
 import edu.rivfader.rowselector.representation.Always;
 import edu.rivfader.rowselector.operations.AcceptsRowEvaluator;
+import edu.rivfader.rowselector.operations.RowselectorStubResult;
 import edu.rivfader.rowselector.representation.IRowSelector;
 import edu.rivfader.rowselector.representation.BooleanValueCombination;
 import edu.rivfader.rowselector.representation.BinaryOperation;
 import edu.rivfader.rowselector.representation.Comparision;
 import edu.rivfader.rowselector.representation.IValueProvider;
 import edu.rivfader.rowselector.representation.ValueComparer;
-import edu.rivfader.rowselector.representation.StubResult;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -34,13 +34,13 @@ public class AcceptsRowEvaluatorTest {
         Always input = new Always();
         replayAll();
         AcceptsRowEvaluator subject = new AcceptsRowEvaluator(parameterRow);
-        assertThat(subject.evaluate(input), is(true));
+        assertThat(subject.transform(input), is(true));
         verifyAll();
     }
 
     @Test public void binaryOperationEvaluation() {
-        IRowSelector left = new StubResult(true);
-        IRowSelector right = new StubResult(false);
+        IRowSelector left = new RowselectorStubResult<Boolean>(true);
+        IRowSelector right = new RowselectorStubResult<Boolean>(false);
         BooleanValueCombination combination =
             createMock(BooleanValueCombination.class);
         boolean leftResult = true;
@@ -53,7 +53,7 @@ public class AcceptsRowEvaluatorTest {
         BinaryOperation input = new BinaryOperation(left, combination, right);
         replayAll();
         AcceptsRowEvaluator subject = new AcceptsRowEvaluator(parameterRow);
-        assertThat(subject.evaluate(input), is(combinationResult));
+        assertThat(subject.transform(input), is(combinationResult));
         verifyAll();
     }
 
@@ -73,7 +73,7 @@ public class AcceptsRowEvaluatorTest {
                                             internal);
         replayAll();
         AcceptsRowEvaluator subject = new AcceptsRowEvaluator(parameterRow);
-        assertThat(subject.evaluate(input), is(true));
+        assertThat(subject.transform(input), is(true));
         verifyAll();
     }
 }

@@ -7,7 +7,7 @@ import edu.rivfader.rowselector.representation.IRowSelector;
 import edu.rivfader.relalg.operation.evaluation.SelectionEvaluationIterator;
 import edu.rivfader.relalg.operation.evaluation.Evaluator;
 import edu.rivfader.relalg.operations.RowSetStubResult;
-import edu.rivfader.rowselector.representation.StubResult;
+import edu.rivfader.rowselector.operations.RowselectorStubResult;
 import edu.rivfader.data.Database;
 
 import org.junit.Test;
@@ -37,7 +37,8 @@ public class SelectionEvaluationIteratorTest {
         IQualifiedNameRow second = createMock(IQualifiedNameRow.class);
         IQualifiedNameRow third = createMock(IQualifiedNameRow.class);
 
-        IRowSelector predicate = new StubResult(true, false, true);
+        IRowSelector predicate =
+            new RowselectorStubResult<Boolean>(true, false, true);
         List<IQualifiedNameRow> previousRows =
             new LinkedList<IQualifiedNameRow>();
         previousRows.add(first);

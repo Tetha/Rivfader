@@ -48,7 +48,7 @@ public class SelectionEvaluationIterator
             while (source.hasNext()) {
                 IQualifiedNameRow pne = source.next();
                 AcceptsRowEvaluator eval = new AcceptsRowEvaluator(pne);
-                if (eval.evaluate(predicate)) {
+                if(eval.transform(predicate)) {
                     nextElement = pne;
                     nextIsValid = true;
                     break;

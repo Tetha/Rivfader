@@ -9,7 +9,7 @@ import edu.rivfader.relalg.representation.QualifiedNameRow;
 import edu.rivfader.relalg.representation.QualifiedColumnName;
 import edu.rivfader.relalg.representation.IQualifiedColumnName;
 import edu.rivfader.relalg.representation.ITable;
-import edu.rivfader.rowselector.representation.StubResult;
+import edu.rivfader.rowselector.operations.RowselectorStubResult;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +54,7 @@ public class UpdateTableTest {
         cns.add(chicken);
         cns.add(cow);
 
-        p = new StubResult(true, false);
+        p = new RowselectorStubResult<Boolean>(true, false);
         db = createMock(Database.class);
         as = new HashMap<String, String>();
         as.put("chicken", "chickens");
