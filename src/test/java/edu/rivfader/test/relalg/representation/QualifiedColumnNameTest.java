@@ -48,6 +48,9 @@ public class QualifiedColumnNameTest {
     @Test public void equalityHashcode() {
         IQualifiedColumnName equalName = new QualifiedColumnName(tableName,
                                                                  columnName);
+        IQualifiedColumnName unqualifiedEqualName = new QualifiedColumnName(
+                                            null, columnName);
+
         IQualifiedColumnName tableDiffers =
             new QualifiedColumnName(tableName + "1", columnName);
         IQualifiedColumnName columnDiffers =
@@ -55,6 +58,8 @@ public class QualifiedColumnNameTest {
 
         assertTrue(subject.equals(equalName));
         assertTrue(subject.hashCode() == equalName.hashCode());
+        assertTrue(subject.equals(unqualifiedEqualName));
+        assertTrue(subject.hashCode() == unqualifiedEqualName.hashCode());
         assertFalse(subject.equals(tableDiffers));
         assertFalse(subject.equals(columnDiffers));
         assertFalse(subject.equals("nonsense"));

@@ -42,12 +42,8 @@ public class QualifiedColumnName implements IQualifiedColumnName {
         }
 
         IQualifiedColumnName co = (IQualifiedColumnName) other; //casted other
-        if (table == null) {
-            if (co.getTable() != null) {
-                return false;
-            }
-        } else {
-            if (!table.equals(co.getTable())) {
+        if (table != null && co.getTable() != null) {
+            if(!table.equals(co.getTable())) {
                 return false;
             }
         }
@@ -66,10 +62,9 @@ public class QualifiedColumnName implements IQualifiedColumnName {
 
     @Override
     public int hashCode() {
-        int tableHashcode = table == null? 0 : table.hashCode();
         int columnHashcode = column == null? 0 : column.hashCode();
 
-        return tableHashcode ^ columnHashcode;
+        return columnHashcode;
     }
 
     @Override
