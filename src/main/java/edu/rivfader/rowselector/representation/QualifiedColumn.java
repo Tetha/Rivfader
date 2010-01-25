@@ -3,6 +3,10 @@ package edu.rivfader.rowselector.representation;
 import edu.rivfader.relalg.representation.IQualifiedColumnName;
 import edu.rivfader.relalg.representation.IQualifiedNameRow;
 
+import edu.rivfader.relalg.representation.IQualifiedColumnName;
+import java.util.Collection;
+import java.util.HashSet;
+
 /**
  * retrieves a column from a table via the qualified name of the
  * column.
@@ -25,5 +29,12 @@ public class QualifiedColumn implements IValueProvider {
     @Override
     public String getValue(IQualifiedNameRow inspectedRow) {
         return inspectedRow.getData(inspectedColumn);
+    }
+
+    @Override
+    public Collection<IQualifiedColumnName> getRequiredColumns() {
+        Collection<IQualifiedColumnName> result = new HashSet();
+        result.add(inspectedColumn);
+        return result;
     }
 }

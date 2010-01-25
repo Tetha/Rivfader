@@ -12,6 +12,7 @@ import static org.junit.Assert.assertThat;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
 
 import static org.easymock.EasyMock.expect;
 import org.powermock.modules.junit4.PowerMockRunner;
@@ -35,6 +36,15 @@ public class QualifiedColumnTest {
         replayAll();
         s = new QualifiedColumn(qcn);
         assertThat(ev, is(equalTo(s.getValue(ir))));
+        verifyAll();
+    }
+
+    @Test public void getRequiredColumnNames() {
+        IQualifiedColumnName qcn = createMock(IQualifiedColumnName.class);
+        replayAll();
+        QualifiedColumn subject = new QualifiedColumn(qcn);
+        assertThat(subject.getRequiredColumns(), hasItem(qcn));
+        assertThat(subject.getRequiredColumns().size(), is(1));
         verifyAll();
     }
 }

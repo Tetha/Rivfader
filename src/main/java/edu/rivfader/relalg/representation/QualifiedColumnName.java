@@ -21,14 +21,6 @@ public class QualifiedColumnName implements IQualifiedColumnName {
      * @param pColumn the name of the column
      */
     public QualifiedColumnName(String pTable, String pColumn) {
-        if (pTable == null) {
-            throw new IllegalArgumentException("pTable == null");
-        }
-
-        if (pColumn == null) {
-            throw new IllegalArgumentException("pColumn == null");
-        }
-
         table = pTable;
         column = pColumn;
     }
@@ -50,12 +42,34 @@ public class QualifiedColumnName implements IQualifiedColumnName {
         }
 
         IQualifiedColumnName co = (IQualifiedColumnName) other; //casted other
-        return table.equals(co.getTable()) && column.equals(co.getColumn());
+        if (table == null) {
+            if (co.getTable() != null) {
+                return false;
+            }
+        } else {
+            if (!table.equals(co.getTable())) {
+                return false;
+            }
+        }
+
+        if (column == null) {
+            if (co.getColumn() != null) {
+                return false;
+            }
+        } else {
+            if (!column.equals(co.getColumn())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return table.hashCode() ^ column.hashCode();
+        int tableHashcode = table == null? 0 : table.hashCode();
+        int columnHashcode = column == null? 0 : column.hashCode();
+
+        return tableHashcode ^ columnHashcode;
     }
 
     @Override

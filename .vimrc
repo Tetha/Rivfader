@@ -1,5 +1,5 @@
 " make config
-set makeprg=mvn\ -f\ /home/hk/code/rivfader/pom.xml\ clean\ test-compile
+set makeprg=mvn\ -f\ /home/hk/code/rivfader/pom.xml\ test-compile
 set errorformat=
     \%[%^[]%\\@=%f:%l:\ %m,
     \%A%[%^[]%\\@=%f:[%l\\,%v]\ %m,
@@ -30,4 +30,4 @@ inoremap <Leader>d <ESC>:s/^\(.*\)\(<.*>\)\(.*\)$/\1\2\3\2/<CR>:set nohlsearch<C
 map <F2> :cn<CR>
 
 " F6 == :make
-map <F6> :make<CR>
+map <F3> :make<CR>

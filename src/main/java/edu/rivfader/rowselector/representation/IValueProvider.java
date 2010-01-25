@@ -1,6 +1,8 @@
 package edu.rivfader.rowselector.representation;
 
 import edu.rivfader.relalg.representation.IQualifiedNameRow;
+import edu.rivfader.relalg.representation.IQualifiedColumnName;
+import java.util.Collection;
 
 /**
  * A valueprovider encapsulates means to get a value.
@@ -17,5 +19,7 @@ public interface IValueProvider {
      * @return the value of this value provider
      */
     String getValue(IQualifiedNameRow data);
+
+    Collection<IQualifiedColumnName> getRequiredColumns();
 }
 

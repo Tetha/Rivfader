@@ -29,26 +29,10 @@ public class QualifiedColumnNameTest {
     }
 
     /**
-     * checks that table name != null is required.
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void tableNotNull() {
-        new QualifiedColumnName(null, columnName);
-    }
-
-    /**
      * checks that the table name is stored.
      */
     @Test public void tableStored() {
         assertEquals(tableName, subject.getTable());
-    }
-
-    /**
-     * checks that column name != null is required.
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void columnNotNull() {
-        new QualifiedColumnName(tableName, null);
     }
 
     /**
